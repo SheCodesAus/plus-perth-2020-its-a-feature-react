@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
-
+// import Nav from "./components/Nav/Nav";
+import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import "./App.css";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
@@ -16,15 +16,15 @@ function App(){
       
         <Router>
         <div >
-          <Nav className = "nav" />
+          <SideNavBar className = "nav" />
           <Switch>
 
           
-          <Route path="/transactionshistory">
+          <Route path="/TransactionsHistoryPage">
             <TransactionsHistoryPage />
           </Route>
 
-          <Route path="/home">
+          <Route path="/TransactionsPage">
             <TransactionsPage />
           </Route>
 
