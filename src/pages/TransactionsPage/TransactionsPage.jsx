@@ -6,7 +6,7 @@ function TransactionsPage(){
     <div>
     <h1>This is Transactions Page with buckets</h1>
     <div>
-    <Button value="Transaction" />
+    <Button value="Submit" />
     </div>
     </div>
     )
