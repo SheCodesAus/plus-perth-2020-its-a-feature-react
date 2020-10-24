@@ -1,6 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,700");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap");
-@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css");
+@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css);
 
 body {
   background-color: #157a6e;
@@ -11,5 +10,9 @@ body {
   height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: "quicksand";
+  font-family: 'quicksand';
+}
+
+h1 {
+  padding-left: 125px;
 }
