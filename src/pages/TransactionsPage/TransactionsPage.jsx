@@ -6,7 +6,11 @@ function TransactionsPage(){
     <div>
     <h1>This is Transactions Page with buckets</h1>
     <div>
+<<<<<<< HEAD
     <Button value="Submit" />
+=======
+    <Button value="Transaction" />
+>>>>>>> parent of e84db49... Revert "Merge branch 'Test' into main"
     </div>
     </div>
     )
