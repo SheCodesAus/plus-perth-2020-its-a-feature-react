@@ -8,6 +8,12 @@ export default props => {
       <a className="menu-item" href="/">
         Home
       </a>
+      <a className="menu-item" href="/login">
+        Login
+      </a>
+      <a className="menu-item" href="/signup">
+        Sign Up
+      </a>
       <a className="menu-item" href="/TransactionsHistoryPage">
         Transaction History
       </a>

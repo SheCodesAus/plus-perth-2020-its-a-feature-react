@@ -3,8 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
+
+
 import "./App.css";
 
 function App() {
@@ -18,6 +22,15 @@ function App() {
           </Route>
           <div>
             <Switch>
+
+              <Route path="/login">
+                <LoginPage />
+              </Route>
+
+              <Route path="/signup">
+                <SignUpPage />
+              </Route>
+
               <Route path="/TransactionsHistoryPage">
                 <TransactionsHistoryPage />
               </Route>
