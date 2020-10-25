@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Nav from "./components/Nav/Nav";
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
-import "./App.css";
+import Header from "./components/Header/Header";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
-
+import "./App.css";
 
 function App(){
 
@@ -15,26 +14,28 @@ function App(){
       <div>
       
         <Router>
-        <div >
           <SideNavBar className = "nav" />
-          <Switch>
-
-          
-          <Route path="/TransactionsHistoryPage">
-            <TransactionsHistoryPage />
-          </Route>
-
-          <Route path="/TransactionsPage">
-            <TransactionsPage />
-          </Route>
-
-
           <Route path="/">
-            <HomePage />
+          <Header />
           </Route>
-          
-        </Switch>
-        </div>
+          <div >
+            <Switch>
+
+            <Route path="/TransactionsHistoryPage">
+              <TransactionsHistoryPage />
+            </Route>
+
+            <Route path="/TransactionsPage">
+              <TransactionsPage />
+            </Route>
+
+
+            <Route path="/">
+              <HomePage />
+            </Route>
+            
+          </Switch>
+          </div>
         </Router>
     </div>
     </div>
