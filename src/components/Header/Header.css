@@ -1,0 +1,8 @@
+img.main-logo {
+    display: block;
+    margin-left: 120px;
+    /* margin-right: auto; */
+    max-height: 90px;
+    margin-top: 50px;
+    margin-bottom: 75px;
+}
