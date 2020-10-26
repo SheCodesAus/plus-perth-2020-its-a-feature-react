@@ -5,25 +5,27 @@ import Delete from "../../assets/images/delete.png";
 
 function Bucket() {
   return (
-    <div className="bucket">
-      <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
-      {/* <img className="icon" alt="icon" src= /> */}
-      {/* icon URLS */}
-      <h2>Account Name</h2>
-      <h3>Minimum Amount</h3>
-      <h3>%</h3>
-      <p id="description">Description</p>
-      <div>
+    <div className="bucket animated fadeInLeft">
+      <div className="bucket">
+        <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+        {/* <img className="icon" alt="icon" src= /> */}
+        {/* icon URLS */}
+        <h2>Account Name</h2>
+        <h3>Minimum Amount</h3>
+        <h3>%</h3>
+        <p id="description">Description</p>
         <div>
-          {/* <Link to={`/delete/${id}`}> */}
-          <a>
-            <img src={Delete} alt="Bin image" height={30}></img>
-          </a>
-          {/* </Link> */}
+          <div>
+            {/* <Link to={`/delete/${id}`}> */}
+            <a>
+              <img src={Delete} alt="Bin image" height={30}></img>
+            </a>
+            {/* </Link> */}
+          </div>
         </div>
-      </div>
 
-      {/* <EditBucketForm project_id={id} /> */}
+        {/* <EditBucketForm project_id={id} /> */}
+      </div>
     </div>
   );
 }
