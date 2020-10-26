@@ -10,7 +10,6 @@ import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 
 import "./App.css";
-import EditBucketForm from "./components/Buckets/EditBuckets/EditBuckets";
 
 function App() {
   return (

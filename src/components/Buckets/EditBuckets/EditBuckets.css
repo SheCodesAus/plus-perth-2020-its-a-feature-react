@@ -1,6 +1,5 @@
-.bucket {
+.Editbucket {
   padding: 10px;
-  /* border: solid black; */
   width: fit-content;
   text-align: center;
 }
@@ -8,26 +7,49 @@
 .bucket-pic {
   height: 200px;
   width: auto;
+  margin: auto;
+}
+/* form */
+
+.Editbucket input,
+.Editbucket select {
+  display: inline-block;
+  width: 90%;
+  margin: 5px;
+  margin-bottom: 20px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 0.9em;
+  color: #888;
+}
+.Editbucket label {
+  height: 700;
+  /* font-size: 0.8em; */
+  color: #888;
 }
 
-.delete img:hover {
-  transform: scale(1.3);
+/* select#icon option[value="travel"] {
+  background-image: url(travel.png);
+} */
+.Editbucket select#icon option[value="savings"] {
+  background-image: url(https://drive.google.com/file/d/1nq_pWw_un16PelzvbZY_GLLUttTYd2q7/view?usp=sharing);
 }
 
 /* animation */
-.bucket {
+.Editbucket {
   -webkit-animation-duration: 1s;
   -webkit-animation-delay: 1s;
 }
 
-.animated {
+.Editanimated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeInLeft {
+@-webkit-keyframes EditfadeInLeft {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -41,7 +63,7 @@
   }
 }
 
-@keyframes fadeInLeft {
+@keyframes EditfadeInLeft {
   from {
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
@@ -55,7 +77,9 @@
   }
 }
 
-.fadeInLeft {
-  -webkit-animation-name: fadeInLeft;
-  animation-name: fadeInLeft;
+.EditfadeInLeft {
+  -webkit-animation-name: EditfadeInLeft;
+  animation-name: EditfadeInLeft;
+  /* border: solid black; */
+  display: inline-block;
 }

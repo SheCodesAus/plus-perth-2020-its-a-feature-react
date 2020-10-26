@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import "../EditBuckets/EditBuckets.css";
+
+import Button from "../../Button/Button";
+import Bucket_img from "../../../assets/images/bucket.png";
+import Travel from "../../../assets/images/travel.png";
+import "../../Buckets/Buckets.css";
+import "../../Button/Button.css";
 // import { isAuthenticated, setStorage } from "../utils/localStorage";
 
 function EditBucketForm({ bucketData }) {
@@ -49,10 +56,18 @@ function EditBucketForm({ bucketData }) {
   //template
 
   return (
-    <div className="form">
-      <form>
+    <form className="editBucketForm">
+      <div className="Editbucket Editanimated fadeInLeft">
+        <div className="Editbucket">
+          <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+          {/* <img className="icon" alt="icon" src= /> */}
+          {/* icon URLS */}
+        </div>
+        {/* <form> */}
         <div>
-          <label htmlFor="title"></label>
+          <label htmlFor="title">
+            Account Name<br></br>
+          </label>
           <input
             type="text"
             id="title"
@@ -61,7 +76,31 @@ function EditBucketForm({ bucketData }) {
           />
         </div>
         <div>
-          <label htmlFor="description"></label>
+          <label htmlFor="min_amount">
+            Minimum Amount<br></br>
+          </label>
+          <input
+            type="number"
+            id="min_amount"
+            // value={bucketDetails.title}
+            // onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="percentage">
+            %<br></br>
+          </label>
+          <input
+            type="number"
+            id="percentage"
+            // value={bucketDetails.title}
+            // onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="description">
+            Description<br></br>
+          </label>
           <input
             type="text"
             id="description"
@@ -69,46 +108,39 @@ function EditBucketForm({ bucketData }) {
             // onChange={handleChange}
           />
         </div>
+
         <div>
-          <label htmlFor="goal"></label>
-          <input
-            type="number"
-            id="goal"
-            // value={bucketDetails.goal}
+          <label htmlFor="icon">
+            Icon<br></br>
+          </label>
+          <select
+            type="select"
+            id="Icon"
+            // value={projectDetails.category}
             // onChange={handleChange}
-          />
+          >
+            <option value="travel">Travel</option>
+            <option value="savings">Savings</option>
+            {/* <option value="Historical-Fiction">Historical Fiction</option>
+            <option value="Horror">Horror </option>
+            <option value="Mystery">Mystery </option>
+            <option value="Non-Fiction">Non-Fiction </option>
+            <option value="Poetry">Poetry </option>
+            <option value="Romance">Romance </option>
+            <option value="Sci-Fi">Sci-Fi </option>
+            <option value="Thriller">Thriller </option>
+            <option value="Young-Adult">Young Adult </option> */}
+          </select>
         </div>
+
         <div>
-          <label htmlFor="image"></label>
-          <input
-            type="url"
-            id="image"
-            // value={bucketDetails.image}
-            // onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="date_closed"></label>
-          <input
-            type="datetime-local"
-            id="date_closed"
-            // value={bucketDetails.date_closed}
-            // onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="sample"></label>
-          <textarea
-            id="sample"
-            // value={bucketDetails.sample}
-            // onChange={handleChange}
-          />
+          <Button value="Submit" />
         </div>
         {/* <button type="submit" onClick={handleSubmit}>
           Update!
         </button> */}
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
