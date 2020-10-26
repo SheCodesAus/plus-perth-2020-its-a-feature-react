@@ -10,6 +10,11 @@
   width: auto;
 }
 
+.delete img:hover {
+  transform: scale(1.3);
+}
+
+/* animation */
 .bucket {
   -webkit-animation-duration: 1s;
   -webkit-animation-delay: 1s;

@@ -17,7 +17,8 @@ function Bucket() {
         <div>
           <div>
             {/* <Link to={`/delete/${id}`}> */}
-            <a>
+            <a className="delete" href="/">
+              {" "}
               <img src={Delete} alt="Bin image" height={30}></img>
             </a>
             {/* </Link> */}
