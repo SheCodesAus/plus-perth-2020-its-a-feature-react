@@ -7,9 +7,10 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
-
+import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 
 import "./App.css";
+import EditBucketForm from "./components/Buckets/EditBuckets/EditBuckets";
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
           </Route>
           <div>
             <Switch>
-
               <Route path="/login">
                 <LoginPage />
               </Route>
@@ -37,6 +37,10 @@ function App() {
 
               <Route path="/TransactionsPage">
                 <TransactionsPage />
+              </Route>
+
+              <Route path="/EditBucket">
+                <EditBucketPage />
               </Route>
 
               <Route path="/">

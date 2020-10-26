@@ -2,6 +2,7 @@ import React from "react";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
+import Edit from "../../assets/images/edit.png";
 
 function Bucket() {
   return (
@@ -21,6 +22,11 @@ function Bucket() {
               {" "}
               <img src={Delete} alt="Bin image" height={30}></img>
             </a>
+            <a className="edit" href="/EditBucket">
+              {" "}
+              <img src={Edit} alt="Edit image" height={30}></img>
+            </a>
+
             {/* </Link> */}
           </div>
         </div>
