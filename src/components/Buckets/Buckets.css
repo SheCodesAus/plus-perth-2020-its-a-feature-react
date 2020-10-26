@@ -1,0 +1,11 @@
+.bucket {
+  padding: 10px;
+  /* border: solid black; */
+  width: fit-content;
+  text-align: center;
+}
+
+.bucket-pic {
+  height: 200px;
+  width: auto;
+}
