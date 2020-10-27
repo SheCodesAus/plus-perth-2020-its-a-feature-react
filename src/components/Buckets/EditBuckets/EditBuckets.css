@@ -2,6 +2,7 @@
   padding: 10px;
   width: fit-content;
   text-align: center;
+  margin: auto;
 }
 
 .bucket-pic {
@@ -34,6 +35,19 @@
 } */
 .Editbucket select#icon option[value="savings"] {
   background-image: url(https://drive.google.com/file/d/1nq_pWw_un16PelzvbZY_GLLUttTYd2q7/view?usp=sharing);
+}
+
+#submit_button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #dddafb;
+  text-align: center;
+  transition: all 0.2s;
+  background-color: #2d3a3a;
 }
 
 /* animation */

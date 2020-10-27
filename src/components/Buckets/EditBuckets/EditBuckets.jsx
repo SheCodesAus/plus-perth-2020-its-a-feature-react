@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 
 import Button from "../../Button/Button";
@@ -7,6 +7,7 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import Travel from "../../../assets/images/travel.png";
 import "../../Buckets/Buckets.css";
 import "../../Button/Button.css";
+
 // import { isAuthenticated, setStorage } from "../utils/localStorage";
 
 function EditBucketForm({ bucketData }) {
@@ -119,7 +120,9 @@ function EditBucketForm({ bucketData }) {
             // value={projectDetails.category}
             // onChange={handleChange}
           >
-            <option value="travel">Travel</option>
+            <option value="travel" src={Travel}>
+              Travel
+            </option>
             <option value="savings">Savings</option>
             {/* <option value="Historical-Fiction">Historical Fiction</option>
             <option value="Horror">Horror </option>
@@ -136,6 +139,7 @@ function EditBucketForm({ bucketData }) {
         <div>
           <Button value="Submit" />
         </div>
+        <Link to="/TransactionsPage">Cancel</Link>
         {/* <button type="submit" onClick={handleSubmit}>
           Update!
         </button> */}
