@@ -85,14 +85,16 @@ function SignUpForm(props){
                 onChange = {handleChange}/>
             </div>
 
+            
+            <Button id="inbutton" value = "Submit"
+            onClick={handleSubmit} value = "Sign Up"/>
+
             <div className="in-out">
                 <p className = "small">Already have an account? </p>
                 <Link  to="/login">  Login </Link>
             </div>
             <br/>
 
-            <Button id="inbutton" value = "Submit"
-            onClick={handleSubmit} value = "Sign Up"/>
         </form>
     );
 }
