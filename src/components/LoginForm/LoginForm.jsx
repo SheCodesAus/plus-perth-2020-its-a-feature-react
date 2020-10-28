@@ -53,7 +53,7 @@ function LoginForm(props){
     //template
     return(
         <form className = "login-box animated fadeInLeft">
-            <div class="box-header">
+            <div className="box-header">
             <h2 id = "loginheader">Login</h2>
             </div>
 
@@ -76,12 +76,10 @@ function LoginForm(props){
             onClick={handleSubmit} value = "Login"/>
 
             <div className="in-out">
-                <p class = "small">Don't have an account? </p>
+                <p className = "small">Don't have an account? </p>
                 <Link  to="/signup/">  Sign Up </Link>
             </div>
             <br/>
-
-
         </form>
     );
 }
