@@ -4,7 +4,9 @@ import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
 
-function Bucket() {
+function TransactionBucket(props) {
+  const { bucketData } = props;
+  console.log(bucketData);
   return (
     <div className="bucket animated fadeInLeft">
       <div className="bucket">
@@ -13,6 +15,7 @@ function Bucket() {
         {/* icon URLS */}
         <h2>Account Name</h2>
         <h3>Minimum Amount</h3>
+        <h1>{bucketData.id}</h1>
         <h3>%</h3>
         <p id="description">Description</p>
         <div>
@@ -37,4 +40,4 @@ function Bucket() {
   );
 }
 
-export default Bucket;
+export default TransactionBucket;
