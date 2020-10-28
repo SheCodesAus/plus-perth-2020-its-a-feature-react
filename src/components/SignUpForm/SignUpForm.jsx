@@ -67,6 +67,14 @@ function SignUpForm(){
             </div>
             <br/>
             <div >
+                <label htmlFor="email">Email: </label>
+                <input className = "input" type="text" 
+                id="email" 
+                placeholder="Enter email" 
+                onChange = {handleChange}/>
+            </div>
+            <br/>
+            <div >
             <label htmlFor="password">Password: </label>
                 <input className = "input" type="password" 
                 id="password" 
