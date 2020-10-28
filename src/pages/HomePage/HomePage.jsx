@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { oneBucket } from "../../data";
 import TransactionBucket from "../../components/Buckets/Buckets";
+import { getStorage } from "../../helpers/localStorage";
 
 function HomePage() {
   const [bucketList, setBucketList] = useState([]);
+  const token = window.localStorage.getItem("token");
+  console.log(token);
   useEffect(() => {
-    setBucketList(oneBucket);
+    fetch(`${process.env.REACT_APP_API_URL}buckets`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `token ${token}`,
+      },
+    })
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setBucketList(data);
+      });
   }, []);
   console.log(bucketList);
 

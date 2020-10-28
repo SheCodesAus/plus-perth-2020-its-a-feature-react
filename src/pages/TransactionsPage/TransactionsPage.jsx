@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
-import transactionBucket from "../../components/Buckets/Buckets";
+import TransactionBucket from "../../components/Buckets/Buckets";
 import { Link } from "react-router-dom";
 
 function TransactionsPage() {
@@ -9,7 +9,7 @@ function TransactionsPage() {
       <h1>This is Transactions Page with buckets</h1>
 
       <div className="bucket_row">
-        <transactionBucket />
+        <TransactionBucket />
       </div>
       <div>
         <Button value="Submit" />
