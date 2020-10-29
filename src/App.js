@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
@@ -8,8 +9,10 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
+
 
 function App() {
   return (
@@ -32,6 +35,10 @@ function App() {
 
               <Route path="/TransactionsHistoryPage">
                 <TransactionsHistoryPage />
+              </Route>
+
+              <Route path="/TransactionsHistoryDetail/:id">
+                <TransactionDetailPage />
               </Route>
 
               <Route path="/TransactionsPage">
