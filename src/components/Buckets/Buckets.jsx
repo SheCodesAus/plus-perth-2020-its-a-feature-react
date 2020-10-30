@@ -7,57 +7,116 @@ import Edit from "../../assets/images/edit.png";
 import { getStorage } from "../../helpers/localStorage";
 
 function TransactionBucket(props) {
-  //   const { bucketData, setBucketData } = useState([]);
-  //   const { id } = useParams();
-  //   const token = getStorage("token");
-  //   console.log(bucketData);
-  //   console.log(token);
   const { bucketData } = props;
-  //   console.log(bucketData);
-
-  //   useEffect(() => {
-  //     fetch(`${process.env.REACT_APP_API_URL}buckets/${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `token ${token}`,
-  //       },
-  //     })
-  //       .then((results) => {
-  //         return results.json();
-  //       })
-  //       .then((data) => {
-  //         setBucketData(data);
-  //       });
-  //   }, [id]);
 
   return (
-    <div className="bucket animated fadeInLeft">
-      <div className="bucket">
+    <div className=" bucket-group animated fadeInLeft">
+      <div
+        className="bucket-parent"
+        style={
+          bucketData.children.length > 0
+            ? { borderBottom: "3px solid white" }
+            : null
+        }
+      >
         <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
-        {/* <img className="icon" alt="icon" src= /> */}
-        {/* icon URLS */}
-        <h2>{bucketData.name}</h2>
-        <h3>{bucketData.min_atm}</h3>
-        <h1>{bucketData.id}</h1>
-        <h3>{bucketData.percentage}</h3>
-      </div>
-      <p id="description">Description</p>
-      <div>
-        {/* <Link to={`/delete/${id}`}> */}
-        <a className="delete" href="/">
-          {" "}
-          <img src={Delete} alt="Bin image" height={30}></img>
-        </a>
-        <a className="edit" href="/EditBucket">
-          {" "}
-          <img src={Edit} alt="Edit image" height={30}></img>
-        </a>
+        <h2>
+          {bucketData.name}: {bucketData.percentage}%
+        </h2>
+        <p>
+          Minimum Amount:{" "}
+          {bucketData.min_atm == null ? "None" : bucketData.min_atm}
+        </p>
+        <p>
+          {bucketData.description ? (
+            bucketData.description
+          ) : (
+            <span>&nbsp;</span>
+          )}
+        </p>
 
-        {/* </Link> */}
+        <div>
+          <a className="delete" href="/">
+            {" "}
+            <img src={Delete} alt="Bin image" height={30}></img>
+          </a>
+          <a className="edit" href="/EditBucket">
+            {" "}
+            <img src={Edit} alt="Edit image" height={30}></img>
+          </a>
+        </div>
       </div>
+
+      {bucketData.children.length > 0 ? (
+        <div className="children">
+          {bucketData.children.map((child, i) => (
+            <div
+              className="bucket"
+              style={
+                child.children.length > 0
+                  ? { width: "max-content", borderRight: "3px solid white" }
+                  : null
+              }
+            >
+              <span>
+                <img
+                  className="bucket-pic-child"
+                  alt="Bucket Image"
+                  src={Bucket_img}
+                />
+                <h2>
+                  {child.name}: {child.percentage}%
+                </h2>
+                <p>
+                  Minimum Amount:{" "}
+                  {child.min_atm == null ? "None" : child.min_atm}
+                </p>
+                <p>
+                  {child.description ? child.description : <span>&nbsp;</span>}
+                </p>
+                {child.children.length > 0 ? (
+                  <div style={{ display: "flex" }}>
+                    {child.children.map((nextchild, i) => (
+                      <div
+                        className="bucket"
+                        style={{
+                          borderTop: "3px solid white",
+                          paddingTop: "30px",
+                        }}
+                      >
+                        <span>
+                          <img
+                            className="bucket-pic-child"
+                            alt="Bucket Image"
+                            src={Bucket_img}
+                          />
+                          <h2>
+                            {nextchild.name}: {nextchild.percentage}%
+                          </h2>
+                          <p>
+                            Minimum Amount:{" "}
+                            {nextchild.min_atm == null
+                              ? "None"
+                              : nextchild.min_atm}
+                          </p>
+                          <p>
+                            {nextchild.description ? (
+                              nextchild.description
+                            ) : (
+                              <span>&nbsp;</span>
+                            )}
+                          </p>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </span>
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
-
-    // * <EditBucketForm project_id={id} />
   );
 }
 
