@@ -8,6 +8,7 @@ import IncomeForm from "../../components/Buckets/IncomeForm";
 function HomePage() {
   const [bucketList, setBucketList] = useState([]);
   const token = window.localStorage.getItem("token");
+  const [income, setIncome] = useState();
 
   console.log(token);
 
@@ -26,6 +27,10 @@ function HomePage() {
       });
   }, []);
 
+  const upDateIncome = (income) => {
+    setIncome(income);
+  };
+
   // console.log("bucketList is...", bucketList);
 
   return (
@@ -33,12 +38,14 @@ function HomePage() {
     <div>
       {token != null ? (
         <div id="bucket-list">
-          <IncomeForm receipt={bucketList} />
+          <IncomeForm receipt={bucketList} upDateIncome={upDateIncome} />
 
           <div id="bucket-list">
             {bucketList.map((bucketData, key) => {
-              return <Bucket key={key} bucketData={bucketData} />;
-            })}
+              return (
+                <Bucket key={key} bucketData={bucketData} income={income} />
+              );
+            })}{" "}
           </div>
         </div>
       ) : (
