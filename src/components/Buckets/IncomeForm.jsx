@@ -7,7 +7,7 @@ import { getStorage, setStorage } from "../../helpers/localStorage";
 function IncomeForm({ receipt }) {
   //   console.log("map receipt is...", receipt);
   const [transaction, setTransaction] = useState({
-    income: "",
+    income: 0,
   });
 
   //   console.log("receipt is... ", receipt);
@@ -31,7 +31,7 @@ function IncomeForm({ receipt }) {
       income: transaction.income,
       receipt: JSON.stringify(receipt),
     };
-    console.log({ body });
+    console.log(body);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions/`,
       {
@@ -40,7 +40,7 @@ function IncomeForm({ receipt }) {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
         },
-        body,
+        body: JSON.stringify(body),
       }
     );
     console.log("post response is...", response);
