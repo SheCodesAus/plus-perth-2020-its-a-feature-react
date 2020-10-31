@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Bucket_img from "../../assets/images/bucket.png";
+import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
 
 function TransactionsHistoryPage() {
   const [transactionList, setTransactionList] = useState();
@@ -29,12 +31,16 @@ function TransactionsHistoryPage() {
       <h1>Transaction History</h1>
 
       {transactionList ? (
-        <div>
+        <div className="trans-hist-page">
           {transactionList.map((trans) => (
             <Link to={`/transactions/${trans.id}`}>
-              <li key={trans.id}>
-                {trans.id}: {trans.date_created.slice(0, 10)} > ${trans.income}
-              </li>
+              <div key={trans.id} className="hist-tile">
+                <h4>
+                  #{trans.id}: <br></br>
+                  {trans.date_created.slice(0, 10)} <br></br> $
+                  {trans.income.toLocaleString("en")}
+                </h4>
+              </div>
             </Link>
           ))}
         </div>

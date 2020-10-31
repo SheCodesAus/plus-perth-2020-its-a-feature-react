@@ -50,7 +50,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
-        console.log("respose is...", response);
+        console.log("response is...", response);
 
         // window.location.reload();
       });
