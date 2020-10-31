@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import "../LoginForm/LoginForm.css";
 import Button from "../Button/Button"
 
-function IncomeForm({ receipt }) {
+function IncomeForm({ receipt, upDateIncome }) {
   //   console.log("map receipt is...", receipt);
   const [transaction, setTransaction] = useState({
     income: "",
   });
 
-  //   console.log("receipt is... ", receipt);
   //methods
   //set state
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-
+    upDateIncome(value);
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
       [id]: value,
