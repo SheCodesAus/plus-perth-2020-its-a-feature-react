@@ -1,0 +1,166 @@
+#loginheader {
+	font-weight: 200;
+	font-size: 3.2em;
+	color: white;
+	padding: 10px;
+	text-shadow: 0 0 10px rgba(0,0,0,0.8);
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+}
+
+a:hover {
+	color: #aeaeae;
+}
+
+p.small {
+	font-size: 15px;
+	margin: 20px;
+}
+
+
+/* Layout */
+.container {
+	margin: 0;
+}
+
+.login-box {
+	background-color: white;
+	max-width: 340px;
+	margin: 0 auto;
+	position: relative;
+	top: 10px;
+	padding-bottom: 2px;
+	border-radius: 5px;
+	box-shadow: 0 5px 50px rgba(0,0,0,0.4);
+	text-align: center;
+}
+
+.login-box .box-header {
+	background-color: #373a47;
+	margin-top: 0;
+	border-radius: 5px 5px 0 0;
+}
+
+.login-box label {
+	font-weight: 700;
+	font-size: .8em;
+	color: #888;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	line-height: 2em;
+}
+
+.login-box input {
+	margin-bottom: 20px;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	font-size: .9em;
+	color: #888;
+}
+
+.login-box input:focus {
+	outline: none;
+	border-color: #373a47;
+	transition: 0.5s;
+	color: #373a47;
+}
+
+#inbutton {
+	margin-top: 0px;
+	border: 0;
+	border-radius: 2px;
+	color: white;
+	padding: 10px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	background-color: #373a47;
+	cursor:pointer;
+	outline: none;
+}
+
+#inbutton:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+#inbutton:hover {
+	opacity: 0.7;
+	transition: 0.5s;
+}
+
+.in-out {
+    font-size: 15px;
+}
+  
+.in-out a {
+    color: rgba(0,0,0, .7);
+    text-decoration: none;
+    border: 1px solid rgba(0,0,0, .7);
+    border-radius: 2px;
+    padding: 2px;
+    transition: all .4s ease-out;
+}
+  
+.in-out a:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+/* Animation Delay */
+#logo {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 2s;
+}
+
+.login-box {
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 1s;
+}
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInLeft {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(-100%, 0, 0);
+	  transform: translate3d(-100%, 0, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: none;
+	  transform: none;
+	}
+  }
+  
+@keyframes fadeInLeft {
+	from {
+	  opacity: 0;
+	  -webkit-transform: translate3d(-100%, 0, 0);
+	  transform: translate3d(-100%, 0, 0);
+	}
+  
+	to {
+	  opacity: 1;
+	  -webkit-transform: none;
+	  transform: none;
+	}
+}
+  
+.fadeInLeft {
+	-webkit-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+}
+  

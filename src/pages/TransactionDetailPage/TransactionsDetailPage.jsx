@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import Bucket from "../../components/Buckets/Buckets";
+
+function TransactionDetailPage() {
+  const { id } = useParams();
+
+  const [transaction, setTransaction] = useState();
+  const [receipt, setReceipt] = useState();
+
+  useEffect(async () => {
+    const token = window.localStorage.getItem("token");
+    if (!token) {
+      return;
+    }
+    console.log("id is... ", id);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}transactions/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${token}`,
+        },
+      }
+    );
+    const data = await response.json();
+    if (response.ok) {
+      /// check response.status for status code too as response.ok only checks for server errors!
+      const parsed = JSON.parse(data.receipt);
+      console.log(parsed);
+      setTransaction(data);
+      setReceipt(parsed);
+    }
+  }, []);
+
+  return transaction ?
+    <div>
+      <h1>Income: ${transaction.income}</h1>
+      <h4>{transaction.date_created.slice(0, 10)}</h4>
+      <h4>{transaction.date_created.slice(11, 19)}</h4>
+      <div id="bucket-list">
+        {
+          receipt ?
+            receipt.map((bucket, key) => {
+              return <Bucket key={key} bucketData={bucket} />
+            })
+            :
+            null}
+      </div>
+    </div>
+    : null
+}
+
+export default TransactionDetailPage;
