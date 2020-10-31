@@ -5,9 +5,17 @@ import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
 import { getStorage } from "../../helpers/localStorage";
+import handleChange from "../Buckets/IncomeForm";
 
 function Bucket(props) {
   const { bucketData } = props;
+  const { income } = props;
+  // const calculation = ((bucketData.percentage / 100) * income).toFixed(2);
+  const [calculation, setCalculation] = useState(0);
+
+  useEffect(() => {
+    setCalculation(((bucketData.percentage / 100) * income).toFixed(2));
+  }, [income]);
 
   return (
     <div className=" bucket-group animated fadeInLeft">
@@ -23,9 +31,10 @@ function Bucket(props) {
         <h2>
           {bucketData.name}: {bucketData.percentage}%
         </h2>
+        <h2>${calculation}</h2>
         <p>
           Minimum Amount:{" "}
-          {bucketData.min_atm == null ? "None" : bucketData.min_atm}
+          {bucketData.min_amt == null ? "None" : bucketData.min_amt}
         </p>
         <p>
           {bucketData.description ? (
@@ -67,6 +76,8 @@ function Bucket(props) {
                 <h2>
                   {child.name}: {child.percentage}%
                 </h2>
+
+                <h2>${((child.percentage / 100) * calculation).toFixed(2)}</h2>
                 <p>
                   Minimum Amount:{" "}
                   {child.min_atm == null ? "None" : child.min_atm}
@@ -92,6 +103,14 @@ function Bucket(props) {
                           />
                           <h2>
                             {nextchild.name}: {nextchild.percentage}%
+                          </h2>
+                          <h2>
+                            {(
+                              (nextchild.percentage / 100) *
+                              ((child.percentage / 100) * calculation).toFixed(
+                                2
+                              )
+                            ).toFixed(2)}
                           </h2>
                           <p>
                             Minimum Amount:{" "}
