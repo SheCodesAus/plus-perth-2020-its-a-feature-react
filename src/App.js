@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
@@ -46,6 +47,10 @@ function App() {
 
               <Route path="/EditBucket">
                 <EditBucketPage />
+              </Route>
+
+              <Route path="/AddBucket">
+                <AddBucketPage />
               </Route>
 
               <Route path="/">
