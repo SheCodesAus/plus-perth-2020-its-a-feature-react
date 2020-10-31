@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../LoginForm/LoginForm.css";
+import Button from "../Button/Button"
 
 function IncomeForm({ receipt }) {
   //   console.log("map receipt is...", receipt);
