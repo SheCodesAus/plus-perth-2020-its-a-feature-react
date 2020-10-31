@@ -6,7 +6,7 @@ import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
 import { getStorage } from "../../helpers/localStorage";
 
-function TransactionBucket(props) {
+function Bucket(props) {
   const { bucketData } = props;
 
   return (
@@ -75,7 +75,7 @@ function TransactionBucket(props) {
                   {child.description ? child.description : <span>&nbsp;</span>}
                 </p>
                 {child.children.length > 0 ? (
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
                     {child.children.map((nextchild, i) => (
                       <div
                         className="bucket"
@@ -120,4 +120,4 @@ function TransactionBucket(props) {
   );
 }
 
-export default TransactionBucket;
+export default Bucket;

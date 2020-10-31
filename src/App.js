@@ -13,7 +13,6 @@ import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDet
 
 import "./App.css";
 
-
 function App() {
   return (
     <div className="App">
@@ -33,15 +32,15 @@ function App() {
                 <SignUpPage />
               </Route>
 
-              <Route path="/TransactionsHistoryPage">
-                <TransactionsHistoryPage />
-              </Route>
-
-              <Route path="/TransactionsHistoryDetail/:id">
+              <Route path="/transactions/:id">
                 <TransactionDetailPage />
               </Route>
 
-              <Route path="/TransactionsPage">
+              <Route path="/transactions">
+                <TransactionsHistoryPage />
+              </Route>
+
+              <Route path="/transactions-page">
                 <TransactionsPage />
               </Route>
 
