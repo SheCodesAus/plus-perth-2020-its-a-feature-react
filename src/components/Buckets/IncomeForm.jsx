@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
-import Button from "../../components/Button/Button";
-import { getStorage, setStorage } from "../../helpers/localStorage";
 
 function IncomeForm({ receipt }) {
   //   console.log("map receipt is...", receipt);
@@ -60,7 +57,7 @@ function IncomeForm({ receipt }) {
     }
   };
   return (
-    <form className=" animated fadeInLeft">
+    <form className="incomeForm animated fadeInLeft">
       <label htmlFor="income"></label>
       <input
         className="input"

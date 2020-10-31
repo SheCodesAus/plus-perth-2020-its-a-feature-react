@@ -2,13 +2,12 @@
   border: 1px solid red;
 } */
 
-form {
-  /* border: 1px solid red; */
+.incomeForm form {
   display: inline-block;
   padding: 0 20px 0 20px;
 }
 
-form input {
+.incomeForm input {
   text-align: center;
 }
 
@@ -32,7 +31,7 @@ form input {
   /* border: solid lightgray; */
   /* border-bottom: 1px solid white; */
   text-align: center;
-  height: 400px;
+  height: 500px;
   /* width: 600px; */
 }
 
@@ -41,8 +40,7 @@ form input {
   width: 100%;
   justify-content: space-evenly;
 }
-
-.bucket {
+*/ .bucket {
   padding: 10px;
   margin-top: 20px;
 
@@ -68,7 +66,7 @@ form input {
   height: 100px;
   width: auto;
 }
-
+/* -------- */
 .delete img:hover,
 .edit img:hover {
   transform: scale(1.3);
