@@ -37,7 +37,7 @@ function HomePage() {
     //<p> Hi</p>
     <div>
       {token != null ? (
-        <div id="bucket-list">
+        <div>
           <IncomeForm receipt={bucketList} upDateIncome={upDateIncome} />
 
           <div id="bucket-list">

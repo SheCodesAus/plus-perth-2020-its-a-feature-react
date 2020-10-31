@@ -7,7 +7,7 @@ import { getStorage, setStorage } from "../../helpers/localStorage";
 function IncomeForm({ receipt, upDateIncome }) {
   //   console.log("map receipt is...", receipt);
   const [transaction, setTransaction] = useState({
-    income: "",
+    income: 0,
   });
 
   //methods
@@ -39,7 +39,7 @@ function IncomeForm({ receipt, upDateIncome }) {
           "Content-Type": "application/json",
           Authorization: `Token ${token}`,
         },
-        body,
+        body: JSON.stringify(body),
       }
     );
     console.log("post response is...", response);
@@ -59,23 +59,25 @@ function IncomeForm({ receipt, upDateIncome }) {
     }
   };
   return (
-    <form className=" animated fadeInLeft">
-      <label htmlFor="income"></label>
-      <input
-        className="input"
-        type="text"
-        id="income"
-        placeholder="Enter Income"
-        onChange={handleChange}
-      />
+    <div className="income-form">
+      <form className=" animated fadeInLeft">
+        <label htmlFor="income"></label>
+        <input
+          className="input"
+          type="number"
+          id="income"
+          placeholder="Enter Income"
+          onChange={handleChange}
+        />
 
-      <Button
-        id="incomebutton"
-        value="Submit"
-        onClick={handleSubmit}
-        value="Calculate"
-      />
-    </form>
+        <Button
+          id="incomebutton"
+          value="Submit"
+          onClick={handleSubmit}
+          value="Calculate"
+        />
+      </form>
+    </div>
   );
 }
 export default IncomeForm;

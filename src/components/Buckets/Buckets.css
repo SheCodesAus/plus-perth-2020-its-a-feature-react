@@ -2,10 +2,19 @@
   border: 1px solid red;
 } */
 
-form {
+.income-form {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.income-form form {
   /* border: 1px solid red; */
-  display: inline-block;
-  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0 20px 0 20px; */
 }
 
 form input {
@@ -14,7 +23,7 @@ form input {
 
 #bucket-list {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -22,8 +31,9 @@ form input {
   background-color: rgba(211, 211, 211, 0.3);
   border: 1px solid white;
   border-radius: 30px;
-  margin-bottom: 50px;
-  padding: 30px;
+  /* margin-bottom: 50px; */
+  margin: 10px;
+  /* padding: 30px; */
   height: fit-content;
 }
 
@@ -32,8 +42,12 @@ form input {
   /* border: solid lightgray; */
   /* border-bottom: 1px solid white; */
   text-align: center;
-  height: 500px;
+  /* min-height: 200px; */
   /* width: 600px; */
+}
+
+h2 a.bucket-parent:hover {
+  text-decoration: purple;
 }
 
 .children {
@@ -45,11 +59,12 @@ form input {
 .bucket {
   padding: 10px;
   margin-top: 20px;
-
-  /* border: solid lightgray; */
-  /* border-top: solid gray; */
-  width: 25%;
   text-align: center;
+  min-width: 100px;
+}
+
+.bucket-child {
+  border-right: 5px solid white;
 }
 
 .children .bucket h2 {
@@ -61,11 +76,11 @@ form input {
 }
 
 .bucket-pic {
-  height: 200px;
+  height: 100px;
   width: auto;
 }
 .bucket-pic-child {
-  height: 100px;
+  height: 50px;
   width: auto;
 }
 
