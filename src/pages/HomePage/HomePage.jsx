@@ -30,6 +30,7 @@ function HomePage() {
 
   return (
     //<p> Hi</p>
+
     <div>
       {token != null ? (
         <div id="bucket-list">
@@ -44,6 +45,7 @@ function HomePage() {
       ) : (
         <LoginForm />
       )}
+
     </div>
   );
 }
