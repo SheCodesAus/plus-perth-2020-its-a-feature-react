@@ -43,13 +43,15 @@ function TransactionDetailPage() {
       console.log(data);
       console.log(JSON.parse(tryStr));
     }
-  }, []);
+  }, [id]);
 
   return transaction ? (
     <div>
       <h1>Income: ${transaction.income}</h1>
-      <h4>{transaction.date_created.slice(0, 10)}</h4>
-      <h4>{transaction.date_created.slice(11, 19)}</h4>
+      <h4>
+        {transaction.date_created.slice(0, 10)}{" "}
+        {transaction.date_created.slice(11, 19)}
+      </h4>
     </div>
   ) : null;
 }

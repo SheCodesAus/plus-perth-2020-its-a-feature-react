@@ -13,10 +13,10 @@ function Bucket(props) {
 
   useEffect(() => {
     setCalculation(((bucketData.percentage / 100) * income).toFixed(2));
-  }, [income]);
+  }, [bucketData.percentage, income]);
 
   return (
-    <div className=" bucket-group animated fadeInLeft">
+    <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
       <div
         className="bucket-parent"
         style={
@@ -25,7 +25,7 @@ function Bucket(props) {
             : null
         }
       >
-        <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+        <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
         <h2 data-tip={bucketData.description} data-for="descriptionTip">
           {bucketData.name}:<br></br>
           {bucketData.percentage}%
@@ -37,11 +37,11 @@ function Bucket(props) {
         <div>
           <a className="delete" href="/">
             {" "}
-            <img src={Delete} alt="Bin image" height={30}></img>
+            <img src={Delete} alt="Bin" height={30}></img>
           </a>
           <a className="edit" href="/EditBucket">
             {" "}
-            <img src={Edit} alt="Edit image" height={30}></img>
+            <img src={Edit} alt="Edit" height={30}></img>
           </a>
         </div>
       </div>
@@ -50,6 +50,7 @@ function Bucket(props) {
         <div className="children">
           {bucketData.children.map((child, i) => (
             <div
+              key={i}
               className={
                 i < bucketData.children.length - 1
                   ? "bucket bucket-child"
@@ -62,7 +63,7 @@ function Bucket(props) {
               <span>
                 <img
                   className="bucket-pic-child"
-                  alt="Bucket Image"
+                  alt="Bucket"
                   src={Bucket_img}
                 />
                 <h2
@@ -91,6 +92,7 @@ function Bucket(props) {
                   >
                     {child.children.map((nextchild, i) => (
                       <div
+                        key={i}
                         className="bucket"
                         style={{
                           borderTop: "5px solid white",
@@ -100,7 +102,7 @@ function Bucket(props) {
                         <span>
                           <img
                             className="bucket-pic-child"
-                            alt="Bucket Image"
+                            alt="Bucket"
                             src={Bucket_img}
                           />
                           <h2

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 
 import Button from "../../Button/Button";
@@ -60,7 +60,7 @@ function EditBucketForm({ bucketData }) {
     <form className="editBucketForm">
       <div className="Editbucket Editanimated fadeInLeft">
         <div className="Editbucket">
-          <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+          <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
           {/* <img className="icon" alt="icon" src= /> */}
           {/* icon URLS */}
         </div>

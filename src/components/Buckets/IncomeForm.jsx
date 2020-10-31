@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
-import { getStorage, setStorage } from "../../helpers/localStorage";
 
 function IncomeForm({ receipt, upDateIncome }) {
   //   console.log("map receipt is...", receipt);
@@ -70,12 +68,7 @@ function IncomeForm({ receipt, upDateIncome }) {
           onChange={handleChange}
         />
 
-        <Button
-          id="incomebutton"
-          value="Submit"
-          onClick={handleSubmit}
-          value="Calculate"
-        />
+        <Button id="incomebutton" onClick={handleSubmit} value="Save" />
       </form>
     </div>
   );
