@@ -75,7 +75,7 @@ function Bucket(props) {
                   {child.description ? child.description : <span>&nbsp;</span>}
                 </p>
                 {child.children.length > 0 ? (
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
                     {child.children.map((nextchild, i) => (
                       <div
                         className="bucket"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
@@ -8,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
 
@@ -30,11 +32,15 @@ function App() {
                 <SignUpPage />
               </Route>
 
-              <Route path="/TransactionsHistoryPage">
+              <Route path="/transactions/:id">
+                <TransactionDetailPage />
+              </Route>
+
+              <Route path="/transactions">
                 <TransactionsHistoryPage />
               </Route>
 
-              <Route path="/TransactionsPage">
+              <Route path="/transactions-page">
                 <TransactionsPage />
               </Route>
 
