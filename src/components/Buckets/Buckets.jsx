@@ -6,7 +6,7 @@ import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
 import { getStorage } from "../../helpers/localStorage";
 
-function TransactionBucket(props) {
+function Bucket(props) {
   const { bucketData } = props;
 
   return (
@@ -120,4 +120,4 @@ function TransactionBucket(props) {
   );
 }
 
-export default TransactionBucket;
+export default Bucket;

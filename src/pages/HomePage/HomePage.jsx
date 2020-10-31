@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { oneBucket } from "../../data";
-import TransactionBucket from "../../components/Buckets/Buckets";
+import Bucket from "../../components/Buckets/Buckets";
 import { getStorage } from "../../helpers/localStorage";
 
 function HomePage() {
@@ -27,7 +27,7 @@ function HomePage() {
     //<p> Hi</p>
     <div id="bucket-list">
       {bucketList.map((bucketData, key) => {
-        return <TransactionBucket key={key} bucketData={bucketData} />;
+        return <Bucket key={key} bucketData={bucketData} />;
       })}
     </div>
   );
