@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../LoginForm/LoginForm.css";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 
 function IncomeForm({ receipt, upDateIncome }) {
   //   console.log("map receipt is...", receipt);
@@ -68,12 +68,7 @@ function IncomeForm({ receipt, upDateIncome }) {
           onChange={handleChange}
         />
 
-        <Button
-          id="incomebutton"
-          value="Submit"
-          onClick={handleSubmit}
-          value="Calculate"
-        />
+        <Button id="incomebutton" onClick={handleSubmit} value="Save" />
       </form>
     </div>
   );

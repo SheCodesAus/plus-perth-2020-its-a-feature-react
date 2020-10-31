@@ -32,7 +32,9 @@ function TransactionsHistoryPage() {
         <div>
           {transactionList.map((trans) => (
             <Link to={`/transactions/${trans.id}`}>
-              <li key={trans.id}>{trans.date_created.slice(0, 10)}</li>
+              <li key={trans.id}>
+                {trans.id}: {trans.date_created.slice(0, 10)} > ${trans.income}
+              </li>
             </Link>
           ))}
         </div>

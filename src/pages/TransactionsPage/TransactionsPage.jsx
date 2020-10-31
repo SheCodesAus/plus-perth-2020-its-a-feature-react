@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Button from "../../components/Button/Button";
 import Bucket from "../../components/Buckets/Buckets";
-import { Link } from "react-router-dom";
 
 function TransactionsPage() {
   return (
