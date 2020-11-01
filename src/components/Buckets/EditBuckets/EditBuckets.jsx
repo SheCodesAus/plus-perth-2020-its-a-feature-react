@@ -56,13 +56,28 @@ function EditBucketForm({ bucketData }) {
   //   };
   //template
 
+  const tempIconOption = "travel"
+
   return (
     <form className="editBucketForm">
       <div className="Editbucket Editanimated fadeInLeft">
         <div className="Editbucket">
-          <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
-          {/* <img className="icon" alt="icon" src= /> */}
-          {/* icon URLS */}
+          {/* get this icon-wrapper div to replace img */}
+          <div className = "icon-wrapper"> 
+              <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
+              <span>
+              {(() =>{
+                switch(tempIconOption){ //later change to bucketDetail.category
+                  case "travel":
+                    return(<div id="travel"></div>)
+                  case "savings":
+                    return(<div id="savings"></div>)
+                  default:
+                    return(<div id="default"></div>)
+                }
+              })()}
+              </span>
+          </div>
         </div>
         {/* <form> */}
         <div>
