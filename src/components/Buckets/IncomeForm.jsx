@@ -4,10 +4,6 @@ import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
 
 function IncomeForm({ receipt, upDateIncome }) {
-  const CurrencyInput = () => {
-    return <input />;
-  };
-
   const [transaction, setTransaction] = useState({
     income: 0,
   });

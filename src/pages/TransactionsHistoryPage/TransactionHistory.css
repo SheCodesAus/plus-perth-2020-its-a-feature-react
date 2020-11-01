@@ -4,6 +4,7 @@
   justify-content: stretch;
   text-align: center;
   flex-wrap: wrap;
+  margin: 30px;
 }
 
 .hist-tile {
@@ -34,4 +35,15 @@
   right: 0;
   bottom: 0;
   position: absolute;
+}
+
+.detail {
+  /* border: 1px solid lightgray; */
+  border: none;
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  position: sticky;
+  top: 0;
 }

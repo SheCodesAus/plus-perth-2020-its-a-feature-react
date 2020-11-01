@@ -21,16 +21,16 @@ function TransactionsHistoryPage() {
     if (response.ok) {
       /// check response.status for status code too as response.ok only checks for server errors!
       setTransactionList(data);
-      console.log(data);
+      // console.log(data);
     }
   }, []);
 
   return (
-    <div>
+    <div className="trans-hist-page">
       <h1>Transaction History</h1>
 
       {transactionList ? (
-        <div className="trans-hist-page">
+        <div className="trans-hist-page animated fadeInLeft">
           {transactionList.map((transactionData) => (
             <Link to={`/transactions/${transactionData.id}`}>
               <div key={transactionData.id} className="hist-tile">
