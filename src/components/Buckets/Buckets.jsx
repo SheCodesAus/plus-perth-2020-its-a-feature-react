@@ -12,7 +12,7 @@ function Bucket(props) {
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    setCalculation(((bucketData.percentage / 100) * income).toFixed(2));
+    setCalculation((bucketData.percentage / 100) * income);
   }, [bucketData.percentage, income]);
 
   return (
@@ -31,8 +31,22 @@ function Bucket(props) {
           {bucketData.percentage}%
           <ReactTooltip id="descriptionTip" />
         </h2>
-        {income ? <h2>${calculation}</h2> : <h2>&nbsp; </h2>}
-        <p>Min: {bucketData.min_amt == null ? "$0" : bucketData.min_amt}</p>
+        {income ? (
+          <h2>
+            $
+            {calculation.toLocaleString("en", {
+              minimumFractionDigits: 2,
+            })}
+          </h2>
+        ) : (
+          <h2>&nbsp; </h2>
+        )}
+        <p>
+          Min:{" "}
+          {bucketData.min_amt == null
+            ? "$0"
+            : bucketData.min_amt.toLocaleString("en")}
+        </p>
 
         <div>
           <a className="delete" href="/">
@@ -76,7 +90,13 @@ function Bucket(props) {
                 </h2>
                 {income ? (
                   <h2>
-                    ${((child.percentage / 100) * calculation).toFixed(2)}
+                    $
+                    {((child.percentage / 100) * calculation).toLocaleString(
+                      "en",
+                      {
+                        minimumFractionDigits: 2,
+                      }
+                    )}
                   </h2>
                 ) : (
                   <h2>&nbsp;</h2>
@@ -118,11 +138,10 @@ function Bucket(props) {
                               $
                               {(
                                 (nextchild.percentage / 100) *
-                                (
-                                  (child.percentage / 100) *
-                                  calculation
-                                ).toFixed(2)
-                              ).toFixed(2)}
+                                ((child.percentage / 100) * calculation)
+                              ).toLocaleString("en", {
+                                minimumFractionDigits: 2,
+                              })}
                             </h2>
                           ) : (
                             <h2>&nbsp;</h2>

@@ -1,25 +1,28 @@
 .trans-hist-page {
   /* border: 1px solid red; */
-  display: inline-flex;
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: stretch;
   text-align: center;
   flex-wrap: wrap;
 }
 
 .hist-tile {
-  /* border: 1px solid red; */
+  border: 1px solid lightgray;
+
   display: flex;
   margin: 10px;
   align-items: center;
   justify-content: center;
   height: 150px;
   width: 250px;
-  border-radius: 5px;
+  border-radius: 8px;
   position: relative;
+  color: black;
 }
 
 .hist-tile::after {
   content: "";
+
   background-image: url("../../assets/images/bucket.png");
   background-size: contain;
   background-repeat: no-repeat;

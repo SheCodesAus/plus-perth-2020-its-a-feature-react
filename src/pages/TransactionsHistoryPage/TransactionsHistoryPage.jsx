@@ -4,11 +4,10 @@ import Bucket_img from "../../assets/images/bucket.png";
 import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
 
 function TransactionsHistoryPage() {
-  const [transactionList, setTransactionList] = useState();
+  const [transactionList, setTransactionList] = useState([]);
+  const token = window.localStorage.getItem("token");
 
   useEffect(async () => {
-    const token = window.localStorage.getItem("token");
-
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions`,
       {
@@ -32,14 +31,22 @@ function TransactionsHistoryPage() {
 
       {transactionList ? (
         <div className="trans-hist-page">
-          {transactionList.map((trans) => (
-            <Link to={`/transactions/${trans.id}`}>
-              <div key={trans.id} className="hist-tile">
-                <h4>
-                  #{trans.id}: <br></br>
-                  {trans.date_created.slice(0, 10)} <br></br> $
-                  {trans.income.toLocaleString("en")}
-                </h4>
+          {transactionList.map((transactionData) => (
+            <Link to={`/transactions/${transactionData.id}`}>
+              <div key={transactionData.id} className="hist-tile">
+                <span>
+                  <h3>#{transactionData.id}</h3>
+                  <h4>
+                    {" "}
+                    {transactionData.date_created.slice(8, 10)}
+                    {"/"}
+                    {transactionData.date_created.slice(5, 7)}
+                    {"/"}
+                    {transactionData.date_created.slice(0, 4)}{" "}
+                    {transactionData.date_created.slice(11, 16)}
+                    <br></br>${transactionData.income.toLocaleString("en")}
+                  </h4>
+                </span>
               </div>
             </Link>
           ))}
