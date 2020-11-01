@@ -7,7 +7,6 @@ import Header from "./components/Header/Header";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
-import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
@@ -32,21 +31,23 @@ function App() {
                 <SignUpPage />
               </Route>
 
-              <Route path="/transactions/:id">
-                <TransactionDetailPage />
-              </Route>
+              {localStorage.token ? (
+                <Route path="/transactions/:id">
+                  <TransactionDetailPage />
+                </Route>
+              ) : null}
 
-              <Route path="/transactions">
-                <TransactionsHistoryPage />
-              </Route>
+              {localStorage.token ? (
+                <Route path="/transactions">
+                  <TransactionsHistoryPage />
+                </Route>
+              ) : null}
 
-              <Route path="/transactions-page">
-                <TransactionsPage />
-              </Route>
-
-              <Route path="/EditBucket">
-                <EditBucketPage />
-              </Route>
+              {localStorage.token ? (
+                <Route path="/EditBucket">
+                  <EditBucketPage />
+                </Route>
+              ) : null}
 
               <Route path="/">
                 <HomePage />

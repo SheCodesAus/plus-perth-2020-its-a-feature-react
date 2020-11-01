@@ -38,7 +38,7 @@ function HomePage() {
               return (
                 <Bucket key={key} bucketData={bucketData} income={income} />
               );
-            })}{" "}
+            })}
           </div>
         </div>
       ) : (

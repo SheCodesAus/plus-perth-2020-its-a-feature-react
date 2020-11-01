@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import Bucket from "../../components/Buckets/Buckets";
+
 function TransactionDetailPage() {
   const { id } = useParams();
 
@@ -25,33 +27,62 @@ function TransactionDetailPage() {
     const data = await response.json();
     if (response.ok) {
       /// check response.status for status code too as response.ok only checks for server errors!
+      const parsed = JSON.parse(data.receipt);
+      console.log(parsed);
       setTransaction(data);
-      console.log(data);
-      console.log(data.receipt);
-      console.log(typeof data.receipt);
-      // console.log(receiptObj);
-      // console.log(typeof (receiptObj))
-      // const array = JSON.parse(receiptObj);
-      const array = data.receipt.slice(1, -1).split("},");
-      console.log(array);
-      console.log(typeof array);
-      // const parsed = JSON.parse(array);
-      // const receiptData = data.receipt.map((item) => item + "},");
-      // console.log(receiptData);
-      // const ro = JSON.parse(receipt);
-      const tryStr = JSON.stringify(data);
-      console.log(data);
-      console.log(JSON.parse(tryStr));
+      setReceipt(parsed);
     }
   }, [id]);
 
+  // console.log("receipt...", receipt);
+  // console.log("transaction...", transaction);
+
   return transaction ? (
-    <div>
-      <h1>Income: ${transaction.income}</h1>
-      <h4>
-        {transaction.date_created.slice(0, 10)}{" "}
-        {transaction.date_created.slice(11, 19)}
-      </h4>
+    <div
+      className=" animated fadeInLeft"
+      style={{ justifyContent: "center", position: "sticky" }}
+    >
+      <div
+        key={transaction.id}
+        className="hist-tile detail"
+        // style={{
+        //   textAlign: "-webkit-center",
+        //   position: "sticky",
+        //   top: "0",
+        //   zIndex: "1",
+        //   width: "100%",
+        //   border: "none",
+        //   backgroundColor: "white",
+        // }}
+      >
+        <span>
+          <h3>#{transaction.id}</h3>
+          <h4>
+            {" "}
+            {transaction.date_created.slice(8, 10)}
+            {"/"}
+            {transaction.date_created.slice(5, 7)}
+            {"/"}
+            {transaction.date_created.slice(0, 4)}{" "}
+            {transaction.date_created.slice(11, 16)}
+            <br></br>${transaction.income.toLocaleString("en")}
+          </h4>
+        </span>
+      </div>
+
+      <div id="bucket-list">
+        {receipt
+          ? receipt.map((bucketData, key) => {
+              return (
+                <Bucket
+                  key={key}
+                  bucketData={bucketData}
+                  income={transaction.income}
+                />
+              );
+            })
+          : null}
+      </div>
     </div>
   ) : null;
 }

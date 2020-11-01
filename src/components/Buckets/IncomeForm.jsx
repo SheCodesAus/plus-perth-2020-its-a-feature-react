@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
 
 function IncomeForm({ receipt, upDateIncome }) {
-  //   console.log("map receipt is...", receipt);
   const [transaction, setTransaction] = useState({
     income: 0,
   });
+  const history = useHistory();
 
   //methods
   //set state
@@ -28,7 +29,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       income: transaction.income,
       receipt: JSON.stringify(receipt),
     };
-    console.log({ body });
+    console.log(body);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions/`,
       {
@@ -51,7 +52,7 @@ function IncomeForm({ receipt, upDateIncome }) {
 
       postData().then((response) => {
         console.log("response is...", response);
-
+        history.push("/transactions");
         // window.location.reload();
       });
     }
@@ -59,15 +60,24 @@ function IncomeForm({ receipt, upDateIncome }) {
   return (
     <div className="income-form">
       <form className="incomeForm animated fadeInLeft">
-        <label htmlFor="income"></label>
-        <input
-          className="input"
-          type="text"
-          id="income"
-          placeholder="Enter Income"
-          onChange={handleChange}
-        />
-
+        <div
+          style={{
+            border: "1px solid lightgray",
+            padding: "2px",
+            borderRadius: "3px",
+          }}
+        >
+          <label htmlFor="income"></label>
+          $
+          <input
+            className="input"
+            type="number"
+            step="50"
+            id="income"
+            placeholder="Enter Income"
+            onChange={handleChange}
+          />
+        </div>
         <Button id="incomebutton" onClick={handleSubmit} value="Save" />
       </form>
     </div>

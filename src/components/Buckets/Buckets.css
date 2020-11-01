@@ -21,6 +21,17 @@
   text-align: center;
 }
 
+.incomeForm input.input[type="number"] {
+  /* background-color: lightgray; */
+  border-radius: 3px;
+  height: 25px;
+  border: none;
+}
+
+.incomeForm input.input[type="number"]:focus {
+  outline: none;
+}
+
 #bucket-list {
   display: flex;
   justify-content: center;
