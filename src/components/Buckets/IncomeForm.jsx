@@ -33,7 +33,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       income: transaction.income,
       receipt: JSON.stringify(receipt),
     };
-    console.log({ body });
+    console.log(body);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions/`,
       {
