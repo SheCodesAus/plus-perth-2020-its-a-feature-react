@@ -8,7 +8,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
-import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
@@ -44,8 +44,8 @@ function App() {
                 <TransactionsPage />
               </Route>
 
-              <Route path="/EditBucket">
-                <EditBucketPage />
+              <Route path="/edit-buckets">
+                <EditAllBucketsPage />
               </Route>
 
               <Route path="/">
