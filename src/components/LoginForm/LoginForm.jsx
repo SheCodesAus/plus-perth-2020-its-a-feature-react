@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./LoginForm.css";
 import Button from "../../components/Button/Button";
-import { getStorage, setStorage } from "../../helpers/localStorage";
+import { setStorage } from "../../helpers/localStorage";
 
 function LoginForm(props) {
   //variables
@@ -81,12 +81,7 @@ function LoginForm(props) {
           onChange={handleChange}
         />
       </div>
-      <Button
-        id="inbutton"
-        value="Submit"
-        onClick={handleSubmit}
-        value="Login"
-      />
+      <Button id="inbutton" onClick={handleSubmit} value="Login" />
 
       <div className="in-out">
         <p className="small">Don't have an account? </p>
