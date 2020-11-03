@@ -1,0 +1,100 @@
+.Addbucket {
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+    margin: auto;
+  }
+  
+  .bucket-pic {
+    height: 200px;
+    width: auto;
+    margin: auto;
+  }
+  /* form */
+  
+  .Addbucket input,
+  .Addbucket select {
+    display: inline-block;
+    width: 90%;
+    margin: 5px;
+    margin-bottom: 20px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 0.9em;
+    color: #888;
+  }
+  .Addbucket label {
+    height: 700;
+    /* font-size: 0.8em; */
+    color: #888;
+  }
+  
+  /* select#icon option[value="travel"] {
+    background-image: url(travel.png);
+  } */
+  .Addbucket select#icon option[value="savings"] {
+    background-image: url(https://drive.google.com/file/d/1nq_pWw_un16PelzvbZY_GLLUttTYd2q7/view?usp=sharing);
+  }
+  
+  #submit_button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.5em;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #dddafb;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: #2d3a3a;
+  }
+  
+  /* animation */
+  .Addbucket {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1s;
+  }
+  
+  .Addanimated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes AddfadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes AddfadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  .AddfadeInLeft {
+    -webkit-animation-name: AddfadeInLeft;
+    animation-name: AddfadeInLeft;
+    /* border: solid black; */
+    display: inline-block;
+  }
+  

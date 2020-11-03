@@ -8,6 +8,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
@@ -48,6 +49,10 @@ function App() {
                   <EditBucketPage />
                 </Route>
               ) : null}
+
+              <Route path="/AddBucket">
+                <AddBucketPage />
+              </Route>
 
               <Route path="/">
                 <HomePage />
