@@ -146,7 +146,7 @@ h2 a.bucket-parent:hover {
   animation-name: fadeInLeft;
 }
 
-/*icons*/
+/*-------------------------------------------ICONS---------------------------------------------------------------------*/
 .icon-wrapper{
   position: relative;
 }
@@ -194,6 +194,136 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/Hamm.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #expense{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 13%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/expense.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #grocery{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/grocery.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #hitTheBeach{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/hitTheBeach.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #home{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/home.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #investment{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/investment.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #luggage{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/luggage.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #passport{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/passport.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #roadTrip{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/roadTrip.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #sunny{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/sunny.png") no-repeat;
+	background-position:center;
+}
+
+.icon-wrapper span #wallet{
+  position:absolute;
+	top: 20%;
+	bottom:0;
+	left: 10%;
+	right:0;
+	width: 80%;
+	height: 80%;
+	z-index: 100;
+	background: url("../../assets/images/wallet.png") no-repeat;
 	background-position:center;
 }
 

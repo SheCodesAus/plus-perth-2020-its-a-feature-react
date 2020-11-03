@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState, useHistory, useEffect} from "react";
 import { Link } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 
 import Button from "../../Button/Button";
 import Bucket_img from "../../../assets/images/bucket.png";
-import Travel from "../../../assets/images/travel.png";
+// import Slider from "../../Slider/Slider";
+
 import "../../Buckets/Buckets.css";
 import "../../Button/Button.css";
 
@@ -12,25 +13,43 @@ import "../../Button/Button.css";
 
 function EditBucketForm({ bucketData }) {
   //   console.log("---->", bucketData);
-  //   const [bucketDetails, setBucketDetails] = useState({
-  //     title: bucketData.title,
-  //     description: bucketData.description,
-  //     icon: bucketData.icon,
-  //     min_amount:bucketData.min_amount,
-  //     percentage:bucketData.percentage,
-  //   });
-  //   const history = useHistory();
-  //   const { id } = useParams();
+    const [bucketDetails, setBucketDetails] = useState({
+      // title: bucketData.title,
+      // description: bucketData.description,
+      // icon: bucketData.icon,
+      // min_amount:bucketData.min_amount,
+      // percentage:bucketData.percentage,
+      title: "",
+      description: "",
+      icon: "",
+      min_amount:0,
+      percentage:0,
+      category:"default"
+    });
+    // const history = useHistory();
+    // const { id } = useParams();
 
-  //   //methods
-  //   //set state
-  //   const handleChange = (e) => {
-  //     const { id, value } = e.target;
-  //     setBucketDetails((prevBucketDetails) => ({
-  //       ...prevBucketDetails,
-  //       [id]: value,
-  //     }));
-  //   };
+  //   useEffect(() =>{
+  //     setBucketDetails({
+  //         title: bucketDetails.title,
+  //         description: bucketDetails.description,
+  //         icon: bucketDetails.goal,
+  //         min_amount: bucketDetails.image,
+  //         percentage: bucketDetails.is_open,
+  //         category: bucketDetails.owner,
+  //     });
+  // }
+  // ,[bucketDetails]);
+
+    //methods
+    //set state
+    const handleChange = (e) => {
+      const { id, value } = e.target;
+      setBucketDetails((prevBucketDetails) => ({
+        ...prevBucketDetails,
+        [id]: value,
+      }));
+    };
 
   //   const postData = async () => {
   //     const token = window.localStorage.getItem("token");
@@ -56,7 +75,7 @@ function EditBucketForm({ bucketData }) {
   //   };
   //template
 
-  const tempIconOption = "travel"
+  //const tempIconOption = "travel" //hopefully onchange function will update the state to then update the icon
 
   return (
     <form className="editBucketForm">
@@ -67,11 +86,31 @@ function EditBucketForm({ bucketData }) {
               <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
               <span>
               {(() =>{
-                switch(tempIconOption){ //later change to bucketDetail.category
+                switch(bucketDetails.category){ //later change to bucketDetail.category
                   case "travel":
                     return(<div id="travel"></div>)
                   case "savings":
                     return(<div id="savings"></div>)
+                  case "expense":
+                    return(<div id="expense"></div>)
+                  case "grocery":
+                    return(<div id="grocery"></div>)
+                  case "hitTheBeach":
+                    return(<div id="hitTheBeach"></div>)
+                  case "home":
+                    return(<div id="home"></div>)
+                  case "investment":
+                    return(<div id="investment"></div>)
+                  case "luggage":
+                    return(<div id="luggage"></div>)
+                  case "passport":
+                    return(<div id="passport"></div>)
+                  case "roadTrip":
+                    return(<div id="roadTrip"></div>)
+                  case "sunny":
+                    return(<div id="sunny"></div>)
+                  case "wallet":
+                    return(<div id="wallet"></div>)
                   default:
                     return(<div id="default"></div>)
                 }
@@ -87,8 +126,8 @@ function EditBucketForm({ bucketData }) {
           <input
             type="text"
             id="title"
-            // value={bucketDetails.title}
-            // onChange={handleChange}
+            value={bucketDetails.title}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -98,8 +137,8 @@ function EditBucketForm({ bucketData }) {
           <input
             type="number"
             id="min_amount"
-            // value={bucketDetails.title}
-            // onChange={handleChange}
+            value={bucketDetails.min_amount}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -109,9 +148,10 @@ function EditBucketForm({ bucketData }) {
           <input
             type="number"
             id="percentage"
-            // value={bucketDetails.title}
-            // onChange={handleChange}
+            value={bucketDetails.percentage}
+            onChange={handleChange}
           />
+          {/* <Slider value = {bucketDetails.percentage} onChange={handleChange}/> */}
         </div>
         <div>
           <label htmlFor="description">
@@ -120,8 +160,8 @@ function EditBucketForm({ bucketData }) {
           <input
             type="text"
             id="description"
-            // value={bucketDetails.description}
-            // onChange={handleChange}
+            value={bucketDetails.description}
+            onChange={handleChange}
           />
         </div>
 
@@ -131,23 +171,23 @@ function EditBucketForm({ bucketData }) {
           </label>
           <select
             type="select"
-            id="Icon"
-            // value={projectDetails.category}
-            // onChange={handleChange}
+            id="category"
+            value={bucketDetails.category}
+            onChange={handleChange}
           >
-            <option value="travel" src={Travel}>
-              Travel
-            </option>
+            <option value="travel" >Travel</option>
             <option value="savings">Savings</option>
-            {/* <option value="Historical-Fiction">Historical Fiction</option>
-            <option value="Horror">Horror </option>
-            <option value="Mystery">Mystery </option>
-            <option value="Non-Fiction">Non-Fiction </option>
-            <option value="Poetry">Poetry </option>
-            <option value="Romance">Romance </option>
-            <option value="Sci-Fi">Sci-Fi </option>
-            <option value="Thriller">Thriller </option>
-            <option value="Young-Adult">Young Adult </option> */}
+            <option value="expense">Expense</option> 
+            <option value="grocery">Grocery</option>
+            <option value="hitTheBeach">Beach</option>
+            <option value="home">Home</option>
+            <option value="investment">Investment</option>
+            <option value="luggage">Luggage</option>
+            <option value="passport">Passport</option>
+            <option value="roadTrip">Road Trip</option>
+            <option value="sunny">Sunny</option>
+            <option value="wallet">Wallet</option> 
+            <option value="default">Default</option>
           </select>
         </div>
 
