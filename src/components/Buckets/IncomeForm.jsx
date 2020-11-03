@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
 
+
 function IncomeForm({ receipt, upDateIncome }) {
   //   console.log("map receipt is...", receipt);
   const [transaction, setTransaction] = useState({
@@ -67,10 +68,10 @@ function IncomeForm({ receipt, upDateIncome }) {
           placeholder="Enter Income"
           onChange={handleChange}
         />
-
         <Button id="incomebutton" onClick={handleSubmit} value="Save" />
       </form>
     </div>
   );
 }
+
 export default IncomeForm;

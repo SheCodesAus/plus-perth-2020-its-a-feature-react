@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Bucket_img from "../../assets/images/bucket.png";
 import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
+import Coin from "../../assets/images/coin.png";
+import "../../components/Coins/coin.css"
+import Coins from "../../components/Coins/coin"
+import Button from "../../components/Button/Button";
 
 function TransactionsHistoryPage() {
   const [transactionList, setTransactionList] = useState();
@@ -29,7 +33,10 @@ function TransactionsHistoryPage() {
   return (
     <div>
       <h1>Transaction History</h1>
-
+      {/* <div>
+        <img className="coin-pic" alt="coin" src={Coin}/>
+        <Button onClick={Coins}/>
+      </div> */}
       {transactionList ? (
         <div className="trans-hist-page">
           {transactionList.map((trans) => (
