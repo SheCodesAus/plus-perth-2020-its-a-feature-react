@@ -6,10 +6,10 @@ import Header from "./components/Header/Header";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
-import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
 
 import "./App.css";
 
