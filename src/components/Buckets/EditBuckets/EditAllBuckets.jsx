@@ -162,6 +162,14 @@ function Bucket() {
             <React.Fragment>
                 <button onClick={saveChanges}>SAVE CHANGES :)</button>
                 {
+                    fetchErrorMsg ?
+                        <div>
+                            <h2>{fetchErrorMsg}</h2>
+                        </div>
+                        :
+                        null
+                }
+                {
                     errorMsg.length > 0 ?
                         <div>
                             <h2>Something doesn't add up</h2>
