@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {Link, useParams, useHistory} from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
-
+import IconWrap from "../../IconWrap/IconWrap"
 import Button from "../../Button/Button";
 import Bucket_img from "../../../assets/images/bucket.png";
 import { getStorage, setStorage, clearStorage, isAuthenticated } from "../../../helpers/localStorage";
@@ -86,8 +86,9 @@ function EditBucketForm(props) {
         <div className="Editbucket">
           {/* get this icon-wrapper div to replace img */}
           <div className = "icon-wrapper"> 
-              <img className="bucket-pic-edit" alt="Bucket" src={Bucket_img}/> 
-              <span>
+              <img className="bucket-pic-edit" alt="Bucket" src={Bucket_img}/>
+              <IconWrap bucketData = {bucketDetails}/> 
+              {/* <span>
               {(() =>{
                 switch(bucketDetails.icon){ 
                   case "travel":
@@ -118,7 +119,7 @@ function EditBucketForm(props) {
                     return(<div id="default"></div>)
                 }
               })()}
-              </span>
+              </span> */}
           </div>
         </div>
         {/* <form> */}

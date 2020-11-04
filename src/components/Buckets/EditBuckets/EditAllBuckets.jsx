@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
+import IconWrap from "../../IconWrap/IconWrap"
+import IconOption from "../../IconOption/IconOption"
+
+
 import "../EditBuckets/EditBuckets.css";
-import "../Buckets.css";
+import "../../Buckets/Buckets.css";
 
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
@@ -200,41 +204,9 @@ function Bucket() {
                                             : null
                                     }
                                 >
-                                    {/* <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} /> */}
                                     <div className = "icon-wrapper"> 
                                         <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
-                                            <span>
-                                                {(() =>{
-                                                  switch(bucket.icon){ 
-                                                    case "travel":
-                                                      return(<div id="travel"></div>)
-                                                    case "savings":
-                                                      return(<div id="savings"></div>)
-                                                    case "expense":
-                                                      return(<div id="expense"></div>)
-                                                    case "grocery":
-                                                      return(<div id="grocery"></div>)
-                                                    case "hitTheBeach":
-                                                      return(<div id="hitTheBeach"></div>)
-                                                    case "home":
-                                                      return(<div id="home"></div>)
-                                                    case "investment":
-                                                      return(<div id="investment"></div>)
-                                                    case "luggage":
-                                                      return(<div id="luggage"></div>)
-                                                    case "passport":
-                                                      return(<div id="passport"></div>)
-                                                    case "roadTrip":
-                                                      return(<div id="roadTrip"></div>)
-                                                    case "sunny":
-                                                      return(<div id="sunny"></div>)
-                                                    case "wallet":
-                                                      return(<div id="wallet"></div>)
-                                                    default:
-                                                      return(<div id="default"></div>)
-                                                  }
-                                                })()}
-                                            </span>
+                                            <IconWrap bucketData = {bucket}/>
                                         </div>
                                     <div>
                                         <input
@@ -285,19 +257,7 @@ function Bucket() {
                                           value={bucket.icon}
                                           onChange={(e) => handleChange(e, bucket.id)}
                                         >
-                                          <option value="travel" >Travel</option>
-                                          <option value="savings">Savings</option>
-                                          <option value="expense">Expense</option> 
-                                          <option value="grocery">Grocery</option>
-                                          <option value="hitTheBeach">Beach</option>
-                                          <option value="home">Home</option>
-                                          <option value="investment">Investment</option>
-                                          <option value="luggage">Luggage</option>
-                                          <option value="passport">Passport</option>
-                                          <option value="roadTrip">Road Trip</option>
-                                          <option value="sunny">Sunny</option>
-                                          <option value="wallet">Wallet</option> 
-                                          <option value="default">Default</option>
+                                        <IconOption />
                                         </select>
                                     </div>
 
@@ -326,41 +286,9 @@ function Bucket() {
                                                     }
                                                 >
                                                     <span>
-                                                        {/* <img className="bucket-pic-child" alt="Bucket" src={Bucket_img} /> */}
                                                         <div className = "icon-wrapper"> 
                                                         <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
-                                                            <span>
-                                                                {(() =>{
-                                                                  switch(bucket.icon){ 
-                                                                    case "travel":
-                                                                      return(<div id="travel"></div>)
-                                                                    case "savings":
-                                                                      return(<div id="savings"></div>)
-                                                                    case "expense":
-                                                                      return(<div id="expense"></div>)
-                                                                    case "grocery":
-                                                                      return(<div id="grocery"></div>)
-                                                                    case "hitTheBeach":
-                                                                      return(<div id="hitTheBeach"></div>)
-                                                                    case "home":
-                                                                      return(<div id="home"></div>)
-                                                                    case "investment":
-                                                                      return(<div id="investment"></div>)
-                                                                    case "luggage":
-                                                                      return(<div id="luggage"></div>)
-                                                                    case "passport":
-                                                                      return(<div id="passport"></div>)
-                                                                    case "roadTrip":
-                                                                      return(<div id="roadTrip"></div>)
-                                                                    case "sunny":
-                                                                      return(<div id="sunny"></div>)
-                                                                    case "wallet":
-                                                                      return(<div id="wallet"></div>)
-                                                                    default:
-                                                                      return(<div id="default"></div>)
-                                                                  }
-                                                                })()}
-                                                            </span>
+                                                        <IconWrap bucketData = {bucket}/>
                                                         </div>
                                                         <h2
                                                             data-tip={bucket.description}
@@ -413,19 +341,7 @@ function Bucket() {
                                                                   value={bucket.icon}
                                                                   onChange={(e) => handleChange(e, bucket.id)}
                                                                 >
-                                                                  <option value="travel" >Travel</option>
-                                                                  <option value="savings">Savings</option>
-                                                                  <option value="expense">Expense</option> 
-                                                                  <option value="grocery">Grocery</option>
-                                                                  <option value="hitTheBeach">Beach</option>
-                                                                  <option value="home">Home</option>
-                                                                  <option value="investment">Investment</option>
-                                                                  <option value="luggage">Luggage</option>
-                                                                  <option value="passport">Passport</option>
-                                                                  <option value="roadTrip">Road Trip</option>
-                                                                  <option value="sunny">Sunny</option>
-                                                                  <option value="wallet">Wallet</option> 
-                                                                  <option value="default">Default</option>
+                                                                    <IconOption />
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -455,41 +371,9 @@ function Bucket() {
                                                                         }}
                                                                     >
                                                                         <span>
-                                                                            {/* <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> */}
                                                                             <div className = "icon-wrapper"> 
                                                                                 <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
-                                                                                    <span>
-                                                                                        {(() =>{
-                                                                                          switch(bucket.icon){ 
-                                                                                            case "travel":
-                                                                                              return(<div id="travel"></div>)
-                                                                                            case "savings":
-                                                                                              return(<div id="savings"></div>)
-                                                                                            case "expense":
-                                                                                              return(<div id="expense"></div>)
-                                                                                            case "grocery":
-                                                                                              return(<div id="grocery"></div>)
-                                                                                            case "hitTheBeach":
-                                                                                              return(<div id="hitTheBeach"></div>)
-                                                                                            case "home":
-                                                                                              return(<div id="home"></div>)
-                                                                                            case "investment":
-                                                                                              return(<div id="investment"></div>)
-                                                                                            case "luggage":
-                                                                                              return(<div id="luggage"></div>)
-                                                                                            case "passport":
-                                                                                              return(<div id="passport"></div>)
-                                                                                            case "roadTrip":
-                                                                                              return(<div id="roadTrip"></div>)
-                                                                                            case "sunny":
-                                                                                              return(<div id="sunny"></div>)
-                                                                                            case "wallet":
-                                                                                              return(<div id="wallet"></div>)
-                                                                                            default:
-                                                                                              return(<div id="default"></div>)
-                                                                                          }
-                                                                                        })()}
-                                                                                    </span>
+                                                                                <IconWrap bucketData = {bucket}/>
                                                                             </div>
                                                                             <h2
                                                                                 data-tip={bucket.description}
@@ -541,19 +425,7 @@ function Bucket() {
                                                                                       value={bucket.icon}
                                                                                       onChange={(e) => handleChange(e, bucket.id)}
                                                                                     >
-                                                                                      <option value="travel" >Travel</option>
-                                                                                      <option value="savings">Savings</option>
-                                                                                      <option value="expense">Expense</option> 
-                                                                                      <option value="grocery">Grocery</option>
-                                                                                      <option value="hitTheBeach">Beach</option>
-                                                                                      <option value="home">Home</option>
-                                                                                      <option value="investment">Investment</option>
-                                                                                      <option value="luggage">Luggage</option>
-                                                                                      <option value="passport">Passport</option>
-                                                                                      <option value="roadTrip">Road Trip</option>
-                                                                                      <option value="sunny">Sunny</option>
-                                                                                      <option value="wallet">Wallet</option> 
-                                                                                      <option value="default">Default</option>
+                                                                                        <IconOption/>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
