@@ -11,6 +11,8 @@ import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 
 import "./App.css";
+// import 'bootstrap/dist/css/bootstrap.css'; // or include from a CDN
+// import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 function App() {
   return (
