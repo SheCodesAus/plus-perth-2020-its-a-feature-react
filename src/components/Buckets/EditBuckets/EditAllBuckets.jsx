@@ -18,6 +18,8 @@ function Bucket() {
     // const [percentageError, setPercentageError] = useState([]);
     const percentageError = useRef([]);
 
+    const [errorMsg, setErrorMsg] = useState([]);
+
     const token = window.localStorage.getItem("token");
     const history = useHistory();
 
@@ -186,6 +188,7 @@ function Bucket() {
             }
         }
         if (percentageError.current.length === 0) {
+            setErrorMsg([]);
             console.log("everything adds up! sending to backend");
             console.log(updatedBuckets);
 
@@ -208,6 +211,7 @@ function Bucket() {
         }
         else {
             percentageError.current.map(item => console.log("something doesn't add up - check the child buckets of ", item));
+            setErrorMsg(percentageError.current);
         }
     }
 
@@ -215,6 +219,26 @@ function Bucket() {
         buckets ?
             <React.Fragment>
                 <button onClick={saveChanges}>SAVE CHANGES :)</button>
+                {
+                    console.log("pc errors = ", percentageError.current)
+                }
+                {
+                    errorMsg.length > 0 ?
+                        <div>
+                            <h2>Something doesn't add up</h2>
+                            <h4>check the child accounts of... </h4>
+                            <ul>
+                                {
+                                    errorMsg.map((error) => {
+                                        return error === "top-level" ? <li>Your top level</li> : <li>{error}</li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                        :
+                        null
+                }
+
                 {
                     buckets.map((bucket) => {
                         return (
