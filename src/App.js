@@ -13,8 +13,6 @@ import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDet
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 
 import "./App.css";
-// import 'bootstrap/dist/css/bootstrap.css'; // or include from a CDN
-// import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 function App() {
   return (
@@ -48,7 +46,7 @@ function App() {
               ) : null}
 
               {localStorage.token ? (
-                <Route path="/EditBucket">
+                <Route path="/EditBucket/:id">
                   <EditBucketPage />
                 </Route>
               ) : null}

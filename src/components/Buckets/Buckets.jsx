@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {Link, useParams, useHistory} from "react-router-dom";
+
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
@@ -25,7 +27,42 @@ function Bucket(props) {
             : null
         }
       >
-        <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
+        {/* <img className="bucket-pic" alt="Bucket" src={Bucket_img} /> */}
+        <div className = "icon-wrapper"> 
+              <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
+              <span>
+              {(() =>{
+                switch(bucketData.category){ 
+                  case "travel":
+                    return(<div id="travel"></div>)
+                  case "savings":
+                    return(<div id="savings"></div>)
+                  case "expense":
+                    return(<div id="expense"></div>)
+                  case "grocery":
+                    return(<div id="grocery"></div>)
+                  case "hitTheBeach":
+                    return(<div id="hitTheBeach"></div>)
+                  case "home":
+                    return(<div id="home"></div>)
+                  case "investment":
+                    return(<div id="investment"></div>)
+                  case "luggage":
+                    return(<div id="luggage"></div>)
+                  case "passport":
+                    return(<div id="passport"></div>)
+                  case "roadTrip":
+                    return(<div id="roadTrip"></div>)
+                  case "sunny":
+                    return(<div id="sunny"></div>)
+                  case "wallet":
+                    return(<div id="wallet"></div>)
+                  default:
+                    return(<div id="default"></div>)
+                }
+              })()}
+              </span>
+        </div>
         <h2 data-tip={bucketData.description} data-for="descriptionTip">
           {bucketData.name}:<br></br>
           {bucketData.percentage}%
@@ -53,10 +90,11 @@ function Bucket(props) {
             {" "}
             <img src={Delete} alt="Bin" height={30}></img>
           </a>
-          <a className="edit" href="/EditBucket">
-            {" "}
-            <img src={Edit} alt="Edit" height={30}></img>
-          </a>
+          {/* need to provide authentication? */}
+          <Link to={`/EditBucket/${bucketData.id}`}> 
+              <img src={Edit} alt="Edit" height={30}></img>
+          </Link>
+
         </div>
       </div>
 
@@ -75,11 +113,46 @@ function Bucket(props) {
               }
             >
               <span>
-                <img
+                {/* <img
                   className="bucket-pic-child"
                   alt="Bucket"
                   src={Bucket_img}
-                />
+                /> */}
+                <div className = "icon-wrapper"> 
+                  <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
+                    <span>
+              {(() =>{
+                switch(bucketData.category){ 
+                  case "travel":
+                    return(<div id="travel"></div>)
+                  case "savings":
+                    return(<div id="savings"></div>)
+                  case "expense":
+                    return(<div id="expense"></div>)
+                  case "grocery":
+                    return(<div id="grocery"></div>)
+                  case "hitTheBeach":
+                    return(<div id="hitTheBeach"></div>)
+                  case "home":
+                    return(<div id="home"></div>)
+                  case "investment":
+                    return(<div id="investment"></div>)
+                  case "luggage":
+                    return(<div id="luggage"></div>)
+                  case "passport":
+                    return(<div id="passport"></div>)
+                  case "roadTrip":
+                    return(<div id="roadTrip"></div>)
+                  case "sunny":
+                    return(<div id="sunny"></div>)
+                  case "wallet":
+                    return(<div id="wallet"></div>)
+                  default:
+                    return(<div id="default"></div>)
+                }
+              })()}
+                  </span>
+                </div>
                 <h2
                   data-tip={child.description}
                   data-for="descriptionTip-child"

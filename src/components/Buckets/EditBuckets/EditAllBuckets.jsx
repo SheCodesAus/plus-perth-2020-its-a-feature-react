@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
+import "../Buckets.css";
+
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 
@@ -189,7 +191,6 @@ function Bucket() {
                 {
                     buckets.map((bucket) => {
                         return (
-
                             <div key={bucket.id} className=" bucket-group animated fadeInLeft">
                                 < div
                                     className="bucket-parent"
@@ -199,7 +200,42 @@ function Bucket() {
                                             : null
                                     }
                                 >
-                                    <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+                                    {/* <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} /> */}
+                                    <div className = "icon-wrapper"> 
+                                        <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
+                                            <span>
+                                                {(() =>{
+                                                  switch(bucket.category){ 
+                                                    case "travel":
+                                                      return(<div id="travel"></div>)
+                                                    case "savings":
+                                                      return(<div id="savings"></div>)
+                                                    case "expense":
+                                                      return(<div id="expense"></div>)
+                                                    case "grocery":
+                                                      return(<div id="grocery"></div>)
+                                                    case "hitTheBeach":
+                                                      return(<div id="hitTheBeach"></div>)
+                                                    case "home":
+                                                      return(<div id="home"></div>)
+                                                    case "investment":
+                                                      return(<div id="investment"></div>)
+                                                    case "luggage":
+                                                      return(<div id="luggage"></div>)
+                                                    case "passport":
+                                                      return(<div id="passport"></div>)
+                                                    case "roadTrip":
+                                                      return(<div id="roadTrip"></div>)
+                                                    case "sunny":
+                                                      return(<div id="sunny"></div>)
+                                                    case "wallet":
+                                                      return(<div id="wallet"></div>)
+                                                    default:
+                                                      return(<div id="default"></div>)
+                                                  }
+                                                })()}
+                                            </span>
+                                        </div>
                                     <div>
                                         <input
                                             className="input"
@@ -239,11 +275,37 @@ function Bucket() {
                                     </div>
 
                                     <div>
+                                        <label htmlFor="icon">
+                                          Icon
+                                          <br></br>
+                                        </label>
+                                        <select
+                                          type="select"
+                                          id="category"
+                                          value={bucket.category}
+                                          onChange={(e) => handleChange(e, bucket.id)}
+                                        >
+                                          <option value="travel" >Travel</option>
+                                          <option value="savings">Savings</option>
+                                          <option value="expense">Expense</option> 
+                                          <option value="grocery">Grocery</option>
+                                          <option value="hitTheBeach">Beach</option>
+                                          <option value="home">Home</option>
+                                          <option value="investment">Investment</option>
+                                          <option value="luggage">Luggage</option>
+                                          <option value="passport">Passport</option>
+                                          <option value="roadTrip">Road Trip</option>
+                                          <option value="sunny">Sunny</option>
+                                          <option value="wallet">Wallet</option> 
+                                          <option value="default">Default</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
                                         <a className="delete" href="/">
                                             {" "}
                                             <img src={Delete} alt="Bin image" height={30}></img>
                                         </a>
-
                                     </div>
                                 </div >
 
@@ -264,11 +326,42 @@ function Bucket() {
                                                     }
                                                 >
                                                     <span>
-                                                        <img
-                                                            className="bucket-pic-child"
-                                                            alt="Bucket"
-                                                            src={Bucket_img}
-                                                        />
+                                                        {/* <img className="bucket-pic-child" alt="Bucket" src={Bucket_img} /> */}
+                                                        <div className = "icon-wrapper"> 
+                                                        <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
+                                                            <span>
+                                                                {(() =>{
+                                                                  switch(bucket.category){ 
+                                                                    case "travel":
+                                                                      return(<div id="travel"></div>)
+                                                                    case "savings":
+                                                                      return(<div id="savings"></div>)
+                                                                    case "expense":
+                                                                      return(<div id="expense"></div>)
+                                                                    case "grocery":
+                                                                      return(<div id="grocery"></div>)
+                                                                    case "hitTheBeach":
+                                                                      return(<div id="hitTheBeach"></div>)
+                                                                    case "home":
+                                                                      return(<div id="home"></div>)
+                                                                    case "investment":
+                                                                      return(<div id="investment"></div>)
+                                                                    case "luggage":
+                                                                      return(<div id="luggage"></div>)
+                                                                    case "passport":
+                                                                      return(<div id="passport"></div>)
+                                                                    case "roadTrip":
+                                                                      return(<div id="roadTrip"></div>)
+                                                                    case "sunny":
+                                                                      return(<div id="sunny"></div>)
+                                                                    case "wallet":
+                                                                      return(<div id="wallet"></div>)
+                                                                    default:
+                                                                      return(<div id="default"></div>)
+                                                                  }
+                                                                })()}
+                                                            </span>
+                                                        </div>
                                                         <h2
                                                             data-tip={bucket.description}
                                                             data-for="descriptionTip-child"
@@ -289,10 +382,10 @@ function Bucket() {
                                                                 placeholder={bucket.percentage}
                                                                 onChange={(e) => handleChange(e, bucket.id)}
                                                             />
-                                %
-                                <p>
+                                                            %
+                                                            <p>
                                                                 Minimum Amount: <br />$
-                                <input
+                                                                <input
                                                                     className="input"
                                                                     type="text"
                                                                     id="min_amt"
@@ -300,9 +393,7 @@ function Bucket() {
                                                                     onChange={(e) => handleChange(e, bucket.id)}
                                                                 />
                                                             </p>
-                                                            <p>
-                                                                Bucket Description:
-                            </p>
+                                                            <p>Bucket Description:</p>
                                                             <textarea
                                                                 className="input"
                                                                 type="text"
@@ -310,6 +401,33 @@ function Bucket() {
                                                                 value={bucket.description ? bucket.description : "Enter account description here (optional)"}
                                                                 onChange={(e) => handleChange(e, bucket.id)}
                                                             ></textarea>
+
+                                                            <div>
+                                                                <label htmlFor="icon">
+                                                                  Icon
+                                                                  <br></br>
+                                                                </label>
+                                                                <select
+                                                                  type="select"
+                                                                  id="category"
+                                                                  value={bucket.category}
+                                                                  onChange={(e) => handleChange(e, bucket.id)}
+                                                                >
+                                                                  <option value="travel" >Travel</option>
+                                                                  <option value="savings">Savings</option>
+                                                                  <option value="expense">Expense</option> 
+                                                                  <option value="grocery">Grocery</option>
+                                                                  <option value="hitTheBeach">Beach</option>
+                                                                  <option value="home">Home</option>
+                                                                  <option value="investment">Investment</option>
+                                                                  <option value="luggage">Luggage</option>
+                                                                  <option value="passport">Passport</option>
+                                                                  <option value="roadTrip">Road Trip</option>
+                                                                  <option value="sunny">Sunny</option>
+                                                                  <option value="wallet">Wallet</option> 
+                                                                  <option value="default">Default</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
 
                                                         <div>
@@ -319,7 +437,6 @@ function Bucket() {
                                                             </a>
 
                                                         </div>
-
 
                                                         {bucket.children.length > 0 ? (
                                                             <div
@@ -338,11 +455,42 @@ function Bucket() {
                                                                         }}
                                                                     >
                                                                         <span>
-                                                                            <img
-                                                                                className="bucket-pic-child"
-                                                                                alt="Bucket"
-                                                                                src={Bucket_img}
-                                                                            />
+                                                                            {/* <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> */}
+                                                                            <div className = "icon-wrapper"> 
+                                                                                <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
+                                                                                    <span>
+                                                                                        {(() =>{
+                                                                                          switch(bucket.category){ 
+                                                                                            case "travel":
+                                                                                              return(<div id="travel"></div>)
+                                                                                            case "savings":
+                                                                                              return(<div id="savings"></div>)
+                                                                                            case "expense":
+                                                                                              return(<div id="expense"></div>)
+                                                                                            case "grocery":
+                                                                                              return(<div id="grocery"></div>)
+                                                                                            case "hitTheBeach":
+                                                                                              return(<div id="hitTheBeach"></div>)
+                                                                                            case "home":
+                                                                                              return(<div id="home"></div>)
+                                                                                            case "investment":
+                                                                                              return(<div id="investment"></div>)
+                                                                                            case "luggage":
+                                                                                              return(<div id="luggage"></div>)
+                                                                                            case "passport":
+                                                                                              return(<div id="passport"></div>)
+                                                                                            case "roadTrip":
+                                                                                              return(<div id="roadTrip"></div>)
+                                                                                            case "sunny":
+                                                                                              return(<div id="sunny"></div>)
+                                                                                            case "wallet":
+                                                                                              return(<div id="wallet"></div>)
+                                                                                            default:
+                                                                                              return(<div id="default"></div>)
+                                                                                          }
+                                                                                        })()}
+                                                                                    </span>
+                                                                            </div>
                                                                             <h2
                                                                                 data-tip={bucket.description}
                                                                                 data-for="descriptionTip-childs-child"
@@ -361,12 +509,11 @@ function Bucket() {
                                                                                     id="percentage"
                                                                                     placeholder={bucket.percentage}
                                                                                     onChange={(e) => handleChange(e, bucket.id)}
-                                                                                />
-                                %
+                                                                                /> %
 
                                                                                 <p>
                                                                                     Minimum Amount: <br />$
-                                <input
+                                                                                <input
                                                                                         className="input"
                                                                                         type="text"
                                                                                         id="min_amt"
@@ -374,9 +521,7 @@ function Bucket() {
                                                                                         onChange={(e) => handleChange(e, bucket.id)}
                                                                                     />
                                                                                 </p>
-                                                                                <p>
-                                                                                    Bucket Description:
-                            </p>
+                                                                                <p> Bucket Description: </p>
                                                                                 <textarea
                                                                                     className="input"
                                                                                     type="text"
@@ -384,6 +529,33 @@ function Bucket() {
                                                                                     value={bucket.description ? bucket.description : "Enter account description here (optional)"}
                                                                                     onChange={(e) => handleChange(e, bucket.id)}
                                                                                 ></textarea>
+
+                                                                                <div>
+                                                                                    <label htmlFor="icon">
+                                                                                      Icon
+                                                                                      <br></br>
+                                                                                    </label>
+                                                                                    <select
+                                                                                      type="select"
+                                                                                      id="category"
+                                                                                      value={bucket.category}
+                                                                                      onChange={(e) => handleChange(e, bucket.id)}
+                                                                                    >
+                                                                                      <option value="travel" >Travel</option>
+                                                                                      <option value="savings">Savings</option>
+                                                                                      <option value="expense">Expense</option> 
+                                                                                      <option value="grocery">Grocery</option>
+                                                                                      <option value="hitTheBeach">Beach</option>
+                                                                                      <option value="home">Home</option>
+                                                                                      <option value="investment">Investment</option>
+                                                                                      <option value="luggage">Luggage</option>
+                                                                                      <option value="passport">Passport</option>
+                                                                                      <option value="roadTrip">Road Trip</option>
+                                                                                      <option value="sunny">Sunny</option>
+                                                                                      <option value="wallet">Wallet</option> 
+                                                                                      <option value="default">Default</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                         </span>
                                                                     </div>

@@ -1,45 +1,39 @@
-import React, {useState, useHistory, useEffect} from "react";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {Link, useParams, useHistory} from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 
 import Button from "../../Button/Button";
 import Bucket_img from "../../../assets/images/bucket.png";
+import { getStorage, setStorage, clearStorage, isAuthenticated } from "../../../helpers/localStorage";
+
 // import Slider from "../../Slider/Slider";
 
 import "../../Buckets/Buckets.css";
 import "../../Button/Button.css";
 
-// import { isAuthenticated, setStorage } from "../utils/localStorage";
-
-function EditBucketForm({ bucketData }) {
-  //   console.log("---->", bucketData);
+function EditBucketForm(props) {
+  const {bucketData} = props;
+  console.log(bucketData)
     const [bucketDetails, setBucketDetails] = useState({
-      // title: bucketData.title,
-      // description: bucketData.description,
-      // icon: bucketData.icon,
-      // min_amount:bucketData.min_amount,
-      // percentage:bucketData.percentage,
       title: "",
+      min_amount: 0,
+      percentage: 0,
       description: "",
-      icon: "",
-      min_amount:0,
-      percentage:0,
       category:"default"
     });
-    // const history = useHistory();
-    // const { id } = useParams();
+    const history = useHistory();
+    const { id } = useParams();
 
-  //   useEffect(() =>{
-  //     setBucketDetails({
-  //         title: bucketDetails.title,
-  //         description: bucketDetails.description,
-  //         icon: bucketDetails.goal,
-  //         min_amount: bucketDetails.image,
-  //         percentage: bucketDetails.is_open,
-  //         category: bucketDetails.owner,
-  //     });
-  // }
-  // ,[bucketDetails]);
+    useEffect(() =>{
+      setBucketDetails({
+          title: bucketData.title,
+          min_amount: bucketData.min_amount,
+          percentage: bucketData.percentage,
+          description: bucketData.description,
+          category: bucketData.owner,
+      });
+  }
+  ,[bucketData]);
 
     //methods
     //set state
@@ -51,31 +45,40 @@ function EditBucketForm({ bucketData }) {
       }));
     };
 
-  //   const postData = async () => {
-  //     const token = window.localStorage.getItem("token");
-  //     const response = await fetch(
-  //       `${process.env.REACT_APP_API_URL}projects/${id}`,
-  //       {
-  //         method: "put",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `token ${token}`,
-  //         },
-  //         body: JSON.stringify(bucketDetails),
-  //       }
-  //     );
-  //     return response.json();
-  //   };
-  //   //get token
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     postData(isAuthenticated()).then((response) => {
-  //       history.push(`/project/${response.id}`);
-  //     });
-  //   };
-  //template
 
-  //const tempIconOption = "travel" //hopefully onchange function will update the state to then update the icon
+  const postData = async() => {
+    const token = getStorage("token")
+    try{
+      const response = await fetch(`${process.env.REACT_APP_API_URL}buckets/${id}/`,{
+          method: "put",
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `token ${token}`,
+          },
+          body: JSON.stringify(bucketDetails),
+      });
+      return response.json();
+    } catch(e) {
+      console.log(e);
+      // history.push(`/error/`);
+    }
+  };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+          postData(isAuthenticated()).then(res => {
+            setStorage("title",bucketDetails.title);
+            console.log(res.id)
+            if(res.id === undefined){
+              console.log("error");
+              // history.push(`/error/`);
+            }else{
+              history.push( `/buckets/${res.id}`);
+            }
+        }
+        );
+      
+    }
 
   return (
     <form className="editBucketForm">
@@ -83,10 +86,10 @@ function EditBucketForm({ bucketData }) {
         <div className="Editbucket">
           {/* get this icon-wrapper div to replace img */}
           <div className = "icon-wrapper"> 
-              <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
+              <img className="bucket-pic-edit" alt="Bucket" src={Bucket_img}/> 
               <span>
               {(() =>{
-                switch(bucketDetails.category){ //later change to bucketDetail.category
+                switch(bucketDetails.category){ 
                   case "travel":
                     return(<div id="travel"></div>)
                   case "savings":
@@ -191,13 +194,16 @@ function EditBucketForm({ bucketData }) {
           </select>
         </div>
 
-        <div>
+        {/* <div>
           <Button value="Submit" />
-        </div>
+        </div> */}
         <Link to="/TransactionsPage">Cancel</Link>
-        {/* <button type="submit" onClick={handleSubmit}>
+        <div className = "button-container">
+        <button className = "button" type="submit" onClick={handleSubmit}>
           Update!
-        </button> */}
+        </button>
+        </div>
+
       </div>
     </form>
   );

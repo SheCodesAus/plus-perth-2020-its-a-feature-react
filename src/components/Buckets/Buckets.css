@@ -151,8 +151,20 @@ h2 a.bucket-parent:hover {
   position: relative;
 }
 
-.icon-wrapper img{
-  width: 60%;
+.icon-wrapper .bucket-pic{
+  width: auto;
+  opacity: 0.1;
+  height: 100px;
+}
+
+.icon-wrapper .bucket-pic-child{
+  width: auto;
+  opacity: 0.1;
+  height: 50px;
+}
+
+.icon-wrapper .bucket-pic-edit{
+  width: 50%;
   opacity: 0.1;
   height: auto;
 }
@@ -164,7 +176,7 @@ h2 a.bucket-parent:hover {
 	left: 0;
 	right:0;
 	width: 100%;
-	height: 100%;
+  height: 100%;
 	z-index: 100;
   background: url("../../assets/images/bucket.png") no-repeat;
   background-position:center;
@@ -175,13 +187,15 @@ h2 a.bucket-parent:hover {
   position:absolute;
 	top: 20%;
 	bottom:0;
-	left: 13%;
+	left: 10%;
 	right:0;
 	width: 80%;
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/travel.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #savings{
@@ -194,20 +208,24 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/Hamm.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #expense{
   position:absolute;
 	top: 20%;
 	bottom:0;
-	left: 13%;
+	left: 10%;
 	right:0;
 	width: 80%;
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/expense.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #grocery{
@@ -220,7 +238,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/grocery.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #hitTheBeach{
@@ -233,7 +253,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/hitTheBeach.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #home{
@@ -246,7 +268,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/home.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #investment{
@@ -259,7 +283,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/investment.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #luggage{
@@ -272,7 +298,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/luggage.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #passport{
@@ -285,7 +313,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/passport.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #roadTrip{
@@ -298,7 +328,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/roadTrip.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #sunny{
@@ -311,7 +343,9 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/sunny.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 
 .icon-wrapper span #wallet{
@@ -324,6 +358,8 @@ h2 a.bucket-parent:hover {
 	height: 80%;
 	z-index: 100;
 	background: url("../../assets/images/wallet.png") no-repeat;
-	background-position:center;
+  background-position:center;
+  background-size: contain;
+
 }
 

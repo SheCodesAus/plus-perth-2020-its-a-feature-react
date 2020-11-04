@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RangeSlider, {Form, Col, Row} from 'react-bootstrap-range-slider';
+// import RangeSlider, {Form, Col, Row} from 'react-bootstrap-range-slider';
 
 // const Slider = () => {
 
@@ -22,17 +22,17 @@ import RangeSlider, {Form, Col, Row} from 'react-bootstrap-range-slider';
 //     );
 //   };
 
-const Slider = () => {
+// const Slider = () => {
 
-    const [ value, setValue ] = React.useState(50);
+//     const [ value, setValue ] = React.useState(50);
   
-    return (
-      <RangeSlider
-        value={value}
-        onChange={e => setValue(e.target.value)}
-      />
-    );
+//     return (
+//       <RangeSlider
+//         value={value}
+//         onChange={e => setValue(e.target.value)}
+//       />
+//     );
   
-  };
+//   };
 
-export default Slider;
+// export default Slider;
