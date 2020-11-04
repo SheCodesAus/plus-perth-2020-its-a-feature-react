@@ -33,10 +33,10 @@ function TransactionsHistoryPage() {
   return (
     <div>
       <h1>Transaction History</h1>
-      {/* <div>
+      <div>
         <img className="coin-pic" alt="coin" src={Coin}/>
-        <Button onClick={Coins}/>
-      </div> */}
+        <button onClick={Coins}/>
+      </div>
       {transactionList ? (
         <div className="trans-hist-page">
           {transactionList.map((trans) => (
