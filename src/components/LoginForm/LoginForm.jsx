@@ -44,7 +44,7 @@ function LoginForm(props) {
       postData().then((response) => {
         setStorage("token", response.token);
         setStorage("user", credentials.username);
-        history.push("/");
+        // history.push("/login");
         window.location.reload();
       });
     }

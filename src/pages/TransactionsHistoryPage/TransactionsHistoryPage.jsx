@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Bucket_img from "../../assets/images/bucket.png";
-import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
+import "./TransactionHistory.css";
 
 function TransactionsHistoryPage() {
   const [transactionList, setTransactionList] = useState([]);
@@ -26,8 +25,10 @@ function TransactionsHistoryPage() {
   }, []);
 
   return (
-    <div className="trans-hist-page">
-      <h1>Transaction History</h1>
+    <div>
+      <div className="trans-hist-page">
+        <h1>Transaction History</h1>
+      </div>
 
       {transactionList ? (
         <div className="trans-hist-page animated fadeInLeft">

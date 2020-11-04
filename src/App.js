@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import SideNavBar from "./components/SideNavBar/SideNavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
@@ -50,7 +49,7 @@ function App() {
                 </Route>
               ) : null}
 
-              <Route path="/AddBucket">
+              <Route path="/addbucket">
                 <AddBucketPage />
               </Route>
 

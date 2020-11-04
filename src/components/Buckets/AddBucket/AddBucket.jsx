@@ -10,11 +10,27 @@ import "../../Button/Button.css";
 
 // import { isAuthenticated, setStorage } from "../utils/localStorage";
 
-function AddBucketForm({ bucketData }) {
-    
-    // Maybe this for creating live list
-    // https://medium.com/how-to-react/react-select-dropdown-tutorial-using-react-select-51664ab8b6f3
-    
+function AddBucketForm(props) {
+  const [bucketList, setBucketList] = useState([]);
+  const token = window.localStorage.getItem("token");
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}bucketlist/`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `token ${token}`,
+      },
+    })
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setBucketList(data);
+      });
+  }, []);
+
+  // Maybe this for creating live list
+  // https://medium.com/how-to-react/react-select-dropdown-tutorial-using-react-select-51664ab8b6f3
 
   //   console.log("---->", bucketData);
   //   const [bucketDetails, setBucketDetails] = useState({
@@ -24,8 +40,8 @@ function AddBucketForm({ bucketData }) {
   //     min_amount:bucketData.min_amount,
   //     percentage:bucketData.percentage,
   //   });
-  //   const history = useHistory();
-  //   const { id } = useParams();
+  const history = useHistory();
+  // const { bucketList } = useParams();
 
   //   //methods
   //   //set state
@@ -71,8 +87,9 @@ function AddBucketForm({ bucketData }) {
         </div>
         {/* <form> */}
         <div>
-        <label htmlFor="childBucketSelect">
-            Is this a child bucket? If so, pick the bucket from the list<br></br>
+          <label htmlFor="childBucketSelect">
+            Is this a child bucket? If so, pick the parent bucket from the list
+            <br></br>
           </label>
           <select
             type="select"
@@ -80,18 +97,17 @@ function AddBucketForm({ bucketData }) {
             // value={projectDetails.category}
             // onChange={handleChange}
           >
-            <option value="buckets">
-              Buckets
-            </option>
-            <option value="buckets">
-              More buckets
-            </option>
-            <option value="buckets">
-              Even more buckets
-            </option>
+            {/* <option value="buckets">Buckets</option>
+            <option value="buckets">More buckets</option>
+            <option value="buckets">Even more buckets</option>
             <option value="buckets">
               Another bucket but this one has a hole in the bottom
-            </option>
+            </option> */}
+            {bucketList.map((s) => (
+              <option key={s.name} value={s.name}>
+                {s.name}
+              </option>
+            ))}
           </select>
           <label htmlFor="title">
             Account Name<br></br>

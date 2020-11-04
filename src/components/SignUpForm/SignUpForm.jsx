@@ -72,7 +72,9 @@ function SignUpForm(props) {
       </div>
       <br />
       <div>
-        <label htmlFor="email">Email: </label>
+        <label htmlFor="email">
+          Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </label>
         <input
           className="input"
           type="text"
