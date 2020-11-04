@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
-import { getStorage, setStorage } from "../../helpers/localStorage";
 
-function IncomeForm({ receipt }) {
-  //   console.log("map receipt is...", receipt);
+function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
     income: 0,
   });
+  const history = useHistory();
 
-  //   console.log("receipt is... ", receipt);
   //methods
   //set state
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-
+    upDateIncome(value);
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
       [id]: value,
@@ -53,30 +51,36 @@ function IncomeForm({ receipt }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
-        console.log("respose is...", response);
-
+        console.log("response is...", response);
+        history.push("/transactions");
         // window.location.reload();
       });
     }
   };
   return (
-    <form className=" animated fadeInLeft">
-      <label htmlFor="income"></label>
-      <input
-        className="input"
-        type="text"
-        id="income"
-        placeholder="Enter Income"
-        onChange={handleChange}
-      />
-
-      <Button
-        id="incomebutton"
-        value="Submit"
-        onClick={handleSubmit}
-        value="Calculate"
-      />
-    </form>
+    <div className="income-form">
+      <form className="incomeForm animated fadeInLeft">
+        <div
+          style={{
+            border: "1px solid lightgray",
+            padding: "2px",
+            borderRadius: "3px",
+          }}
+        >
+          <label htmlFor="income"></label>
+          $
+          <input
+            className="input"
+            type="number"
+            step="50"
+            id="income"
+            placeholder="Enter Income"
+            onChange={handleChange}
+          />
+        </div>
+        <Button id="incomebutton" onClick={handleSubmit} value="Save" />
+      </form>
+    </div>
   );
 }
 export default IncomeForm;

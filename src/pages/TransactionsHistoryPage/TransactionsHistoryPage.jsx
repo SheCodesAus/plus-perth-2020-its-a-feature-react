@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Bucket_img from "../../assets/images/bucket.png";
+import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
 
 function TransactionsHistoryPage() {
-  const [transactionList, setTransactionList] = useState();
+  const [transactionList, setTransactionList] = useState([]);
+  const token = window.localStorage.getItem("token");
 
   useEffect(async () => {
-    const token = window.localStorage.getItem("token");
-
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions`,
       {
@@ -20,19 +21,33 @@ function TransactionsHistoryPage() {
     if (response.ok) {
       /// check response.status for status code too as response.ok only checks for server errors!
       setTransactionList(data);
-      console.log(data);
+      // console.log(data);
     }
   }, []);
 
   return (
-    <div>
+    <div className="trans-hist-page">
       <h1>Transaction History</h1>
 
       {transactionList ? (
-        <div>
-          {transactionList.map((trans) => (
-            <Link to={`/transactions/${trans.id}`}>
-              <li key={trans.id}>{trans.date_created.slice(0, 10)}</li>
+        <div className="trans-hist-page animated fadeInLeft">
+          {transactionList.map((transactionData) => (
+            <Link to={`/transactions/${transactionData.id}`}>
+              <div key={transactionData.id} className="hist-tile">
+                <span>
+                  <h3>#{transactionData.id}</h3>
+                  <h4>
+                    {" "}
+                    {transactionData.date_created.slice(8, 10)}
+                    {"/"}
+                    {transactionData.date_created.slice(5, 7)}
+                    {"/"}
+                    {transactionData.date_created.slice(0, 4)}{" "}
+                    {transactionData.date_created.slice(11, 16)}
+                    <br></br>${transactionData.income.toLocaleString("en")}
+                  </h4>
+                </span>
+              </div>
             </Link>
           ))}
         </div>

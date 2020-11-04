@@ -1,0 +1,49 @@
+.trans-hist-page {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: stretch;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 30px;
+}
+
+.hist-tile {
+  border: 1px solid lightgray;
+
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  width: 250px;
+  border-radius: 8px;
+  position: relative;
+  color: black;
+}
+
+.hist-tile::after {
+  content: "";
+
+  background-image: url("../../assets/images/bucket.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.detail {
+  /* border: 1px solid lightgray; */
+  border: none;
+  text-align: center;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+}

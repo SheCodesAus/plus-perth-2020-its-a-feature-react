@@ -1,48 +1,61 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
-import { getStorage } from "../../helpers/localStorage";
+import ReactTooltip from "react-tooltip";
 
 function Bucket(props) {
   const { bucketData } = props;
+  const { income } = props;
+
+  const [calculation, setCalculation] = useState(0);
+
+  useEffect(() => {
+    setCalculation((bucketData.percentage / 100) * income);
+  }, [bucketData.percentage, income]);
 
   return (
-    <div className=" bucket-group animated fadeInLeft">
+    <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
       <div
         className="bucket-parent"
         style={
           bucketData.children.length > 0
-            ? { borderBottom: "3px solid white" }
+            ? { borderBottom: "5px solid white" }
             : null
         }
       >
-        <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
-        <h2>
-          {bucketData.name}: {bucketData.percentage}%
+        <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
+        <h2 data-tip={bucketData.description} data-for="descriptionTip">
+          {bucketData.name}:<br></br>
+          {bucketData.percentage}%
+          <ReactTooltip id="descriptionTip" />
         </h2>
+        {income ? (
+          <h2>
+            $
+            {calculation.toLocaleString("en", {
+              minimumFractionDigits: 2,
+            })}
+          </h2>
+        ) : (
+          <h2>&nbsp; </h2>
+        )}
         <p>
-          Minimum Amount:{" "}
-          {bucketData.min_atm == null ? "None" : bucketData.min_atm}
-        </p>
-        <p>
-          {bucketData.description ? (
-            bucketData.description
-          ) : (
-            <span>&nbsp;</span>
-          )}
+          Min:{" "}
+          {bucketData.min_amt == null
+            ? "$0"
+            : bucketData.min_amt.toLocaleString("en")}
         </p>
 
         <div>
           <a className="delete" href="/">
             {" "}
-            <img src={Delete} alt="Bin image" height={30}></img>
+            <img src={Delete} alt="Bin" height={30}></img>
           </a>
           <a className="edit" href="/EditBucket">
             {" "}
-            <img src={Edit} alt="Edit image" height={30}></img>
+            <img src={Edit} alt="Edit" height={30}></img>
           </a>
         </div>
       </div>
@@ -51,60 +64,93 @@ function Bucket(props) {
         <div className="children">
           {bucketData.children.map((child, i) => (
             <div
-              className="bucket"
+              key={i}
+              className={
+                i < bucketData.children.length - 1
+                  ? "bucket bucket-child"
+                  : "bucket"
+              }
               style={
-                child.children.length > 0
-                  ? { width: "max-content", borderRight: "3px solid white" }
-                  : null
+                child.children.length > 0 ? { width: "max-content" } : null
               }
             >
               <span>
                 <img
                   className="bucket-pic-child"
-                  alt="Bucket Image"
+                  alt="Bucket"
                   src={Bucket_img}
                 />
-                <h2>
-                  {child.name}: {child.percentage}%
+                <h2
+                  data-tip={child.description}
+                  data-for="descriptionTip-child"
+                >
+                  {child.name}:<br></br>
+                  {child.percentage}%
+                  <ReactTooltip id="descriptionTip-child" />
                 </h2>
-                <p>
-                  Minimum Amount:{" "}
-                  {child.min_atm == null ? "None" : child.min_atm}
-                </p>
-                <p>
-                  {child.description ? child.description : <span>&nbsp;</span>}
-                </p>
+                {income ? (
+                  <h2>
+                    $
+                    {((child.percentage / 100) * calculation).toLocaleString(
+                      "en",
+                      {
+                        minimumFractionDigits: 2,
+                      }
+                    )}
+                  </h2>
+                ) : (
+                  <h2>&nbsp;</h2>
+                )}
+                <p>Min: {child.min_amt == null ? "$0" : child.min_amt}</p>
+
                 {child.children.length > 0 ? (
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
                     {child.children.map((nextchild, i) => (
                       <div
+                        key={i}
                         className="bucket"
                         style={{
-                          borderTop: "3px solid white",
+                          borderTop: "5px solid white",
                           paddingTop: "30px",
                         }}
                       >
                         <span>
                           <img
                             className="bucket-pic-child"
-                            alt="Bucket Image"
+                            alt="Bucket"
                             src={Bucket_img}
                           />
-                          <h2>
-                            {nextchild.name}: {nextchild.percentage}%
+                          <h2
+                            data-tip={nextchild.description}
+                            data-for="descriptionTip-childs-child"
+                          >
+                            {nextchild.name}:<br></br>
+                            {nextchild.percentage}%
                           </h2>
+                          <ReactTooltip id="descriptionTip-childs-child" />
+                          {income ? (
+                            <h2>
+                              $
+                              {(
+                                (nextchild.percentage / 100) *
+                                ((child.percentage / 100) * calculation)
+                              ).toLocaleString("en", {
+                                minimumFractionDigits: 2,
+                              })}
+                            </h2>
+                          ) : (
+                            <h2>&nbsp;</h2>
+                          )}
                           <p>
-                            Minimum Amount:{" "}
-                            {nextchild.min_atm == null
-                              ? "None"
-                              : nextchild.min_atm}
-                          </p>
-                          <p>
-                            {nextchild.description ? (
-                              nextchild.description
-                            ) : (
-                              <span>&nbsp;</span>
-                            )}
+                            Min:{" "}
+                            {nextchild.min_amt == null
+                              ? "$0"
+                              : nextchild.min_amt}
                           </p>
                         </span>
                       </div>
