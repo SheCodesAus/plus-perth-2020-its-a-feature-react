@@ -27,12 +27,11 @@ function Bucket(props) {
             : null
         }
       >
-        {/* <img className="bucket-pic" alt="Bucket" src={Bucket_img} /> */}
         <div className = "icon-wrapper"> 
               <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
               <span>
               {(() =>{
-                switch(bucketData.category){ 
+                switch(bucketData.icon){ 
                   case "travel":
                     return(<div id="travel"></div>)
                   case "savings":
@@ -113,16 +112,11 @@ function Bucket(props) {
               }
             >
               <span>
-                {/* <img
-                  className="bucket-pic-child"
-                  alt="Bucket"
-                  src={Bucket_img}
-                /> */}
                 <div className = "icon-wrapper"> 
                   <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
                     <span>
               {(() =>{
-                switch(bucketData.category){ 
+                switch(bucketData.icon){ 
                   case "travel":
                     return(<div id="travel"></div>)
                   case "savings":

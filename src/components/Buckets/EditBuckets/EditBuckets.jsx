@@ -19,7 +19,7 @@ function EditBucketForm(props) {
       min_amount: 0,
       percentage: 0,
       description: "",
-      category:"default"
+      icon:"default"
     });
     const history = useHistory();
     const { id } = useParams();
@@ -30,7 +30,7 @@ function EditBucketForm(props) {
           min_amount: bucketData.min_amount,
           percentage: bucketData.percentage,
           description: bucketData.description,
-          category: bucketData.owner,
+          icon: bucketData.owner,
       });
   }
   ,[bucketData]);
@@ -89,7 +89,7 @@ function EditBucketForm(props) {
               <img className="bucket-pic-edit" alt="Bucket" src={Bucket_img}/> 
               <span>
               {(() =>{
-                switch(bucketDetails.category){ 
+                switch(bucketDetails.icon){ 
                   case "travel":
                     return(<div id="travel"></div>)
                   case "savings":
@@ -174,8 +174,8 @@ function EditBucketForm(props) {
           </label>
           <select
             type="select"
-            id="category"
-            value={bucketDetails.category}
+            id="icon"
+            value={bucketDetails.icon}
             onChange={handleChange}
           >
             <option value="travel" >Travel</option>

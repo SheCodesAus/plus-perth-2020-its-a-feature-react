@@ -7,7 +7,7 @@ import { getStorage, setStorage, clearStorage, isAuthenticated } from "../../hel
 function EditBucketPage(){
   const [bucketData, setBucketData] = useState([]);
   const {id} = useParams();
-  console.log(id); //undefined
+  console.log(id); 
 
   useEffect(() =>{
       fetch(`${process.env.REACT_APP_API_URL}buckets/${id}/`)

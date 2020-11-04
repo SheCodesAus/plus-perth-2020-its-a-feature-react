@@ -205,7 +205,7 @@ function Bucket() {
                                         <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
                                             <span>
                                                 {(() =>{
-                                                  switch(bucket.category){ 
+                                                  switch(bucket.icon){ 
                                                     case "travel":
                                                       return(<div id="travel"></div>)
                                                     case "savings":
@@ -281,8 +281,8 @@ function Bucket() {
                                         </label>
                                         <select
                                           type="select"
-                                          id="category"
-                                          value={bucket.category}
+                                          id="icon"
+                                          value={bucket.icon}
                                           onChange={(e) => handleChange(e, bucket.id)}
                                         >
                                           <option value="travel" >Travel</option>
@@ -331,7 +331,7 @@ function Bucket() {
                                                         <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
                                                             <span>
                                                                 {(() =>{
-                                                                  switch(bucket.category){ 
+                                                                  switch(bucket.icon){ 
                                                                     case "travel":
                                                                       return(<div id="travel"></div>)
                                                                     case "savings":
@@ -409,8 +409,8 @@ function Bucket() {
                                                                 </label>
                                                                 <select
                                                                   type="select"
-                                                                  id="category"
-                                                                  value={bucket.category}
+                                                                  id="icon"
+                                                                  value={bucket.icon}
                                                                   onChange={(e) => handleChange(e, bucket.id)}
                                                                 >
                                                                   <option value="travel" >Travel</option>
@@ -460,7 +460,7 @@ function Bucket() {
                                                                                 <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
                                                                                     <span>
                                                                                         {(() =>{
-                                                                                          switch(bucket.category){ 
+                                                                                          switch(bucket.icon){ 
                                                                                             case "travel":
                                                                                               return(<div id="travel"></div>)
                                                                                             case "savings":
@@ -537,8 +537,8 @@ function Bucket() {
                                                                                     </label>
                                                                                     <select
                                                                                       type="select"
-                                                                                      id="category"
-                                                                                      value={bucket.category}
+                                                                                      id="icon"
+                                                                                      value={bucket.icon}
                                                                                       onChange={(e) => handleChange(e, bucket.id)}
                                                                                     >
                                                                                       <option value="travel" >Travel</option>
