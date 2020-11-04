@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+
 
 import Bucket from "../../components/Buckets/Buckets";
 
@@ -42,6 +43,11 @@ function TransactionDetailPage() {
       className=" animated fadeInLeft"
       style={{ justifyContent: "center", position: "sticky" }}
     >
+      <div>
+                <Link to={`/delete/${id}`}>
+                  <a>Delete</a>
+                </Link>
+              </div>
       <div
         key={transaction.id}
         className="hist-tile detail"

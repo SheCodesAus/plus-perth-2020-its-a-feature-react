@@ -10,6 +10,7 @@ import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
+import DeletePage from "./pages/DeletePage/DeletePage"
 
 import "./App.css";
 
@@ -30,6 +31,9 @@ function App() {
 
               <Route path="/signup">
                 <SignUpPage />
+              </Route>
+              <Route path="/delete/:id">
+                <DeletePage />
               </Route>
 
               {localStorage.token ? (
