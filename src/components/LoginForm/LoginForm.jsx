@@ -86,6 +86,7 @@ function LoginForm(props) {
           id="password"
           placeholder="Enter password"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
       <button id="inbutton" onClick={handleSubmit} type ="submit">Login</button>

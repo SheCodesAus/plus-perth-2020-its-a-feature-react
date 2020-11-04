@@ -57,6 +57,12 @@ function IncomeForm({ receipt, upDateIncome }) {
       });
     }
   };
+
+  const handleKeyPress = e =>{
+    if (e.keyCode ===13){
+      handleSubmit();
+    }
+  }
   return (
     <div className="income-form">
       <form className="incomeForm animated fadeInLeft">
@@ -76,9 +82,10 @@ function IncomeForm({ receipt, upDateIncome }) {
             id="income"
             placeholder="Enter Income"
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
         </div>
-        <Button id="incomebutton" onClick={handleSubmit} value="Save" />
+        <button id="incomebutton" onClick={handleSubmit} type="submit">Save</button>
       </form>
     </div>
   );
