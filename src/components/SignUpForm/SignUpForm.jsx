@@ -23,6 +23,7 @@ function SignUpForm(props) {
       [id]: value,
     }));
   };
+  
 
   const postData = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}users/`, {
@@ -50,6 +51,12 @@ function SignUpForm(props) {
     }
   };
 
+  const handleKeyPress = e =>{
+    if (e.keyCode ===13){
+      handleSubmit();
+    }
+  }
+
   // const handleChange = (e) => {};
   // const handleSubmit = (e) => {};
 
@@ -68,6 +75,7 @@ function SignUpForm(props) {
           id="username"
           placeholder="Enter username"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
       <br />
@@ -79,6 +87,7 @@ function SignUpForm(props) {
           id="email"
           placeholder="Enter email"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
       <br />
@@ -90,10 +99,11 @@ function SignUpForm(props) {
           id="password"
           placeholder="Enter password"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
 
-      <Button id="inbutton" onClick={handleSubmit} value="Sign Up" />
+      <button id="inbutton" onClick={handleSubmit} type="submit">Sign Up</button>
 
       <div className="in-out">
         <p className="small">Already have an account? </p>

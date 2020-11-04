@@ -88,7 +88,7 @@ function LoginForm(props) {
           onChange={handleChange}
         />
       </div>
-      <button id="inbutton" onClick={handleSubmit} type ="submit">Login</button>}
+      <button id="inbutton" onClick={handleSubmit} type ="submit">Login</button>
 
       <div className="in-out">
         <p className="small">Don't have an account? </p>
