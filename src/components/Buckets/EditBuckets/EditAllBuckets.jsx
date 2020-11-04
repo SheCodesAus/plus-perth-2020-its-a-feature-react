@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
@@ -15,12 +15,11 @@ function Bucket() {
     // This is used to change the bucket details which will then be POSTED to API
     const [updatedBuckets, setUpdatedBuckets] = useState();
 
-    const [percentageError, setPercentageError] = useState([]);
+    // const [percentageError, setPercentageError] = useState([]);
+    const percentageError = useRef([]);
 
     const token = window.localStorage.getItem("token");
-    const income = 5000;
-
-    const [calculation, setCalculation] = useState(0);
+    const history = useHistory();
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}buckets`, {
@@ -61,8 +60,13 @@ function Bucket() {
     }, [buckets])
 
     const handleChange = (e, bucketID) => {
-        const { id, value } = e.target;
+        let { id, value } = e.target;
         console.log("id is ", id, "value is ", value);
+        if (id === "percentage") {
+            value = parseInt(value);
+        } else if (id === "min_amt") {
+            value = parseFloat(value).toFixed(2)
+        }
         const update = updatedBuckets[bucketID];
         update[id] = value;
         setUpdatedBuckets((prevBuckets) => ({
@@ -71,72 +75,139 @@ function Bucket() {
         }));
         // console.log(updatedBuckets);
         console.log("the bucket data looks like this... ", updatedBuckets);
-        console.log("the errors look like this ", percentageError);
+        console.log("the errors look like this ", percentageError.current);
 
         // ACTUALLY NO! BETETR TO LOOP OVER THE BUCKETS AND GET THEM ALL OUT INTO A SINGLE LEVEL.THEN ACCESS THEM BY THEIR ID's BECAUSE I WILL BE SENDING THE REQUESTS PER INDIVIDUAL BUCKET. THEN I JUST NEED TO CHECK WHICH ONES HAVE THE SAME PARENT AND MAKE SURE THEY ADD UP TO 100.
     }
 
+    const checkBucketPercentages = (parentBucket) => {
+        console.log("parent bucket is ", parentBucket);
+        let bucketIDs = [];
+        if (!parentBucket) {
+            bucketIDs = buckets.map(bucket => bucket.id)
+        } else {
+            bucketIDs = parentBucket.children.map(bucket => bucket.id)
+        }
+        const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
+        // console.log("totals of ", parentBucket.name, "children = ", totals);
+        const total = totals.reduce((accumulator, value) => accumulator + value);
+
+        const index = percentageError.current.indexOf(parentBucket ? parentBucket.name : "top-level");
+        console.log("index to remove from error array is ", index);
+
+        if (total !== 100) {
+            // console.log("ERROR! Children buckets of ", parentBucket.name, "do not add to 100%. Cannot save.")
+            if (index > -1) {
+                return
+            }
+            // setPercentageError((prevState) => ([
+            //     ...prevState,
+            //     parentBucket ? parentBucket.name : "top-level"
+            // ]));
+            percentageError.current = ([
+                ...percentageError.current,
+                parentBucket ? parentBucket.name : "top-level"
+            ])
+        }
+        else {
+            const errors = percentageError.current;
+            if (index > -1) {
+                errors.splice(index, 1);
+                console.log("one error removed. errors now looks like this: ", errors);
+                // setPercentageError(errors);
+            }
+        }
+    }
+
+    const postBucketUpdate = async (bucket) => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}buckets/${bucket.id}/`, {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `token ${token}`
+            },
+            body: JSON.stringify(bucket),
+        });
+        return response.json();
+    }
+
     const saveChanges = () => {
         console.log("checking everything adds to 100%")
+        checkBucketPercentages(null);
         for (let i = 0; i < buckets.length; i++) {
             if (buckets[i].children.length > 0) {
-                const bucketIDs = buckets[i].children.map(bucket => bucket.id)
-                const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
-                console.log("totals of ", buckets[i].name, "children = ", totals);
-                const total = totals.reduce((accumulator, value) => accumulator + value);
-                if (total !== 100) {
-                    console.log("ERROR! Children buckets of ", buckets[i].name, "do not add to 100%. Cannot save.")
-                    setPercentageError((prevState) => ([
-                        ...prevState,
-                        buckets[i].name
-                    ]));
-                }
-                else {
-                    const index = percentageError.indexOf(buckets[i].name)
-                    console.log("index to remove from error array is ", index);
-                    const errors = percentageError;
-                    if (index > -1) {
-                        errors.splice(index, 1);
-                        console.log("one error removed. errors now looks like this: ", errors);
-                        setPercentageError(errors);
-                    }
-                }
-                console.log("child bucket IDs of ", buckets[i].name, " = ", bucketIDs);
+                checkBucketPercentages(buckets[i])
+                // const bucketIDs = buckets[i].children.map(bucket => bucket.id)
+                // const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
+                // console.log("totals of ", buckets[i].name, "children = ", totals);
+                // const total = totals.reduce((accumulator, value) => accumulator + value);
+                // if (total !== 100) {
+                //     console.log("ERROR! Children buckets of ", buckets[i].name, "do not add to 100%. Cannot save.")
+                //     setPercentageError((prevState) => ([
+                //         ...prevState,
+                //         buckets[i].name
+                //     ]));
+                // }
+                // else {
+                //     const index = percentageError.indexOf(buckets[i].name)
+                //     console.log("index to remove from error array is ", index);
+                //     const errors = percentageError;
+                //     if (index > -1) {
+                //         errors.splice(index, 1);
+                //         console.log("one error removed. errors now looks like this: ", errors);
+                //         setPercentageError(errors);
+                //     }
+                // }
 
                 for (let j = 0; j < buckets[i].children.length; j++) {
                     if (buckets[i].children[j].children.length > 0) {
-                        const bucketIDs = buckets[i].children[j].children.map(bucket => bucket.id)
-                        const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
-                        const total = totals.reduce((accumulator, value) => accumulator + value);
-                        if (total !== 100) {
-                            console.log("ERROR! Children buckets of ", buckets[i].children[j].name, "do not add to 100%. Cannot save.")
-                            setPercentageError((prevState) => ([
-                                ...prevState,
-                                buckets[i].children[j].name
-                            ]));
-                        }
-                        else {
-                            const index = percentageError.indexOf(buckets[i].children[j].name)
-                            const errors = percentageError;
-                            if (index > -1) {
-                                errors.splice(index, 1);
-                                console.log("one error removed. errors now looks like this: ", errors);
-                                setPercentageError(errors);
-                            }
-                        }
-                        // console.log("total % = ", totals)
-                        // console.log("child bucket IDs of ", buckets[i].children[j].name, " = ", bucketIDs);
-                    }
-                    else {
-                        const index = percentageError.indexOf(buckets[i].name)
-                        const errors = percentageError;
-                        if (index > -1) {
-                            errors.splice(index, 1);
-                            setPercentageError(errors);
-                        }
+                        checkBucketPercentages(buckets[i].children[j])
+                        // const bucketIDs = buckets[i].children[j].children.map(bucket => bucket.id)
+                        // const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
+                        // const total = totals.reduce((accumulator, value) => accumulator + value);
+                        // if (total !== 100) {
+                        //     console.log("ERROR! Children buckets of ", buckets[i].children[j].name, "do not add to 100%. Cannot save.")
+                        //     setPercentageError((prevState) => ([
+                        //         ...prevState,
+                        //         buckets[i].children[j].name
+                        //     ]));
+                        // }
+                        // else {
+                        //     const index = percentageError.indexOf(buckets[i].children[j].name)
+                        //     const errors = percentageError;
+                        //     if (index > -1) {
+                        //         errors.splice(index, 1);
+                        //         console.log("one error removed. errors now looks like this: ", errors);
+                        //         setPercentageError(errors);
+                        //     }
+                        // }
                     }
                 }
             }
+        }
+        if (percentageError.current.length === 0) {
+            console.log("everything adds up! sending to backend");
+            console.log(updatedBuckets);
+
+
+            for (var key in updatedBuckets) {
+                // console.log("key is ", key, "value is ", updatedBuckets[key])
+                if (parseInt(key)) {
+                    postBucketUpdate(updatedBuckets[key])
+                        .then((response) => {
+                            console.log(response);
+                            if (response.owner) {
+                                history.push("/");
+                            }
+                            else {
+                                console.log("error posting the data - need to make user aware of this!!!")
+                            }
+                        })
+                }
+            }
+        }
+        else {
+            percentageError.current.map(item => console.log("something doesn't add up - check the child buckets of ", item));
         }
     }
 
