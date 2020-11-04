@@ -233,8 +233,9 @@ function Bucket() {
                                             className="input"
                                             type="text"
                                             id="description"
+                                            value={bucket.description ? bucket.description : "Enter account description here (optional)"}
                                             onChange={(e) => handleChange(e, bucket.id)}
-                                        >{bucket.description ? bucket.description : "Enter account description here (optional)"}</textarea>
+                                        ></textarea>
                                     </div>
 
                                     <div>
@@ -306,8 +307,9 @@ function Bucket() {
                                                                 className="input"
                                                                 type="text"
                                                                 id="description"
+                                                                value={bucket.description ? bucket.description : "Enter account description here (optional)"}
                                                                 onChange={(e) => handleChange(e, bucket.id)}
-                                                            >{bucket.description ? bucket.description : "Enter account description here (optional)"}</textarea>
+                                                            ></textarea>
                                                         </div>
 
                                                         <div>
@@ -379,8 +381,9 @@ function Bucket() {
                                                                                     className="input"
                                                                                     type="text"
                                                                                     id="description"
+                                                                                    value={bucket.description ? bucket.description : "Enter account description here (optional)"}
                                                                                     onChange={(e) => handleChange(e, bucket.id)}
-                                                                                >{bucket.description ? bucket.description : "Enter account description here (optional)"}</textarea>
+                                                                                ></textarea>
                                                                             </div>
                                                                         </span>
                                                                     </div>
