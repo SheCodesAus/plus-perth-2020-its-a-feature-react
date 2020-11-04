@@ -35,7 +35,8 @@ function Bucket(props) {
           <h2>
             $
             {calculation.toLocaleString("en", {
-              minimumFractionDigits: 2,
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 2,
             })}
           </h2>
         ) : (
@@ -94,7 +95,8 @@ function Bucket(props) {
                     {((child.percentage / 100) * calculation).toLocaleString(
                       "en",
                       {
-                        minimumFractionDigits: 2,
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 2,
                       }
                     )}
                   </h2>
@@ -140,7 +142,8 @@ function Bucket(props) {
                                 (nextchild.percentage / 100) *
                                 ((child.percentage / 100) * calculation)
                               ).toLocaleString("en", {
-                                minimumFractionDigits: 2,
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 2,
                               })}
                             </h2>
                           ) : (
