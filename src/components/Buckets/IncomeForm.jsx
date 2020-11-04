@@ -52,7 +52,10 @@ function IncomeForm({ receipt, upDateIncome }) {
 
       postData().then((response) => {
         console.log("response is...", response);
-        history.push("/transactions");
+        alert(
+          "Transaction has been saved. Go to Transaction History page for previous transactions."
+        );
+        // history.push("/transactions");
         // window.location.reload();
       });
     }
