@@ -110,7 +110,7 @@ function AddBucketForm(props) {
             ))}
           </select>
           <label htmlFor="title">
-            Account Name<br></br>
+            Bucket Name<br></br>
           </label>
           <input
             type="text"
