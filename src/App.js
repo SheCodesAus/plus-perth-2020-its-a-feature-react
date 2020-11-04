@@ -7,8 +7,10 @@ import Header from "./components/Header/Header";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
-import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
+import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
+import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
+import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 
 import "./App.css";
 // import 'bootstrap/dist/css/bootstrap.css'; // or include from a CDN
@@ -48,6 +50,12 @@ function App() {
               {localStorage.token ? (
                 <Route path="/EditBucket">
                   <EditBucketPage />
+                </Route>
+              ) : null}
+
+              {localStorage.token ? (
+                <Route path="/edit-buckets">
+                  <EditAllBucketsPage />
                 </Route>
               ) : null}
 
