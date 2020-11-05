@@ -6,7 +6,8 @@ function TransactionsHistoryPage() {
   const [transactionList, setTransactionList] = useState([]);
   const token = window.localStorage.getItem("token");
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchData(){
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions`,
       {
@@ -21,7 +22,8 @@ function TransactionsHistoryPage() {
       /// check response.status for status code too as response.ok only checks for server errors!
       setTransactionList(data);
       // console.log(data);
-    }
+    }}
+    fetchData();
   }, []);
 
   return (
