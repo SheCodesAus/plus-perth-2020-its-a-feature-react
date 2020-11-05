@@ -32,10 +32,53 @@
   outline: none;
 }
 
+.input{
+  text-align: center;
+}
+
+.input-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#editbutton {
+  display: inline;
+  margin-top: 0px;
+  border: 0;
+  border-radius: 2px;
+  color: white;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  background-color: #373a47;
+  cursor: pointer;
+  outline: none;
+}
+
+#editbutton:hover {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+#editbutton:hover {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
 #bucket-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+#bucket-edit-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .bucket-group {

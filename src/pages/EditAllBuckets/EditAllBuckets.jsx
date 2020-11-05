@@ -32,7 +32,7 @@ function EditAllBucketsPage() {
     return (
         //<p> Hi</p>
 
-        <div>
+        <div id = "bucket-edit-list">
             {token != null ? (
                 <EditAllBuckets bucketData={bucketList} />
             ) : (

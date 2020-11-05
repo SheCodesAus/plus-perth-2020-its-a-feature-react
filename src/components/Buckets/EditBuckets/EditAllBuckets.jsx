@@ -166,7 +166,8 @@ function Bucket() {
     return (
         buckets ?
             <React.Fragment>
-                <button onClick={saveChanges}>SAVE CHANGES :)</button>
+                <div className = "bucket-list">
+                <button id = "editbutton" onClick={saveChanges}>SAVE CHANGES :)</button>
                 {
                     fetchErrorMsg ?
                         <div>
@@ -175,6 +176,8 @@ function Bucket() {
                         :
                         null
                 }
+                </div>
+
                 {
                     errorMsg.length > 0 ?
                         <div>
@@ -195,6 +198,7 @@ function Bucket() {
                 {
                     buckets.map((bucket) => {
                         return (
+                            <div id="bucket-list">
                             <div key={bucket.id} className=" bucket-group animated fadeInLeft">
                                 < div
                                     className="bucket-parent"
@@ -208,7 +212,7 @@ function Bucket() {
                                         <img className="bucket-pic" alt="Bucket" src={Bucket_img}/> 
                                             <IconWrap bucketData = {bucket}/>
                                         </div>
-                                    <div>
+                                    <div className = "input-wrap">
                                         <input
                                             className="input"
                                             type="text"
@@ -295,7 +299,7 @@ function Bucket() {
                                                             data-for="descriptionTip-child"
                                                         >
                                                         </h2>
-                                                        <div>
+                                                        <div className = "input-wrap">
                                                             <input
                                                                 className="input"
                                                                 type="text"
@@ -379,7 +383,7 @@ function Bucket() {
                                                                                 data-tip={bucket.description}
                                                                                 data-for="descriptionTip-childs-child"
                                                                             ></h2>
-                                                                            <div>
+                                                                            <div className = "input-wrap">
                                                                                 <input
                                                                                     className="input"
                                                                                     type="text"
@@ -442,6 +446,7 @@ function Bucket() {
                                         null
                                 }
                             </div >
+                            </div>
                         )
                     })
                 }
