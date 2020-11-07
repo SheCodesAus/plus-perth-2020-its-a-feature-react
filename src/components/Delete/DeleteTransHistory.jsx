@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 
-function DeleteTransationHistory() {
+function DeleteTransactionHistory() {
   const history = useHistory();
   const { id } = useParams();
 
@@ -41,4 +41,4 @@ function DeleteTransationHistory() {
   );
 }
 
-export default DeleteTransationHistory;
+export default DeleteTransactionHistory;
