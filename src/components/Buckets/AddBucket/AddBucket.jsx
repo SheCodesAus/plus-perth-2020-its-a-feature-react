@@ -145,7 +145,7 @@ function AddBucketForm(props) {
         <div>
           <Button value="Submit" onClick={handleSubmit}/>
         </div>
-        <Link to="/TransactionsPage">Cancel</Link>
+        <Link to="/">Cancel</Link>
       </div>
     </form>
   );
