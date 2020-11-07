@@ -4,6 +4,7 @@ import "../EditBuckets/EditBuckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 import Bucket from './Bucket'
+import { update } from "lodash";
 
 // Recursive function to extract individual buckets from nested bucket list
 const getBucketList = buckets => {
@@ -121,19 +122,37 @@ function Buckets() {
     return response.json();
   }
 
+  const recursivePercentageCheck = () => { 
+
+    const iterateOverBuckets = (children) => { 
+      children.forEach(b => { 
+        const parentID = b.parent_bucket
+        console.log("parent ID id ", parentID);
+        checkBucketPercentages(updatedBuckets[parentID])
+        if (b.children) { 
+          iterateOverBuckets(b.children)
+        }
+      })
+    }
+    iterateOverBuckets(buckets)
+  } 
+
   const saveChanges = () => {
     setFetchErrorMsg();
-    checkBucketPercentages(null);
-    for (let i = 0; i < buckets.length; i++) {
-      if (buckets[i].children.length > 0) {
-        checkBucketPercentages(buckets[i])
-        for (let j = 0; j < buckets[i].children.length; j++) {
-          if (buckets[i].children[j].children.length > 0) {
-            checkBucketPercentages(buckets[i].children[j])
-          }
-        }
-      }
-    }
+
+    recursivePercentageCheck();
+
+    // checkBucketPercentages(null);
+    // for (let i = 0; i < buckets.length; i++) {
+    //   if (buckets[i].children.length > 0) {
+    //     checkBucketPercentages(buckets[i])
+    //     for (let j = 0; j < buckets[i].children.length; j++) {
+    //       if (buckets[i].children[j].children.length > 0) {
+    //         checkBucketPercentages(buckets[i].children[j])
+    //       }
+    //     }
+    //   }
+    // }
     if (percentageError.current.length === 0) {
       setErrorMsg([]);
 
