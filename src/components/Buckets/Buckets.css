@@ -1,7 +1,4 @@
-/* * {
-  border: 1px solid red;
-} */
-
+/*------------------------------------------------FORM------------------------------------------------*/
 .income-form {
   background-color: white;
   position: sticky;
@@ -36,6 +33,15 @@
   width: 22px;
 }
 
+.input{
+  width: 115px;
+}
+
+#description{
+  width: 100%;
+}
+
+/*----------------------------------------------------BUCKETS-----------------------------------------------------*/
 #bucket-list {
   display: flex;
   justify-content: center;

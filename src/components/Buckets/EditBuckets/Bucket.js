@@ -59,7 +59,7 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           className="input-val"
           type="text"
           id="percentage"
-          placeholder={bucket.percentage}
+          value={bucket.percentage}
           onChange={(e) => handleChange(e, bucket.id)}
         />
             %
@@ -78,7 +78,7 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           className="input"
           type="text"
           id="description"
-          value={
+          placeholder={
             bucket.description
               ? bucket.description
               : "Enter account description here (optional)"
