@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
 import IconWrap from "../IconWrap/IconWrap";
-
+import ViewBucket from "../Buckets/ViewBucket/ViewBucket"
 
 function Bucket(props) {
   const { bucketData } = props;
@@ -15,8 +15,18 @@ function Bucket(props) {
     setCalculation((bucketData.percentage / 100) * income);
   }, [bucketData.percentage, income]);
 
+  // console.log(bucketData);
+
   return (
-    <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
+    <React.Fragment>
+      {/* Individual buckets View */}
+      <div id="bucket-list">
+          <div className="bucket-group animated fadeInLeft">
+            <ViewBucket bucketData={bucketData} income={income} calculation={calculation}/>
+          </div>
+      </div>
+
+    {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
       <div
         className="bucket-parent"
         style={
@@ -25,7 +35,6 @@ function Bucket(props) {
             : null
         }
       >
-        {/* <img className="bucket-pic" alt="Bucket" src={Bucket_img} /> */}
         <div className = "icon-wrapper">
           <img
             className="bucket-pic"
@@ -73,11 +82,6 @@ function Bucket(props) {
               }
             >
               <span>
-                {/* <img
-                  className="bucket-pic-child"
-                  alt="Bucket"
-                  src={Bucket_img}
-                /> */}
                 <div className = "icon-wrapper">
                   <img
                     className="bucket-pic-child"
@@ -127,11 +131,6 @@ function Bucket(props) {
                         }}
                       >
                         <span>
-                          {/* <img
-                            className="bucket-pic-child"
-                            alt="Bucket"
-                            src={Bucket_img}
-                          /> */}
                           <div className = "icon-wrapper">
                             <img
                               className="bucket-pic-child"
@@ -178,8 +177,8 @@ function Bucket(props) {
           ))}
         </div>
       ) : null}
-    </div>
+    </div> */}
+    </React.Fragment>
   );
 }
-
 export default Bucket;

@@ -2,41 +2,48 @@ import React from "react";
 import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
-import IconWrap from "../../IconWrap/IconWrap"
-import IconOption from "../../IconOption/IconOption"
+import IconWrap from "../../IconWrap/IconWrap";
+import IconOption from "../../IconOption/IconOption";
+import BucketContainer from "../BucketContainer/BucketContainer";
 
+// Delete this?
+// const BucketContainer = ({ bucket, depth, children }) => {
 
-const BucketContainer = ({ bucket, depth, children }) => {
+//   const getClassName = () => {
+//     // if (depth == 0) {
+//     //   return 'bucket-parent'
+//     // }
+//     // else {
+//       return 'bucket'
+//     // }
+//   }
 
-  const getClassName = () => {
-    if (depth == 0) {
-      return 'bucket-parent'
-    }
-    else {
-      return 'bucket'
-    }
-  }
-
-  return (
-    <div
-      key={bucket.id}
-      className={getClassName()}
-      style={
-        bucket.children.length > 0
-          ? { width: "max-content" }
-          : null
-      }
-    >
-      <span>
-        {children}
-      </span>
-    </div >
-  )
-}
+//   return (
+//     <div
+//       key={bucket.id}
+//       className={getClassName()}
+//       // style={
+//       //   bucket.children.length > 0
+//       //     ? { width: "max-content" }
+//       //     : null
+//       // }
+//       style={
+//         bucket.children.length !==0 && depth !==0
+//           ? { borderRight: "5px solid white" }
+//           : null
+//       }
+//     >
+//       <span>
+//         {children}
+//       </span>
+//     </div >
+//   )
+// }
 
 const Bucket = ({ bucket, handleChange, depth = 0 }) => {
   return (
-    <BucketContainer bucket={bucket} depth={depth}>
+    <BucketContainer bucketData={bucket} depth={depth}>
+      <div className = {bucket.children.length >0 ? "bucket-parent" : null}>
       <div className = "icon-wrapper">
       <img
         className={depth ===0 ? "bucket-pic" : "bucket-pic-child"}
@@ -45,8 +52,6 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
       />
       <IconWrap bucketData = {bucket} />
       </div>
-
-
       <div>
         <input
           className="input"
@@ -83,19 +88,23 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           onChange={(e) => handleChange(e, bucket.id)}
         ></textarea>
       </div>
+      <br />
       <div>
         <label htmlFor="icon">Icon<br></br></label>
         <select type="select" id="icon" value={bucket.icon} onChange={(e) => handleChange(e, bucket.id)}>
           <IconOption />
         </select>
       </div>
-
+      <br />
       <div>
         <a className="delete" href="/">
           {" "}
           <img src={Delete} alt="Bin image" height={30}></img>
         </a>
       </div>
+      <br />
+      </div>
+      
 
       {/* Child buckets */}
       {bucket.children.length > 0 ? (
@@ -109,4 +118,4 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
     </BucketContainer>
   )
 }
-export default Bucket
+export default Bucket;
