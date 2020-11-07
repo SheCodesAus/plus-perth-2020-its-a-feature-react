@@ -8,7 +8,6 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/TransactionsHistoryPage";
 import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
-import EditBucketPage from "./pages/EditBucketPage/EditBucketPage";
 import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
 import DeletePage from "./pages/DeletePage/DeletePage"
 
@@ -45,12 +44,6 @@ function App() {
               {localStorage.token ? (
                 <Route path="/transactions">
                   <TransactionsHistoryPage />
-                </Route>
-              ) : null}
-
-              {localStorage.token ? (
-                <Route path="/EditBucket">
-                  <EditBucketPage />
                 </Route>
               ) : null}
 

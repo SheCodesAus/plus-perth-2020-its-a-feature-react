@@ -47,10 +47,10 @@ function TransactionDetailPage() {
       style={{ justifyContent: "center", position: "sticky" }}
     >
       <div>
-                <Link to={`/delete/${id}`}>
-                  <a>Delete</a>
-                </Link>
-              </div>
+        <Link to={`/delete/${id}`}>
+          <a>Delete</a>
+        </Link>
+      </div>
       <div
         key={transaction.id}
         className="hist-tile detail"
