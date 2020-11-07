@@ -75,6 +75,7 @@ h2 a.bucket-parent:hover {
 }
 
 .bucket-child {
+  /* TODO use css selector instead */
   border-right: 5px solid white;
 }
 

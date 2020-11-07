@@ -3,8 +3,32 @@ import { useHistory } from "react-router-dom";
 import "../EditBuckets/EditBuckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
+import Bucket from './Bucket'
 
+<<<<<<< Updated upstream
 function Bucket() {
+=======
+// Recursive function to extract individual buckets from nested bucket list
+const getBucketList = buckets => {
+
+  let bucketList = {}
+
+  const getChildrenIds = (children) => {
+    children.forEach(b => {
+      bucketList[b.id] = b
+      if (b.children) getChildrenIds(b.children)
+    })
+  }
+  getChildrenIds(buckets)
+
+  return bucketList
+}
+
+
+function Buckets() {
+  // This is used to display the buckets on the page in correct order
+  const [buckets, setBuckets] = useState();
+>>>>>>> Stashed changes
 
     // This is used to display the buckets on the page in correct order
     const [buckets, setBuckets] = useState();
@@ -24,6 +48,7 @@ function Bucket() {
     const token = window.localStorage.getItem("token");
     const history = useHistory();
 
+<<<<<<< Updated upstream
     // Get bucket list to display in their groups on the page
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}buckets`, {
@@ -63,6 +88,14 @@ function Bucket() {
             setUpdatedBuckets(bucketList);
         }
     }, [buckets])
+=======
+  // Flatten list of buckets into separate account objects - property/key is the bucket ID (this is used to keep track of which bucket user is updating)
+  useEffect(() => {
+    if (buckets) {
+      setUpdatedBuckets(getBucketList(buckets))
+    }
+  }, [buckets]);
+>>>>>>> Stashed changes
 
     const handleChange = (e, bucketID) => {
         let { id, value } = e.target;
@@ -157,6 +190,7 @@ function Bucket() {
         }
     }
 
+<<<<<<< Updated upstream
     return (
         buckets ?
             <React.Fragment>
@@ -189,6 +223,95 @@ function Bucket() {
                 {
                     buckets.map((bucket) => {
                         return (
+=======
+  return buckets ? (
+    <React.Fragment>
+      <div>
+        <button onClick={saveChanges}>SAVE CHANGES :)</button>
+        {fetchErrorMsg ? (
+          <div>
+            <h2>{fetchErrorMsg}</h2>
+          </div>
+        ) : null}
+        {errorMsg.length > 0 ? (
+          <div>
+            <h2>Something doesn't add up</h2>
+            <h4>check the child accounts of... </h4>
+            <ul>
+              {errorMsg.map((error) => {
+                return error === "top-level" ? (
+                  <li>Your top level</li>
+                ) : (
+                    <li>{error}</li>
+                  );
+              })}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="buckets">
+
+        {buckets.map(bucket =>
+          <div className="bucket-group animated fadeInLeft">
+            <Bucket bucket={bucket} handleChange={handleChange} />
+          </div>
+        )}
+
+      </div>
+
+        {/* {buckets.map((bucket) => {
+        return (
+          <div key={bucket.id} className=" bucket-group animated fadeInLeft">
+            <div
+              className="bucket-parent"
+              style={
+                bucket.children.length > 0
+                  ? { borderBottom: "3px solid white" }
+                  : null
+              }
+            >
+              <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+              <div>
+                <input
+                  className="input"
+                  type="text"
+                  name="name"
+                  placeholder={bucket.name ? bucket.name : "Name"}
+                  onChange={(e) => handleChange(e, bucket.id)}
+                />
+                <input
+                  className="input-val"
+                  type="text"
+                  name="percentage"
+                  placeholder={bucket.percentage}
+                  onChange={(e) => handleChange(e, bucket.id)}
+                />
+                %
+                <p>
+                  Minimum Amount: <br />$
+                  <input
+                    className="input"
+                    type="text"
+                    name="min_amt"
+                    placeholder={bucket.min_amt ? bucket.min_amt : "0"}
+                    onChange={(e) => handleChange(e, bucket.id)}
+                  />
+                </p>
+                <p>Bucket Description:</p>
+                <textarea
+                  className="input"
+                  type="text"
+                  name="description"
+                  value={
+                    bucket.description
+                      ? bucket.description
+                      : "Enter account description here (optional)"
+                  }
+                  onChange={(e) => handleChange(e, bucket.id)}
+                ></textarea>
+              </div>
+>>>>>>> Stashed changes
 
                             <div key={bucket.id} className=" bucket-group animated fadeInLeft">
                                 < div
@@ -312,6 +435,7 @@ function Bucket() {
                                                             ></textarea>
                                                         </div>
 
+<<<<<<< Updated upstream
                                                         <div>
                                                             <a className="delete" href="/">
                                                                 {" "}
@@ -405,6 +529,73 @@ function Bucket() {
             :
             <h2>Couldn't find any buckets!</h2>
     );
+=======
+                                <div>
+                                  <input
+                                    className="input"
+                                    type="text"
+                                    id="name"
+                                    placeholder={
+                                      bucket.name ? bucket.name : "Name"
+                                    }
+                                    onChange={(e) => handleChange(e, bucket.id)}
+                                  />
+                                  <input
+                                    className="input-val"
+                                    type="text"
+                                    id="percentage"
+                                    placeholder={bucket.percentage}
+                                    onChange={(e) => handleChange(e, bucket.id)}
+                                  />
+                                  %
+                                  <p>
+                                    Minimum Amount: <br />$
+                                    <input
+                                      className="input"
+                                      type="text"
+                                      id="min_amt"
+                                      placeholder={
+                                        bucket.min_amt ? bucket.min_amt : "0"
+                                      }
+                                      onChange={(e) =>
+                                        handleChange(e, bucket.id)
+                                      }
+                                    />
+                                  </p>
+                                  <p>Bucket Description:</p>
+                                  <textarea
+                                    className="input"
+                                    type="text"
+                                    id="description"
+                                    value={
+                                      bucket.description
+                                        ? bucket.description
+                                        : "Enter account description here (optional)"
+                                    }
+                                    onChange={(e) => handleChange(e, bucket.id)}
+                                  ></textarea>
+                                </div>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : null}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        );
+      }
+      )
+      } */}
+      
+    </React.Fragment>
+  ) : (
+      <h2>Couldn't find any buckets!</h2>
+  );
+>>>>>>> Stashed changes
 }
 
-export default Bucket;
+export default Buckets;
