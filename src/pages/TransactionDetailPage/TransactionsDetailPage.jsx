@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import Delete from "../../assets/images/delete.png";
+
 
 import Bucket from "../../components/Buckets/Buckets";
 
@@ -9,12 +11,13 @@ function TransactionDetailPage() {
   const [transaction, setTransaction] = useState();
   const [receipt, setReceipt] = useState();
 
-  useEffect(async () => {
+  useEffect(() => {
     const token = window.localStorage.getItem("token");
     if (!token) {
       return;
     }
     console.log("id is... ", id);
+    async function fetchData(){
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions/${id}`,
       {
@@ -32,6 +35,8 @@ function TransactionDetailPage() {
       setTransaction(data);
       setReceipt(parsed);
     }
+  }
+  fetchData();
   }, [id]);
 
   // console.log("receipt...", receipt);
@@ -42,6 +47,12 @@ function TransactionDetailPage() {
       className=" animated fadeInLeft"
       style={{ justifyContent: "center", position: "sticky" }}
     >
+      <div>
+        <Link to={`/delete/${id}`}>
+          {""}
+        <img className="delete" src={Delete} alt="Bin image" height={30}></img>
+        </Link>
+      </div>
       <div
         key={transaction.id}
         className="hist-tile detail"

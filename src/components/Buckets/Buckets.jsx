@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
-import Delete from "../../assets/images/delete.png";
-import Edit from "../../assets/images/edit.png";
 import ReactTooltip from "react-tooltip";
 import IconWrap from "../IconWrap/IconWrap";
 
@@ -45,7 +43,8 @@ function Bucket(props) {
           <h2>
             $
             {calculation.toLocaleString("en", {
-              minimumFractionDigits: 2,
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 2,
             })}
           </h2>
         ) : (
@@ -57,17 +56,6 @@ function Bucket(props) {
             ? "$0"
             : bucketData.min_amt.toLocaleString("en")}
         </p>
-
-        <div>
-          <a className="delete" href="/">
-            {" "}
-            <img src={Delete} alt="Bin" height={30}></img>
-          </a>
-          <a className="edit" href="/EditBucket">
-            {" "}
-            <img src={Edit} alt="Edit" height={30}></img>
-          </a>
-        </div>
       </div>
 
       {bucketData.children.length > 0 ? (
@@ -112,7 +100,8 @@ function Bucket(props) {
                     {((child.percentage / 100) * calculation).toLocaleString(
                       "en",
                       {
-                        minimumFractionDigits: 2,
+                        minimumFractionDigits: 0,
+                        maximumFractionDigits: 2,
                       }
                     )}
                   </h2>
@@ -166,7 +155,8 @@ function Bucket(props) {
                                 (nextchild.percentage / 100) *
                                 ((child.percentage / 100) * calculation)
                               ).toLocaleString("en", {
-                                minimumFractionDigits: 2,
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 2,
                               })}
                             </h2>
                           ) : (
