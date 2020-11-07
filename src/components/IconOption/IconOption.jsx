@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 function IconOption(){
     return(
         <>
+        <option value="">None</option>
         <option value="travel" >Travel</option>
         <option value="savings">Savings</option>
         <option value="expense">Expense</option> 
@@ -16,7 +17,6 @@ function IconOption(){
         <option value="roadTrip">Road Trip</option>
         <option value="sunny">Sunny</option>
         <option value="wallet">Wallet</option> 
-        <option value="default">Default</option>
         </>
     )
 }

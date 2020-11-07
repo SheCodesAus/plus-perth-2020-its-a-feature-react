@@ -45,9 +45,11 @@ function Bucket(props) {
               minimumFractionDigits: 2,
             })}
           </h2>
+          
         ) : (
           <h2>&nbsp; </h2>
         )}
+
         <p>
           Min:{" "}
           {bucketData.min_amt == null
@@ -56,14 +58,14 @@ function Bucket(props) {
         </p>
 
         <div>
-          <a className="delete" href="/">
+          {/* <a className="delete" href="/">
             {" "}
             <img src={Delete} alt="Bin" height={30}></img>
-          </a>
+          </a> */}
           {/* need to provide authentication? */}
-          <Link to={`/EditBucket/${bucketData.id}`}> 
+          {/* <Link to={`/EditBucket/${bucketData.id}`}> 
               <img src={Edit} alt="Edit" height={30}></img>
-          </Link>
+          </Link> */}
 
         </div>
       </div>
@@ -85,7 +87,7 @@ function Bucket(props) {
               <span>
                 <div className = "icon-wrapper"> 
                   <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
-                  <IconWrap bucketData = {bucketData}/>
+                  <IconWrap bucketData = {child}/>
                 </div>
                 <h2
                   data-tip={child.description}
@@ -127,11 +129,10 @@ function Bucket(props) {
                         }}
                       >
                         <span>
-                          <img
-                            className="bucket-pic-child"
-                            alt="Bucket"
-                            src={Bucket_img}
-                          />
+                          <div className = "icon-wrapper"> 
+                              <img className="bucket-pic-child" alt="Bucket" src={Bucket_img}/> 
+                              <IconWrap bucketData = {nextchild}/>
+                          </div>
                           <h2
                             data-tip={nextchild.description}
                             data-for="descriptionTip-childs-child"

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import {Link, useParams, useHistory} from "react-router-dom";
+
 import Bucket from "../../components/Buckets/Buckets";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import IncomeForm from "../../components/Buckets/IncomeForm";
+import Edit from "../../assets/images/edit.png";
 
 function HomePage() {
   const [bucketList, setBucketList] = useState([]);
@@ -32,7 +35,9 @@ function HomePage() {
       {token != null ? (
         <div>
           <IncomeForm receipt={bucketList} upDateIncome={upDateIncome} />
-
+          {/* <Link to={`/edit-buckets`}> 
+              <img src={Edit} alt="Edit" height={30}></img>
+          </Link> */}
           <div id="bucket-list">
             {bucketList.map((bucketData, key) => {
               return (

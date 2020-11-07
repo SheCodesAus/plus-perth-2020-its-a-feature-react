@@ -36,7 +36,11 @@
   text-align: center;
 }
 
-.input-wrap {
+.input-val{
+  text-align: center;
+}
+
+/* .input-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +71,7 @@
 #editbutton:hover {
   opacity: 0.7;
   transition: 0.5s;
-}
+} */
 
 #bucket-list {
   display: flex;
@@ -79,7 +83,7 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-}
+} 
 
 .bucket-group {
   background-color: rgba(211, 211, 211, 0.3);
@@ -118,6 +122,7 @@ h2 a.bucket-parent:hover {
 }
 
 .bucket-child {
+  /* TODO use css selector instead */
   border-right: 5px solid white;
 }
 
