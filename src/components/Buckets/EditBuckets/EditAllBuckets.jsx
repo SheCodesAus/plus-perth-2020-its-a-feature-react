@@ -240,7 +240,7 @@ function Bucket() {
               <div>
                 <Link to ={`/delete-bucket/${bucket.id}`}>
                   {" "}
-                  <img src={Delete} alt="Bin image" height={30}></img>
+                  <img className="delete" src={Delete} alt="Bin image" height={30}></img>
                 </Link>
               </div>
             </div>
@@ -310,7 +310,7 @@ function Bucket() {
                       <div>
                         <Link to ={`/delete-bucket/${bucket.id}`}>
                           {" "}
-                          <img src={Delete} alt="Bin image" height={30}></img>
+                          <img className="delete" src={Delete} alt="Bin image" height={30}></img>
                         </Link>
                       </div>
                       {bucket.children.length > 0 ? (
@@ -383,7 +383,7 @@ function Bucket() {
                                   <div>
                                   <Link to ={`/delete-bucket/${bucket.id}`}>
                                     {" "}
-                                    <img src={Delete} alt="Bin image" height={30}></img>
+                                    <img className="delete" src={Delete} alt="Bin image" height={30}></img>
                                   </Link>
                                 </div>
                                 </div>
