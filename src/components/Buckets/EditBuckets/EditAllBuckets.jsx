@@ -161,8 +161,10 @@ function Bucket() {
 
   return buckets ? (
     <React.Fragment>
-      <div>
-        <button onClick={saveChanges}>SAVE CHANGES :)</button>
+      <div className="hist-tile detail">
+        <button className="button" onClick={saveChanges}>
+          SAVE CHANGES
+        </button>
         {fetchErrorMsg ? (
           <div>
             <h2>{fetchErrorMsg}</h2>
@@ -199,7 +201,8 @@ function Bucket() {
               <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
               <div>
                 <input
-                  className="input"
+                  className="input-bucketname"
+                  style={{ backgroundColor: "yellow" }}
                   type="text"
                   id="name"
                   placeholder={bucket.name ? bucket.name : "Name"}
@@ -207,6 +210,7 @@ function Bucket() {
                 />
                 <input
                   className="input-val"
+                  style={{ backgroundColor: "rgba(255, 255, 0, 0.5)" }}
                   type="text"
                   id="percentage"
                   placeholder={bucket.percentage}
@@ -214,14 +218,11 @@ function Bucket() {
                 />
                 %
                 <p>
-                  Minimum Amount: <br />$
-                  <input
-                    className="input"
-                    type="text"
-                    id="min_amt"
-                    placeholder={bucket.min_amt ? bucket.min_amt : "0"}
-                    onChange={(e) => handleChange(e, bucket.id)}
-                  />
+                  Minimum Amount: $
+                  {bucket.min_amt.toLocaleString("en", {
+                    minimumFraction: 0,
+                    maximumFraction: 2,
+                  })}
                 </p>
                 <p>Bucket Description:</p>
                 <textarea
@@ -238,9 +239,14 @@ function Bucket() {
               </div>
 
               <div>
-                <Link to ={`/delete-bucket/${bucket.id}`}>
+                <Link to={`/delete-bucket/${bucket.id}`}>
                   {" "}
-                  <img className="delete" src={Delete} alt="Bin image" height={30}></img>
+                  <img
+                    className="delete"
+                    src={Delete}
+                    alt="Bin image"
+                    height={30}
+                  ></img>
                 </Link>
               </div>
             </div>
@@ -270,7 +276,10 @@ function Bucket() {
 
                       <div>
                         <input
-                          className="input"
+                          className="input-bucketname"
+                          style={{
+                            backgroundColor: "rgba(135, 206, 250, 0.529)",
+                          }}
                           type="text"
                           id="name"
                           placeholder={bucket.name ? bucket.name : "Name"}
@@ -278,22 +287,15 @@ function Bucket() {
                         />
                         <input
                           className="input-val"
+                          style={{
+                            backgroundColor: "rgba(135, 206, 250, 0.529)",
+                          }}
                           type="text"
                           id="percentage"
                           placeholder={bucket.percentage}
                           onChange={(e) => handleChange(e, bucket.id)}
                         />
-                        %
-                        <p>
-                          Minimum Amount: <br />$
-                          <input
-                            className="input"
-                            type="text"
-                            id="min_amt"
-                            placeholder={bucket.min_amt ? bucket.min_amt : "0"}
-                            onChange={(e) => handleChange(e, bucket.id)}
-                          />
-                        </p>
+                        %<p>Minimum Amount: ${bucket.min_amt}</p>
                         <p>Bucket Description:</p>
                         <textarea
                           className="input"
@@ -308,9 +310,14 @@ function Bucket() {
                         ></textarea>
                       </div>
                       <div>
-                        <Link to ={`/delete-bucket/${bucket.id}`}>
+                        <Link to={`/delete-bucket/${bucket.id}`}>
                           {" "}
-                          <img className="delete" src={Delete} alt="Bin image" height={30}></img>
+                          <img
+                            className="delete"
+                            src={Delete}
+                            alt="Bin image"
+                            height={30}
+                          ></img>
                         </Link>
                       </div>
                       {bucket.children.length > 0 ? (
@@ -338,7 +345,11 @@ function Bucket() {
 
                                 <div>
                                   <input
-                                    className="input"
+                                    className="input-bucketname"
+                                    style={{
+                                      backgroundColor:
+                                        "rgba(144, 238, 144, 0.5)",
+                                    }}
                                     type="text"
                                     id="name"
                                     placeholder={
@@ -348,26 +359,16 @@ function Bucket() {
                                   />
                                   <input
                                     className="input-val"
+                                    style={{
+                                      backgroundColor:
+                                        "rgba(144, 238, 144, 0.5)",
+                                    }}
                                     type="text"
                                     id="percentage"
                                     placeholder={bucket.percentage}
                                     onChange={(e) => handleChange(e, bucket.id)}
                                   />
-                                  %
-                                  <p>
-                                    Minimum Amount: <br />$
-                                    <input
-                                      className="input"
-                                      type="text"
-                                      id="min_amt"
-                                      placeholder={
-                                        bucket.min_amt ? bucket.min_amt : "0"
-                                      }
-                                      onChange={(e) =>
-                                        handleChange(e, bucket.id)
-                                      }
-                                    />
-                                  </p>
+                                  %<p>Minimum Amount: ${bucket.min_amt}</p>
                                   <p>Bucket Description:</p>
                                   <textarea
                                     className="input"
@@ -381,11 +382,16 @@ function Bucket() {
                                     onChange={(e) => handleChange(e, bucket.id)}
                                   ></textarea>
                                   <div>
-                                  <Link to ={`/delete-bucket/${bucket.id}`}>
-                                    {" "}
-                                    <img className="delete" src={Delete} alt="Bin image" height={30}></img>
-                                  </Link>
-                                </div>
+                                    <Link to={`/delete-bucket/${bucket.id}`}>
+                                      {" "}
+                                      <img
+                                        className="delete"
+                                        src={Delete}
+                                        alt="Bin image"
+                                        height={30}
+                                      ></img>
+                                    </Link>
+                                  </div>
                                 </div>
                               </span>
                             </div>

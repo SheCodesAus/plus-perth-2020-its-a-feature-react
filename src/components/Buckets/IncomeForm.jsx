@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
-import Button from "../../components/Button/Button";
-import DeleteBucketPage from "../../pages/Delete/DeleteBucketPage"
 import Edit from "../../assets/images/edit.png";
 
 function IncomeForm({ receipt, upDateIncome }) {
@@ -63,11 +61,11 @@ function IncomeForm({ receipt, upDateIncome }) {
     }
   };
 
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
-  }
+  };
   return (
     <div className="income-form">
       <form className="incomeForm animated fadeInLeft">
@@ -90,7 +88,10 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        <button id="incomebutton" onClick={handleSubmit} type="submit">Save</button>
+        &nbsp;&nbsp;
+        <button className="button" onClick={handleSubmit} type="submit">
+          Save
+        </button>
       </form>
       <div>
         <a className="edit buckets" href="/edit-buckets">
