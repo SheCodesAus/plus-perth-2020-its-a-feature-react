@@ -39,7 +39,7 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
     <BucketContainer bucket={bucket} depth={depth}>
       <div className = "icon-wrapper">
       <img
-        className="bucket-pic-child"
+        className={depth ===0 ? "bucket-pic" : "bucket-pic-child"}
         alt="Bucket"
         src={Bucket_img}
       />
@@ -78,11 +78,8 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           className="input"
           type="text"
           id="description"
-          placeholder={
-            bucket.description
-              ? bucket.description
-              : "Enter account description here (optional)"
-          }
+          value={bucket.description}
+          placeholder={"Enter account description here (optional)"}
           onChange={(e) => handleChange(e, bucket.id)}
         ></textarea>
       </div>
