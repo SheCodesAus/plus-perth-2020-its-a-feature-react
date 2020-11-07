@@ -25,7 +25,7 @@ function DeleteTransactionHistory() {
     deleteData().then((response) => {
       //   clearStorage();
       //   console.log(response);
-      history.push(`transactions`);
+      history.push(`/transactions`);
     });
   };
   //template
