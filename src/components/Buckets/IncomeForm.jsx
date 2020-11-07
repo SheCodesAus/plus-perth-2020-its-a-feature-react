@@ -16,6 +16,7 @@ function IncomeForm({ receipt, upDateIncome }) {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
+    console.log(e.target)
     upDateIncome(value);
     setTransaction((prevTransaction) => ({
       ...prevTransaction,

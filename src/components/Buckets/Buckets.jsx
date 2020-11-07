@@ -6,11 +6,20 @@ import ReactTooltip from "react-tooltip";
 function Bucket(props) {
   const { bucketData } = props;
   const { income } = props;
+  let hasEnough=false
 
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    setCalculation((bucketData.percentage / 100) * income);
+    const amount = (bucketData.percentage / 100) * income
+    setCalculation(amount)
+    if (amount > bucketData.min_amt){
+      hasEnough=true
+    }else{
+      hasEnough=false
+    }
+    // hasEnough ? amount > bucketData.min_amt : false
+    console.log(hasEnough, bucketData.name)
   }, [bucketData.percentage, income]);
 
   return (
