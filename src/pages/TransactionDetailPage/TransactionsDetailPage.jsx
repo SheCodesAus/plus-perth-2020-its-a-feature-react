@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import Delete from "../../assets/images/delete.png";
 
 
 import Bucket from "../../components/Buckets/Buckets";
@@ -48,7 +49,8 @@ function TransactionDetailPage() {
     >
       <div>
         <Link to={`/delete/${id}`}>
-          <a>Delete</a>
+          {""}
+        <img className="delete" src={Delete} alt="Bin image" height={30}></img>
         </Link>
       </div>
       <div
