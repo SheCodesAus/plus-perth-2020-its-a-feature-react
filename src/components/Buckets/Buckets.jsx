@@ -17,10 +17,6 @@ function Bucket(props) {
 
   return (
     <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
-      <a className="edit" href="/edit-buckets">
-            {" "}
-            <img src={Edit} alt="Edit" height={30}></img>
-          </a>
       <div
         className="bucket-parent"
         style={
