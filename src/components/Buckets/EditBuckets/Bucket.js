@@ -2,6 +2,8 @@ import React from "react";
 import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
+import IconWrap from "../../IconWrap/IconWrap"
+import IconOption from "../../IconOption/IconOption"
 
 
 const BucketContainer = ({ bucket, depth, children }) => {
@@ -35,11 +37,15 @@ const BucketContainer = ({ bucket, depth, children }) => {
 const Bucket = ({ bucket, handleChange, depth = 0 }) => {
   return (
     <BucketContainer bucket={bucket} depth={depth}>
+      <div className = "icon-wrapper">
       <img
         className="bucket-pic-child"
         alt="Bucket"
         src={Bucket_img}
       />
+      <IconWrap bucketData = {bucket} />
+      </div>
+
 
       <div>
         <input
@@ -79,6 +85,12 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           }
           onChange={(e) => handleChange(e, bucket.id)}
         ></textarea>
+      </div>
+      <div>
+        <label htmlFor="icon">Icon<br></br></label>
+        <select type="select" id="icon" value={bucket.icon} onChange={(e) => handleChange(e, bucket.id)}>
+          <IconOption />
+        </select>
       </div>
 
       <div>

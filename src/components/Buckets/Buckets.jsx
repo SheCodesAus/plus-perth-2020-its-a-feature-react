@@ -4,6 +4,8 @@ import Bucket_img from "../../assets/images/bucket.png";
 import Delete from "../../assets/images/delete.png";
 import Edit from "../../assets/images/edit.png";
 import ReactTooltip from "react-tooltip";
+import IconWrap from "../IconWrap/IconWrap";
+
 
 function Bucket(props) {
   const { bucketData } = props;
@@ -25,7 +27,15 @@ function Bucket(props) {
             : null
         }
       >
-        <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
+        {/* <img className="bucket-pic" alt="Bucket" src={Bucket_img} /> */}
+        <div className = "icon-wrapper">
+          <img
+            className="bucket-pic"
+            alt="Bucket"
+            src={Bucket_img}
+          />
+          <IconWrap bucketData = {bucketData} />
+        </div>
         <h2 data-tip={bucketData.description} data-for="descriptionTip">
           {bucketData.name}:<br></br>
           {bucketData.percentage}%
@@ -75,11 +85,19 @@ function Bucket(props) {
               }
             >
               <span>
-                <img
+                {/* <img
                   className="bucket-pic-child"
                   alt="Bucket"
                   src={Bucket_img}
-                />
+                /> */}
+                <div className = "icon-wrapper">
+                  <img
+                    className="bucket-pic-child"
+                    alt="Bucket"
+                    src={Bucket_img}
+                  />
+                <IconWrap bucketData = {child} />
+                </div>
                 <h2
                   data-tip={child.description}
                   data-for="descriptionTip-child"
@@ -120,11 +138,19 @@ function Bucket(props) {
                         }}
                       >
                         <span>
-                          <img
+                          {/* <img
                             className="bucket-pic-child"
                             alt="Bucket"
                             src={Bucket_img}
-                          />
+                          /> */}
+                          <div className = "icon-wrapper">
+                            <img
+                              className="bucket-pic-child"
+                              alt="Bucket"
+                              src={Bucket_img}
+                            />
+                          <IconWrap bucketData = {nextchild} />
+                          </div>
                           <h2
                             data-tip={nextchild.description}
                             data-for="descriptionTip-childs-child"
