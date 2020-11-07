@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
+import DeleteBucketPage from "../../pages/Delete/DeleteBucketPage"
+import Edit from "../../assets/images/edit.png";
 
 function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
@@ -90,6 +92,12 @@ function IncomeForm({ receipt, upDateIncome }) {
         </div>
         <button id="incomebutton" onClick={handleSubmit} type="submit">Save</button>
       </form>
+      <div>
+        <a className="edit buckets" href="/edit-buckets">
+          {" "}
+          <img src={Edit} alt="Edit image" height={30}></img>
+        </a>
+      </div>
     </div>
   );
 }

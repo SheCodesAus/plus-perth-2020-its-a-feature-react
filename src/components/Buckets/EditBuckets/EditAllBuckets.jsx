@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
@@ -238,10 +238,10 @@ function Bucket() {
               </div>
 
               <div>
-                <a className="delete" href="/">
+                <Link to ={`/delete-bucket/${bucket.id}`}>
                   {" "}
                   <img src={Delete} alt="Bin image" height={30}></img>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -307,14 +307,12 @@ function Bucket() {
                           onChange={(e) => handleChange(e, bucket.id)}
                         ></textarea>
                       </div>
-
                       <div>
-                        <a className="delete" href="/">
+                        <Link to ={`/delete-bucket/${bucket.id}`}>
                           {" "}
                           <img src={Delete} alt="Bin image" height={30}></img>
-                        </a>
+                        </Link>
                       </div>
-
                       {bucket.children.length > 0 ? (
                         <div
                           style={{
@@ -382,6 +380,12 @@ function Bucket() {
                                     }
                                     onChange={(e) => handleChange(e, bucket.id)}
                                   ></textarea>
+                                  <div>
+                                  <Link to ={`/delete-bucket/${bucket.id}`}>
+                                    {" "}
+                                    <img src={Delete} alt="Bin image" height={30}></img>
+                                  </Link>
+                                </div>
                                 </div>
                               </span>
                             </div>

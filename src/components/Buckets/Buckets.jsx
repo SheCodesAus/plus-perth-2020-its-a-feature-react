@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
-import Delete from "../../assets/images/delete.png";
-import Edit from "../../assets/images/edit.png";
 import ReactTooltip from "react-tooltip";
 
 function Bucket(props) {

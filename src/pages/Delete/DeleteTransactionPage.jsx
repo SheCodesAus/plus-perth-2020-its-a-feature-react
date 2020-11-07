@@ -2,8 +2,8 @@ import React from "react";
 import DeleteTransactionHistory from "../../components/Delete/DeleteTransHistory";
 
 
-function DeletePage() {
+function DeleteTransactionPage() {
   return <DeleteTransactionHistory />;
 }
 
-export default DeletePage;
+export default DeleteTransactionPage;
