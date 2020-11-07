@@ -17,6 +17,10 @@ function Bucket(props) {
 
   return (
     <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
+      <a className="edit" href="/edit-buckets">
+            {" "}
+            <img src={Edit} alt="Edit" height={30}></img>
+          </a>
       <div
         className="bucket-parent"
         style={
@@ -48,17 +52,6 @@ function Bucket(props) {
             ? "$0"
             : bucketData.min_amt.toLocaleString("en")}
         </p>
-
-        <div>
-          <a className="delete" href="/">
-            {" "}
-            <img src={Delete} alt="Bin" height={30}></img>
-          </a>
-          <a className="edit" href="/EditBucket">
-            {" "}
-            <img src={Edit} alt="Edit" height={30}></img>
-          </a>
-        </div>
       </div>
 
       {bucketData.children.length > 0 ? (
