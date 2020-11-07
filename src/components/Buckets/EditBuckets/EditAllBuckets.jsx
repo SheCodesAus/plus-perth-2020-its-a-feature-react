@@ -202,7 +202,7 @@ function Buckets() {
         ) : null}
       </div>
 
-      <div className="buckets">
+      <div id="bucket-list">
 
         {buckets.map(bucket =>
           <div className="bucket-group animated fadeInLeft">
