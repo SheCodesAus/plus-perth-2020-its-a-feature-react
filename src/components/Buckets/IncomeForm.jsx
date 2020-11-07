@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Button from "../../components/Button/Button";
+import DeleteBucketPage from "../../pages/Delete/DeleteBucketPage"
+import Edit from "../../assets/images/edit.png";
 
 function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
@@ -52,11 +54,20 @@ function IncomeForm({ receipt, upDateIncome }) {
 
       postData().then((response) => {
         console.log("response is...", response);
-        history.push("/transactions");
+        alert(
+          "Transaction has been saved. Go to Transaction History page for previous transactions."
+        );
+        // history.push("/transactions");
         // window.location.reload();
       });
     }
   };
+
+  const handleKeyPress = e =>{
+    if (e.keyCode ===13){
+      handleSubmit();
+    }
+  }
   return (
     <div className="income-form">
       <form className="incomeForm animated fadeInLeft">
@@ -76,10 +87,17 @@ function IncomeForm({ receipt, upDateIncome }) {
             id="income"
             placeholder="Enter Income"
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           />
         </div>
-        <Button id="incomebutton" onClick={handleSubmit} value="Save" />
+        <button id="incomebutton" onClick={handleSubmit} type="submit">Save</button>
       </form>
+      <div>
+        <a className="edit buckets" href="/edit-buckets">
+          {" "}
+          <img src={Edit} alt="Edit image" height={30}></img>
+        </a>
+      </div>
     </div>
   );
 }

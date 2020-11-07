@@ -44,11 +44,17 @@ function LoginForm(props) {
       postData().then((response) => {
         setStorage("token", response.token);
         setStorage("user", credentials.username);
-        history.push("/");
+        // history.push("/login");
         window.location.reload();
       });
     }
-  };
+  }
+  const handleKeyPress = e =>{
+    if (e.keyCode ===13){
+      handleSubmit();
+    }
+  }
+
 
   // const handleChange = (e) => {};
   // const handleSubmit = (e) => {};
@@ -68,6 +74,7 @@ function LoginForm(props) {
           id="username"
           placeholder="Enter username"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
       <br />
@@ -79,9 +86,10 @@ function LoginForm(props) {
           id="password"
           placeholder="Enter password"
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </div>
-      <Button id="inbutton" onClick={handleSubmit} value="Login" />
+      <button id="inbutton" onClick={handleSubmit} type ="submit">Login</button>
 
       <div className="in-out">
         <p className="small">Don't have an account? </p>

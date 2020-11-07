@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
-import "../EditBuckets/EditBuckets.css";
+import { useHistory, Link } from "react-router-dom";
+import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 import Bucket from './Bucket'

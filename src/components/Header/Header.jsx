@@ -25,7 +25,7 @@ function Header() {
         <div>
             {isloggedin ? (
           <p>
-            <Link to={`/TransactionsPage/`}>
+            <Link to={`/`}>
               <a>Hello, {user}</a>
             </Link>
           </p>

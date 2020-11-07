@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Bucket_img from "../../assets/images/bucket.png";
-import TransactionHistory from "../../pages/TransactionsHistoryPage/TransactionHistory.css";
+import "./TransactionHistory.css";
 
 function TransactionsHistoryPage() {
   const [transactionList, setTransactionList] = useState([]);
   const token = window.localStorage.getItem("token");
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchData(){
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}transactions`,
       {
@@ -22,12 +22,15 @@ function TransactionsHistoryPage() {
       /// check response.status for status code too as response.ok only checks for server errors!
       setTransactionList(data);
       // console.log(data);
-    }
+    }}
+    fetchData();
   }, []);
 
   return (
-    <div className="trans-hist-page">
-      <h1>Transaction History</h1>
+    <div>
+      <div className="trans-hist-page">
+        <h1>Transaction History</h1>
+      </div>
 
       {transactionList ? (
         <div className="trans-hist-page animated fadeInLeft">
