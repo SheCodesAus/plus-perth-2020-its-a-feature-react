@@ -4,9 +4,10 @@ import "../AddBucket/AddBucket.css";
 
 import Button from "../../Button/Button";
 import Bucket_img from "../../../assets/images/bucket.png";
-import Travel from "../../../assets/images/travel.png";
 import "../../Buckets/Buckets.css";
 import "../../Button/Button.css";
+import IconWrap from "../../IconWrap/IconWrap";
+import IconOption from "../../IconOption/IconOption";
 
 function AddBucketForm(props) {
   const [Bucket, setBucket] = useState({
@@ -75,7 +76,11 @@ function AddBucketForm(props) {
     <form className="addBucketForm">
       <div className="Addbucket Addanimated fadeInLeft">
         <div className="Addbucket">
-          <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
+          {/* <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} /> */}
+          <div className = "icon-wrapper">
+            <img className="bucket-pic" alt="Bucket" src={Bucket_img}/>
+            <IconWrap bucketData = {Bucket} />
+          </div>
         </div>
         <div>
           <label htmlFor="childBucketSelect">
@@ -111,6 +116,13 @@ function AddBucketForm(props) {
         </div>
 
         <div>
+          <label htmlFor="icon">Icon<br></br></label>
+            <select type="select" id="icon" value={Bucket.icon} onChange={handleChange}>
+              <IconOption />
+            </select>
+        </div>
+
+        {/* <div>
           <label htmlFor="icon">
             Icon<br></br>
           </label>
@@ -120,7 +132,7 @@ function AddBucketForm(props) {
             </option>
             <option value="savings">Savings</option>
           </select>
-        </div>
+        </div> */}
 
         <div>
           <Button value="Submit" onClick={handleSubmit} />
