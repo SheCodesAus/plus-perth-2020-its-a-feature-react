@@ -85,7 +85,7 @@ const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
               bucketData={bucket}
               depth={depth + 1}
               income={income}
-              calculation={calculation}
+              calculation={(bucket.percentage / 100) * calculation}
             />
           ))}
         </div>
