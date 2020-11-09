@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
+import IconWrap from "../IconWrap/IconWrap";
+import ViewBucket from "../Buckets/ViewBucket/ViewBucket"
 
 function Bucket(props) {
   const { bucketData } = props;
@@ -22,9 +24,18 @@ function Bucket(props) {
     console.log(hasEnough, bucketData.name)
   }, [bucketData.percentage, income]);
 
+  // console.log(bucketData);
+
   return (
-    <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
-      
+    <React.Fragment>
+      {/* Individual buckets View */}
+      <div id="bucket-list">
+          <div className="bucket-group animated fadeInLeft">
+            <ViewBucket bucketData={bucketData} income={income} calculation={calculation}/>
+          </div>
+      </div>
+
+    {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
       <div
         className="bucket-parent"
         style={
@@ -33,7 +44,14 @@ function Bucket(props) {
             : null
         }
       >
-        <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
+        <div className = "icon-wrapper">
+          <img
+            className="bucket-pic"
+            alt="Bucket"
+            src={Bucket_img}
+          />
+          <IconWrap bucketData = {bucketData} />
+        </div>
         <h2 data-tip={bucketData.description} data-for="descriptionTip">
           {bucketData.name}:<br></br>
           {bucketData.percentage}%
@@ -52,10 +70,11 @@ function Bucket(props) {
         )}
         <div className={`${hasEnough ? "":"not_enough"}`}>
         <p>
-          Min:{" "}
-          {bucketData.min_amt == null
-            ? "$0"
-            : bucketData.min_amt.toLocaleString("en")}
+          Min: $
+          {bucketData.min_amt.toLocaleString("en", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+          })}
         </p>
       </div>
 
@@ -74,11 +93,14 @@ function Bucket(props) {
               }
             >
               <span>
-                <img
-                  className="bucket-pic-child"
-                  alt="Bucket"
-                  src={Bucket_img}
-                />
+                <div className = "icon-wrapper">
+                  <img
+                    className="bucket-pic-child"
+                    alt="Bucket"
+                    src={Bucket_img}
+                  />
+                <IconWrap bucketData = {child} />
+                </div>
                 <h2
                   data-tip={child.description}
                   data-for="descriptionTip-child"
@@ -101,7 +123,13 @@ function Bucket(props) {
                 ) : (
                   <h2>&nbsp;</h2>
                 )}
-                <p>Min: {child.min_amt == null ? "$0" : child.min_amt}</p>
+                <p>
+                  Min: $
+                  {child.min_amt.toLocaleString("en", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
 
                 {child.children.length > 0 ? (
                   <div
@@ -120,11 +148,14 @@ function Bucket(props) {
                         }}
                       >
                         <span>
-                          <img
-                            className="bucket-pic-child"
-                            alt="Bucket"
-                            src={Bucket_img}
-                          />
+                          <div className = "icon-wrapper">
+                            <img
+                              className="bucket-pic-child"
+                              alt="Bucket"
+                              src={Bucket_img}
+                            />
+                          <IconWrap bucketData = {nextchild} />
+                          </div>
                           <h2
                             data-tip={nextchild.description}
                             data-for="descriptionTip-childs-child"
@@ -148,10 +179,11 @@ function Bucket(props) {
                             <h2>&nbsp;</h2>
                           )}
                           <p>
-                            Min:{" "}
-                            {nextchild.min_amt == null
-                              ? "$0"
-                              : nextchild.min_amt}
+                            Min: $
+                            {nextchild.min_amt.toLocaleString("en", {
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 2,
+                            })}
                           </p>
                         </span>
                       </div>
@@ -163,9 +195,8 @@ function Bucket(props) {
           ))}
         </div>
       ) : null}
-      </div>
-    </div>
+    </div> */}
+    </React.Fragment>
   );
 }
-
 export default Bucket;

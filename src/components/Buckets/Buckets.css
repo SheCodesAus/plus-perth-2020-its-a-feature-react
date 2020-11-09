@@ -4,11 +4,23 @@
 .not_enough {
   border: red;
 }
+/*------------------------------------------------FORM------------------------------------------------*/
 .income-form {
-  background-color: white;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
+  flex-direction: row;
+  background-color: white;
+}
+
+.income-form.right {
+  /* border: 1px solid red; */
+  width: 15%;
+  justify-content: flex-end;
 }
 
 .income-form form {
@@ -16,6 +28,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 80px;
   /* padding: 0 20px 0 20px; */
 }
 
@@ -34,10 +47,23 @@
   outline: none;
 }
 
+.input-bucketname {
+  width: 150px;
+}
+
 .input-val {
   width: 22px;
 }
 
+.input {
+  width: 115px;
+}
+
+#description {
+  width: 180px;
+}
+
+/*----------------------------------------------------BUCKETS-----------------------------------------------------*/
 #bucket-list {
   display: flex;
   justify-content: center;
@@ -56,9 +82,9 @@
 }
 
 .bucket-parent {
-  padding: 30px;
+  /* padding-top: 30px; */
   /* border: solid lightgray; */
-  /* border-bottom: 1px solid white; */
+  border-bottom: 5px solid white;
   text-align: center;
   /* min-height: 200px; */
   /* width: 600px; */
@@ -82,6 +108,7 @@ h2 a.bucket-parent:hover {
 }
 
 .bucket-child {
+  /* TODO use css selector instead */
   border-right: 5px solid white;
 }
 
@@ -102,6 +129,10 @@ h2 a.bucket-parent:hover {
   width: auto;
 }
 /* -------- */
+.edit img {
+  margin: 0 0.3em 0 0.3em;
+}
+
 .delete img:hover,
 .edit img:hover {
   transform: scale(1.3);
@@ -154,4 +185,210 @@ img.delete:hover {
 .fadeInLeft {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
+}
+
+/*-------------------------------------------ICONS---------------------------------------------------------------------*/
+.icon-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.icon-wrapper .bucket-pic {
+  width: auto;
+  opacity: 0.1;
+  height: 100px;
+}
+
+.icon-wrapper .bucket-pic-child {
+  width: auto;
+  opacity: 0.1;
+  height: 50px;
+}
+
+.icon-wrapper .bucket-pic-edit {
+  width: 50%;
+  opacity: 0.1;
+  height: auto;
+}
+
+.icon-wrapper span #default {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background: url("../../assets/images/bucket.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #travel {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/travel.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #savings {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/Hamm.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #expense {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/expense.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #grocery {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/grocery.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #hitTheBeach {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/hitTheBeach.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #home {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/home.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #investment {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/investment.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #luggage {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/luggage.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #passport {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/passport.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #roadTrip {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/roadTrip.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #sunny {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/sunny.png") no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.icon-wrapper span #wallet {
+  position: absolute;
+  top: 20%;
+  bottom: 0;
+  left: 10%;
+  right: 0;
+  width: 80%;
+  height: 80%;
+  z-index: 100;
+  background: url("../../assets/images/wallet.png") no-repeat;
+  background-position: center;
+  background-size: contain;
 }
