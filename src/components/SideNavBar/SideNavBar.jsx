@@ -14,6 +14,7 @@ export default (props) => {
   }, [location]);
   const handleLogout = () => {
     clearStorage();
+    window.location.reload();
   };
   let user = window.localStorage.getItem("user");
   console.log("auth", isAuthenticated(), "loggedin", isloggedin);
@@ -28,11 +29,11 @@ export default (props) => {
           Login
         </a>
       )}
-      {isloggedin ? (
+      {/* {isloggedin ? (
         <a className="menu-item" href="/addbucket">
           Add Bucket
         </a>
-      ) : null}
+      ) : null} */}
       {isloggedin ? (
         <a className="menu-item" href="/transactions">
           History

@@ -60,10 +60,11 @@ function Bucket(props) {
           <h2>&nbsp; </h2>
         )}
         <p>
-          Min:{" "}
-          {bucketData.min_amt == null
-            ? "$0"
-            : bucketData.min_amt.toLocaleString("en")}
+          Min: $
+          {bucketData.min_amt.toLocaleString("en", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+          })}
         </p>
       </div>
 
@@ -112,7 +113,13 @@ function Bucket(props) {
                 ) : (
                   <h2>&nbsp;</h2>
                 )}
-                <p>Min: {child.min_amt == null ? "$0" : child.min_amt}</p>
+                <p>
+                  Min: $
+                  {child.min_amt.toLocaleString("en", {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2,
+                  })}
+                </p>
 
                 {child.children.length > 0 ? (
                   <div
@@ -162,10 +169,11 @@ function Bucket(props) {
                             <h2>&nbsp;</h2>
                           )}
                           <p>
-                            Min:{" "}
-                            {nextchild.min_amt == null
-                              ? "$0"
-                              : nextchild.min_amt}
+                            Min: $
+                            {nextchild.min_amt.toLocaleString("en", {
+                              minimumFractionDigits: 0,
+                              maximumFractionDigits: 2,
+                            })}
                           </p>
                         </span>
                       </div>

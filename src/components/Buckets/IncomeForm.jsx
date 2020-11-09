@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
-import Button from "../../components/Button/Button";
-import DeleteBucketPage from "../../pages/Delete/DeleteBucketPage"
 import Edit from "../../assets/images/edit.png";
+import add from "../../assets/images/Add.png";
 
 function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
@@ -63,11 +62,11 @@ function IncomeForm({ receipt, upDateIncome }) {
     }
   };
 
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
-  }
+  };
   return (
     <div className="income-form">
       <form className="incomeForm animated fadeInLeft">
@@ -76,6 +75,7 @@ function IncomeForm({ receipt, upDateIncome }) {
             border: "1px solid lightgray",
             padding: "2px",
             borderRadius: "3px",
+            margin: "0 0.3em 0 0.3em",
           }}
         >
           <label htmlFor="income"></label>
@@ -90,14 +90,25 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        <form >
-          <input className="button" type="submit" id="inbutton" value="Save" onClick={handleSubmit}/>
+        <form>
+          <input
+            className="button"
+            type="submit"
+            id="inbutton"
+            value="Save"
+            onClick={handleSubmit}
+          />
         </form>
       </form>
-      <div>
+      <div className="income-form right">
         <a className="edit buckets" href="/edit-buckets">
           {" "}
           <img src={Edit} alt="Edit image" height={30}></img>
+        </a>
+
+        <a className="edit buckets" href="/addbucket">
+          {" "}
+          <img src={add} alt="Add" height={30}></img>
         </a>
       </div>
     </div>

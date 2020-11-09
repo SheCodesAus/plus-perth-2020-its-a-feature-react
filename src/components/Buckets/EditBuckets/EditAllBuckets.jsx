@@ -3,28 +3,25 @@ import { useHistory, Link } from "react-router-dom";
 import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
-import Bucket from './Bucket'
+import Bucket from "./Bucket";
 import { update } from "lodash";
 
 // Recursive function to extract individual buckets from nested bucket list
-const getBucketList = buckets => {
-
-  let bucketList = {}
+const getBucketList = (buckets) => {
+  let bucketList = {};
 
   const getChildrenIds = (children) => {
-    children.forEach(b => {
-      bucketList[b.id] = b
-      if (b.children) getChildrenIds(b.children)
-    })
-  }
-  getChildrenIds(buckets)
+    children.forEach((b) => {
+      bucketList[b.id] = b;
+      if (b.children) getChildrenIds(b.children);
+    });
+  };
+  getChildrenIds(buckets);
 
-  return bucketList
-}
-
+  return bucketList;
+};
 
 function Buckets() {
-
   // This is used to display the buckets on the page in correct order
   const [buckets, setBuckets] = useState();
 
@@ -45,23 +42,23 @@ function Buckets() {
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}buckets`, {
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `token ${token}`,
-        },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `token ${token}`,
+      },
     })
-        .then((results) => {
-            return results.json();
-        })
-        .then((data) => {
-            setBuckets(data);
-        });
-}, [token]);
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setBuckets(data);
+      });
+  }, [token]);
 
   // Flatten list of buckets into separate account objects - property/key is the bucket ID (this is used to keep track of which bucket user is updating)
   useEffect(() => {
     if (buckets) {
-      setUpdatedBuckets(getBucketList(buckets))
+      setUpdatedBuckets(getBucketList(buckets));
     }
   }, [buckets]);
 
@@ -70,72 +67,75 @@ function Buckets() {
     if (id === "percentage") {
       value = parseInt(value);
     } else if (id === "min_amt") {
-      value = parseFloat(value).toFixed(2)
+      value = parseFloat(value).toFixed(2);
     }
     const update = updatedBuckets[bucketID];
     update[id] = value;
     setUpdatedBuckets((prevBuckets) => ({
       ...prevBuckets,
-      update
+      update,
     }));
-  }
+  };
 
   const checkBucketPercentages = (parentBucket) => {
     let bucketIDs = [];
     if (!parentBucket) {
-      bucketIDs = buckets.map(bucket => bucket.id)
+      bucketIDs = buckets.map((bucket) => bucket.id);
     } else {
-      bucketIDs = parentBucket.children.map(bucket => bucket.id)
+      bucketIDs = parentBucket.children.map((bucket) => bucket.id);
     }
-    const totals = bucketIDs.map(id => updatedBuckets[id].percentage);
+    const totals = bucketIDs.map((id) => updatedBuckets[id].percentage);
 
     const total = totals.reduce((accumulator, value) => accumulator + value);
 
-    const index = percentageError.current.indexOf(parentBucket ? parentBucket.name : "top-level");
+    const index = percentageError.current.indexOf(
+      parentBucket ? parentBucket.name : "top-level"
+    );
 
     if (total !== 100) {
       if (index > -1) {
-        return
+        return;
       }
-      percentageError.current = ([
+      percentageError.current = [
         ...percentageError.current,
-        parentBucket ? parentBucket.name : "top-level"
-      ])
-    }
-    else {
+        parentBucket ? parentBucket.name : "top-level",
+      ];
+    } else {
       const errors = percentageError.current;
       if (index > -1) {
         errors.splice(index, 1);
       }
     }
-  }
+  };
 
   const postBucketUpdate = async (bucket) => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}buckets/${bucket.id}/`, {
-      method: "put",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `token ${token}`
-      },
-      body: JSON.stringify(bucket),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}buckets/${bucket.id}/`,
+      {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `token ${token}`,
+        },
+        body: JSON.stringify(bucket),
+      }
+    );
     return response.json();
-  }
+  };
 
-  const recursivePercentageCheck = () => { 
-
-    const iterateOverBuckets = (children) => { 
-      children.forEach(b => { 
-        const parentID = b.parent_bucket
+  const recursivePercentageCheck = () => {
+    const iterateOverBuckets = (children) => {
+      children.forEach((b) => {
+        const parentID = b.parent_bucket;
         console.log("parent ID id ", parentID);
-        checkBucketPercentages(updatedBuckets[parentID])
-        if (b.children) { 
-          iterateOverBuckets(b.children)
+        checkBucketPercentages(updatedBuckets[parentID]);
+        if (b.children) {
+          iterateOverBuckets(b.children);
         }
-      })
-    }
-    iterateOverBuckets(buckets)
-  } 
+      });
+    };
+    iterateOverBuckets(buckets);
+  };
 
   const saveChanges = () => {
     setFetchErrorMsg();
@@ -159,30 +159,34 @@ function Buckets() {
       // Iterating over object...
       for (var key in updatedBuckets) {
         if (parseInt(key)) {
-          postBucketUpdate(updatedBuckets[key])
-            .then((response) => {
-              if (response.owner) {
-                history.push("/");
-              }
-              else {
-                setFetchErrorMsg("Unable to save changes. Please try again later.")
-              }
-            })
+          postBucketUpdate(updatedBuckets[key]).then((response) => {
+            if (response.owner) {
+              history.push("/");
+            } else {
+              setFetchErrorMsg(
+                "Unable to save changes. Please try again later."
+              );
+            }
+          });
         }
       }
-    }
-    else {
+    } else {
       setErrorMsg(percentageError.current);
     }
-  }
+  };
 
   return buckets ? (
     <React.Fragment>
-      <div>
-          <div className="income-form">
-          {/* <button onClick={saveChanges}>SAVE CHANGES</button> */}
-          <input className="button" type="submit" id="inbutton" value="Save Changes" onClick={saveChanges}/>
-          </div>
+      <div className="income-form">
+        <form className="incomeForm">
+          <input
+            className="button"
+            type="submit"
+            id="inbutton"
+            value="Save Changes"
+            onClick={saveChanges}
+          />
+        </form>
         {fetchErrorMsg ? (
           <div>
             <h2>{fetchErrorMsg}</h2>
@@ -197,8 +201,8 @@ function Buckets() {
                 return error === "top-level" ? (
                   <li>Your top level</li>
                 ) : (
-                    <li>{error}</li>
-                  );
+                  <li>{error}</li>
+                );
               })}
             </ul>
           </div>
@@ -206,16 +210,14 @@ function Buckets() {
       </div>
 
       <div id="bucket-list">
-
-        {buckets.map(bucket =>
+        {buckets.map((bucket) => (
           <div className="bucket-group animated fadeInLeft">
             <Bucket bucket={bucket} handleChange={handleChange} />
           </div>
-        )}
-
+        ))}
       </div>
 
-        {/* {buckets.map((bucket) => {
+      {/* {buckets.map((bucket) => {
         return (
           <div key={bucket.id} className=" bucket-group animated fadeInLeft">
             <div
@@ -229,7 +231,8 @@ function Buckets() {
               <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
               <div>
                 <input
-                  className="input"
+                  className="input-bucketname"
+                  style={{ backgroundColor: "yellow" }}
                   type="text"
                   name="name"
                   placeholder={bucket.name ? bucket.name : "Name"}
@@ -237,6 +240,7 @@ function Buckets() {
                 />
                 <input
                   className="input-val"
+                  style={{ backgroundColor: "rgba(255, 255, 0, 0.5)" }}
                   type="text"
                   name="percentage"
                   placeholder={bucket.percentage}
@@ -391,7 +395,11 @@ function Buckets() {
 
                                 <div>
                                   <input
-                                    className="input"
+                                    className="input-bucketname"
+                                    style={{
+                                      backgroundColor:
+                                        "rgba(144, 238, 144, 0.5)",
+                                    }}
                                     type="text"
                                     id="name"
                                     placeholder={
@@ -401,26 +409,16 @@ function Buckets() {
                                   />
                                   <input
                                     className="input-val"
+                                    style={{
+                                      backgroundColor:
+                                        "rgba(144, 238, 144, 0.5)",
+                                    }}
                                     type="text"
                                     id="percentage"
                                     placeholder={bucket.percentage}
                                     onChange={(e) => handleChange(e, bucket.id)}
                                   />
-                                  %
-                                  <p>
-                                    Minimum Amount: <br />$
-                                    <input
-                                      className="input"
-                                      type="text"
-                                      id="min_amt"
-                                      placeholder={
-                                        bucket.min_amt ? bucket.min_amt : "0"
-                                      }
-                                      onChange={(e) =>
-                                        handleChange(e, bucket.id)
-                                      }
-                                    />
-                                  </p>
+                                  %<p>Minimum Amount: ${bucket.min_amt}</p>
                                   <p>Bucket Description:</p>
                                   <textarea
                                     className="input"
@@ -449,10 +447,9 @@ function Buckets() {
       }
       )
       } */}
-      
     </React.Fragment>
   ) : (
-      <h2>Couldn't find any buckets!</h2>
+    <h2>Couldn't find any buckets!</h2>
   );
 }
 

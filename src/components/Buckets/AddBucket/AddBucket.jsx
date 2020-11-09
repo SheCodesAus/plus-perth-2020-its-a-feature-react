@@ -10,7 +10,9 @@ import IconWrap from "../../IconWrap/IconWrap";
 import IconOption from "../../IconOption/IconOption";
 
 function AddBucketForm(props) {
-  const [Bucket, setBucket] = useState([]);
+  const [Bucket, setBucket] = useState({
+    percentage: 0,
+  });
   const [bucketList, setBucketList] = useState([]);
   const token = window.localStorage.getItem("token");
 
@@ -36,8 +38,8 @@ function AddBucketForm(props) {
     setBucket((prevBucket) => ({
       ...prevBucket,
       [id]: value,
-    }))
-  }
+    }));
+  };
 
   const postDataBucket = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}buckets/`, {
@@ -48,6 +50,7 @@ function AddBucketForm(props) {
       },
       body: JSON.stringify(Bucket),
     });
+    console.log("Bucket is", Bucket);
     return response.json();
   };
 
@@ -55,18 +58,19 @@ function AddBucketForm(props) {
     e.preventDefault();
     if (Bucket.name) {
       postDataBucket().then((response) => {
-        history.push("/buckets");
+        history.push("/edit-buckets");
+        console.log("response is", response);
       });
     }
   };
 
   let dropDownBucketList = bucketList.map((s) => {
     return (
-    <option key={s.name} value={s.name}>
-      {s.name}
-    </option>
-  )
-})
+      <option key={s.name} value={s.name}>
+        {s.name}
+      </option>
+    );
+  });
 
   return (
     <form className="addBucketForm">
@@ -83,52 +87,32 @@ function AddBucketForm(props) {
             Is this a child bucket? If so, pick the parent bucket from the list
             <br></br>
           </label>
-          <select
-            type="select"
-            id="childBucketSelect"
-          >
-            <option value="">
-            </option>
+          <select type="select" id="childBucketSelect">
+            <option value=""></option>
             {dropDownBucketList}
           </select>
           <label htmlFor="name">
             Bucket Name<br></br>
           </label>
-          <input
-            type="text"
-            id="name"
-            onChange={handleChange}
-          />
+          <input type="text" id="name" onChange={handleChange} />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="min_amount">
             Minimum Amount<br></br>
           </label>
-          <input
-            type="number"
-            id="min_amt"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
+          <input type="number" id="min_amt" onChange={handleChange} />
+        </div> */}
+        {/* <div>
           <label htmlFor="percentage">
             %<br></br>
           </label>
-          <input
-            type="number"
-            id="percentage"
-            onChange={handleChange}
-          />
-        </div>
+          <input type="number" id="percentage" onChange={handleChange} />
+        </div> */}
         <div>
           <label htmlFor="description">
             Description<br></br>
           </label>
-          <input
-            type="text"
-            id="description"
-            onChange={handleChange}
-          />
+          <input type="text" id="description" onChange={handleChange} />
         </div>
 
         <div>
@@ -142,11 +126,7 @@ function AddBucketForm(props) {
           <label htmlFor="icon">
             Icon<br></br>
           </label>
-          <select
-            type="select"
-            id="icon"
-            onChange={handleChange}
-          >
+          <select type="select" id="icon" onChange={handleChange}>
             <option value="travel" src={Travel}>
               Travel
             </option>
@@ -155,7 +135,7 @@ function AddBucketForm(props) {
         </div> */}
 
         <div>
-          <Button value="Submit" onClick={handleSubmit}/>
+          <Button value="Submit" onClick={handleSubmit} />
         </div>
         <Link to="/">Cancel</Link>
       </div>
