@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
-import add from "../../assets/images/Add.png";
+import Add from "../../assets/images/add.png";
+import Expbutton from "../../assets/images/expbutton.png";
 import ReactTooltip from "react-tooltip";
 
 function IncomeForm({ receipt, upDateIncome }) {
@@ -118,8 +119,17 @@ function IncomeForm({ receipt, upDateIncome }) {
           data-tip="Add new bucket"
           data-for="AddTip"
         >
-          <img src={add} alt="Add" height={30}></img>
+          <img src={Add} alt="Add" height={30}></img>
           <ReactTooltip id="AddTip" />
+        </a>
+        <a
+          className="edit buckets"
+          href="/expenses"
+          data-tip="Edit expenses"
+          data-for="ExpTip"
+        >
+          <img src={Expbutton} alt="Exp" height={30}></img>
+          <ReactTooltip id="ExpTip" />
         </a>
       </div>
     </div>
