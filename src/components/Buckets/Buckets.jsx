@@ -24,6 +24,7 @@ function Bucket(props) {
 
   return (
     <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
+      
       <div
         className="bucket-parent"
         style={
@@ -49,6 +50,7 @@ function Bucket(props) {
         ) : (
           <h2>&nbsp; </h2>
         )}
+        <div className={`${hasEnough ? "":"not_enough"}`}>
         <p>
           Min:{" "}
           {bucketData.min_amt == null
@@ -161,6 +163,7 @@ function Bucket(props) {
           ))}
         </div>
       ) : null}
+      </div>
     </div>
   );
 }

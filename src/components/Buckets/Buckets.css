@@ -1,7 +1,9 @@
 /* * {
   border: 1px solid red;
 } */
-
+.not_enough {
+  border: red;
+}
 .income-form {
   background-color: white;
   position: sticky;
