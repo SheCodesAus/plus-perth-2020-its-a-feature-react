@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
+import add from "../../assets/images/Add.png";
 
 function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
@@ -74,6 +75,7 @@ function IncomeForm({ receipt, upDateIncome }) {
             border: "1px solid lightgray",
             padding: "2px",
             borderRadius: "3px",
+            margin: "0 0.3em 0 0.3em",
           }}
         >
           <label htmlFor="income"></label>
@@ -98,10 +100,15 @@ function IncomeForm({ receipt, upDateIncome }) {
           />
         </form>
       </form>
-      <div>
+      <div className="income-form right">
         <a className="edit buckets" href="/edit-buckets">
           {" "}
           <img src={Edit} alt="Edit image" height={30}></img>
+        </a>
+
+        <a className="edit buckets" href="/addbucket">
+          {" "}
+          <img src={add} alt="Add" height={30}></img>
         </a>
       </div>
     </div>
