@@ -66,7 +66,6 @@ const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
           ) : (
             <h2>&nbsp; </h2>
           )}
-
           <p>
             Min: $
             {bucketData.min_amt == null

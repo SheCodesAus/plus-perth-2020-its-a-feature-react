@@ -1,8 +1,8 @@
 /* * {
   border: 1px solid red;
 } */
-.not_enough {
-  border: red;
+.enough {
+  opacity: 0;
 }
 /*------------------------------------------------FORM------------------------------------------------*/
 .income-form {

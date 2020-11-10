@@ -53,6 +53,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
+        
         console.log("response is...", response);
         alert(
           "Transaction has been saved. Go to Transaction History page for previous transactions."

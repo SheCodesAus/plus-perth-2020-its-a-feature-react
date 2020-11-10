@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link} from "react-router-dom";
 import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
 // import ReactTooltip from "react-tooltip";
@@ -8,31 +9,28 @@ import ViewBucket from "../Buckets/ViewBucket/ViewBucket"
 function Bucket(props) {
   const { bucketData } = props;
   const { income } = props;
-  let hasEnough=false
 
+  const [hasEnough, setHasEnough] = useState(false)
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
     const amount = (bucketData.percentage / 100) * income
     setCalculation(amount)
-    if (amount > bucketData.min_amt){
-      hasEnough=true
-    }else{
-      hasEnough=false
-    }
+   const notEnough = (amount < bucketData.min_amt)
+      setHasEnough(notEnough)
     // hasEnough ? amount > bucketData.min_amt : false
-    console.log(hasEnough, bucketData.name)
+    console.log(hasEnough, "amount is less than min amount in", bucketData.name)
   }, [bucketData.percentage, income]);
 
   // console.log(bucketData);
-
   return (
     <React.Fragment>
       {/* Individual buckets View */}
-      <div id="bucket-list">
+      <div className={hasEnough ? 'not_enough': 'enough'}>
+        Your minimum amount is not being covered - you can readjust your percentages <Link to="/edit-buckets"> here </Link>
+      </div>
           <div className="bucket-group animated fadeInLeft">
             <ViewBucket bucketData={bucketData} income={income} calculation={calculation}/>
-          </div>
       </div>
 
     {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
