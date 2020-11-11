@@ -8,6 +8,7 @@ function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
     income: 0,
   });
+  
   const history = useHistory();
 
   //methods
@@ -22,7 +23,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       [id]: value,
     }));
 
-    console.log("transaction  is...", transaction);
+    // console.log("transaction  is...", transaction);
   };
 
   const postData = async () => {
@@ -43,7 +44,7 @@ function IncomeForm({ receipt, upDateIncome }) {
         body: JSON.stringify(body),
       }
     );
-    console.log("post response is...", response);
+    // console.log("post response is...", response);
     return response.json();
   };
 

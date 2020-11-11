@@ -1,6 +1,9 @@
 /* * {
   border: 1px solid red;
 } */
+.not_enough {
+  color: red;
+}
 .enough {
   opacity: 0;
 }
