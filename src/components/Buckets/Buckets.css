@@ -3,9 +3,12 @@
 } */
 .not_enough {
   color: red;
+  font-size: small;
+  text-align: center;
 }
 .enough {
   opacity: 0;
+  /* text-align: center; */
 }
 /*------------------------------------------------FORM------------------------------------------------*/
 .income-form {

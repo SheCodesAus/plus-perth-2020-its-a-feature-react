@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets.css";
+import { Link} from "react-router-dom";
 import ViewBucket from "../../Buckets/ViewBucket/ViewBucket"
 
 
@@ -32,18 +33,22 @@ function BucketContainer({ bucketData, depth, income, children }, props) {
   }, [income]);
 console.log(bucketData.name, bucketData.percentage, "%", bucketData.min_amt, "income", income)
   return (
+    <div>
+      <div className={hasEnough ? 'not_enough': 'enough'}>
+      You haven't covered your minimum amount!
+      </div>
     <div
 
       key={bucketData.id}
-      className={getClassName()}
+      className='bucket'
       style={bucketData.children.length !== 0 && depth !== 0
         ? { borderRight: "5px solid white" }
         : null}
     >
-
       <span>
         {children}
       </span>
+      </div>
     </div>
   );
 }
