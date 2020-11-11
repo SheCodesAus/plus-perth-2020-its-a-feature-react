@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../Buckets.css";
+import { Link } from "react-router-dom";
 import ViewBucket from "../../Buckets/ViewBucket/ViewBucket"
 
 
-function BucketContainer({ bucketData, depth, children }, props) {
+function BucketContainer({ bucketData, depth, income, children }, props) {
 
-  const { income } = props;
-
-  const [incomeState, setIncomeState] = useState();
-
-  useEffect(() => {
-    if (income) {
-      setIncomeState(income)
-    }
-  }, [income])
-
+  // const {income} = props
   const [hasEnough, setHasEnough] = useState(false)
   const [calculation, setCalculation] = useState(0);
   const getClassName = () => {
@@ -26,11 +18,13 @@ function BucketContainer({ bucketData, depth, children }, props) {
     //   }
   };
   useEffect(() => {
-    if (incomeState) {
-      const amount = (bucketData.percentage / 100) * incomeState
-      setCalculation(amount)
+    console.log("use effect", income)
+    if (income) {
+      const amount = (bucketData.percentage / 100) * income
+      // setCalculation(amount)
       const notEnough = (amount < bucketData.min_amt)
       setHasEnough(notEnough)
+      console.log(amount)
     }
     // console.log("amount on Buckets.jsx", amount)
     // console.log("calculation on Buckets.jsx", calculation)
@@ -39,18 +33,22 @@ function BucketContainer({ bucketData, depth, children }, props) {
   }, [incomeState]);
   console.log(bucketData.name, bucketData.percentage, "%", bucketData.min_amt, "incomeState", incomeState)
   return (
-    <div
+    <div>
+      <div className={hasEnough ? 'not_enough' : 'enough'}>
+        You haven't covered your minimum amount!
+      </div>
+      <div
 
-      key={bucketData.id}
-      className={getClassName()}
-      style={bucketData.children.length !== 0 && depth !== 0
-        ? { borderRight: "5px solid white" }
-        : null}
-    >
-
-      <span>
-        {children}
-      </span>
+        key={bucketData.id}
+        className='bucket'
+        style={bucketData.children.length !== 0 && depth !== 0
+          ? { borderRight: "5px solid white" }
+          : null}
+      >
+        <span>
+          {children}
+        </span>
+      </div>
     </div>
   );
 }

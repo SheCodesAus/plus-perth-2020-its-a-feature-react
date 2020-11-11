@@ -37,7 +37,7 @@ import BucketContainer from "../BucketContainer/BucketContainer";
 
 const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
   return (
-    <BucketContainer bucketData={bucketData} depth={depth}>
+    <BucketContainer bucketData={bucketData} depth={depth} income={income}>
       <div className={bucketData.children.length > 0 ? "bucket-parent" : null}>
         <div className="icon-wrapper">
           <img

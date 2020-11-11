@@ -21,22 +21,11 @@ function Bucket(props) {
   useEffect(() => {
     const amount = (bucketData.percentage / 100) * income
     setCalculation(amount)
-    const notEnough = (amount < bucketData.min_amt)
-    setHasEnough(notEnough)
     // console.log(bucketData)
-    // console.log("amount on Buckets.jsx", amount)
-    // console.log("calculation on Buckets.jsx", calculation)
-    // hasEnough ? amount > bucketData.min_amt : false
-    // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
-  }, [income]);
-
-  console.log(income);
+  }, [bucketData.percentage, income]);
   return (
     <React.Fragment>
       {/* Individual buckets View */}
-      <div className={hasEnough ? 'not_enough' : 'enough'}>
-        Your minimum amount is not being covered - you can readjust your percentages <Link to="/edit-buckets"> here </Link>
-      </div>
       <div className="bucket-group animated fadeInLeft">
         <ViewBucket bucketData={bucketData} income={income} calculation={calculation} />
       </div>
