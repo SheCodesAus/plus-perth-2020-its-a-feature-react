@@ -53,4 +53,4 @@ console.log(bucketData.name, bucketData.percentage, "%", bucketData.min_amt, "in
   );
 }
 
-  export default BucketContainer;
+export default BucketContainer;

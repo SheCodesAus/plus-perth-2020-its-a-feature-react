@@ -39,6 +39,7 @@ function AddBucketForm(props) {
       ...prevBucket,
       [id]: value,
     }));
+    console.log(Bucket);
   };
 
   const postDataBucket = async () => {
@@ -66,7 +67,7 @@ function AddBucketForm(props) {
 
   let dropDownBucketList = bucketList.map((s) => {
     return (
-      <option key={s.name} value={s.name}>
+      <option key={s.name} value={s.id}>
         {s.name}
       </option>
     );
@@ -77,17 +78,17 @@ function AddBucketForm(props) {
       <div className="Addbucket Addanimated fadeInLeft">
         <div className="Addbucket">
           {/* <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} /> */}
-          <div className = "icon-wrapper">
-            <img className="bucket-pic" alt="Bucket" src={Bucket_img}/>
-            <IconWrap bucketData = {Bucket} />
+          <div className="icon-wrapper">
+            <img className="bucket-pic" alt="Bucket" src={Bucket_img} />
+            <IconWrap bucketData={Bucket} />
           </div>
         </div>
         <div>
-          <label htmlFor="childBucketSelect">
+          <label htmlFor="parent_bucket">
             Is this a child bucket? If so, pick the parent bucket from the list
             <br></br>
           </label>
-          <select type="select" id="childBucketSelect">
+          <select type="select" id="parent_bucket" onChange={handleChange}>
             <option value=""></option>
             {dropDownBucketList}
           </select>
@@ -116,10 +117,17 @@ function AddBucketForm(props) {
         </div>
 
         <div>
-          <label htmlFor="icon">Icon<br></br></label>
-            <select type="select" id="icon" value={Bucket.icon} onChange={handleChange}>
-              <IconOption />
-            </select>
+          <label htmlFor="icon">
+            Icon<br></br>
+          </label>
+          <select
+            type="select"
+            id="icon"
+            value={Bucket.icon}
+            onChange={handleChange}
+          >
+            <IconOption />
+          </select>
         </div>
 
         {/* <div>

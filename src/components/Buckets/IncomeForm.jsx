@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
-import add from "../../assets/images/Add.png";
+import Add from "../../assets/images/add.png";
+import Expbutton from "../../assets/images/expbutton.png";
+import ReactTooltip from "react-tooltip";
 
 function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
@@ -104,14 +106,33 @@ function IncomeForm({ receipt, upDateIncome }) {
         </form>
       </form>
       <div className="income-form right">
-        <a className="edit buckets" href="/edit-buckets">
-          {" "}
+        <a
+          className="edit buckets"
+          href="/edit-buckets"
+          data-tip="Edit buckets"
+          data-for="EditTip"
+        >
           <img src={Edit} alt="Edit image" height={30}></img>
+          <ReactTooltip id="EditTip" />
         </a>
 
-        <a className="edit buckets" href="/addbucket">
-          {" "}
-          <img src={add} alt="Add" height={30}></img>
+        <a
+          className="edit buckets"
+          href="/addbucket"
+          data-tip="Add new bucket"
+          data-for="AddTip"
+        >
+          <img src={Add} alt="Add" height={30}></img>
+          <ReactTooltip id="AddTip" />
+        </a>
+        <a
+          className="edit buckets"
+          href="/expenses"
+          data-tip="Edit expenses"
+          data-for="ExpTip"
+        >
+          <img src={Expbutton} alt="Exp" height={30}></img>
+          <ReactTooltip id="ExpTip" />
         </a>
       </div>
     </div>

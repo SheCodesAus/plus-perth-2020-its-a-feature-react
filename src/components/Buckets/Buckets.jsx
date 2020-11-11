@@ -4,7 +4,7 @@ import "../Buckets/Buckets.css";
 import Bucket_img from "../../assets/images/bucket.png";
 // import ReactTooltip from "react-tooltip";
 import IconWrap from "../IconWrap/IconWrap";
-import ViewBucket from "../Buckets/ViewBucket/ViewBucket"
+import ViewBucket from "../Buckets/ViewBucket/ViewBucket";
 
 function Bucket(props) {
   const { bucketData } = props;
@@ -21,11 +21,17 @@ function Bucket(props) {
   return (
     <React.Fragment>
       {/* Individual buckets View */}
-               <div className="bucket-group animated fadeInLeft">
-            <ViewBucket bucketData={bucketData} income={income} calculation={calculation}/>
+      <div id="bucket-list">
+        <div className="bucket-group animated fadeInLeft">
+          <ViewBucket
+            bucketData={bucketData}
+            income={income}
+            calculation={calculation}
+          />
+        </div>
       </div>
 
-    {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
+      {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>
       <div
         className="bucket-parent"
         style={

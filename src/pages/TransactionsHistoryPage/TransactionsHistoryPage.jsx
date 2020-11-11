@@ -7,22 +7,23 @@ function TransactionsHistoryPage() {
   const token = window.localStorage.getItem("token");
 
   useEffect(() => {
-    async function fetchData(){
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}transactions`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `token ${token}`,
-        },
+    async function fetchData() {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}transactions`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `token ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+      if (response.ok) {
+        /// check response.status for status code too as response.ok only checks for server errors!
+        setTransactionList(data);
+        // console.log(data);
       }
-    );
-    const data = await response.json();
-    if (response.ok) {
-      /// check response.status for status code too as response.ok only checks for server errors!
-      setTransactionList(data);
-      // console.log(data);
-    }}
+    }
     fetchData();
   }, []);
 
