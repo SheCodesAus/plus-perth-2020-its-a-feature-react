@@ -9,8 +9,9 @@ import TransactionsHistoryPage from "./pages/TransactionsHistoryPage/Transaction
 import EditAllBucketsPage from "./pages/EditAllBuckets/EditAllBuckets";
 import TransactionDetailPage from "./pages/TransactionDetailPage/TransactionsDetailPage";
 import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
-import DeleteTransactionPage from "./pages/Delete/DeleteTransactionPage"
-import DeleteBucketPage from "./pages/Delete/DeleteBucketPage"
+import DeleteTransactionPage from "./pages/Delete/DeleteTransactionPage";
+import DeleteBucketPage from "./pages/Delete/DeleteBucketPage";
+import ExpensesPage from "./pages/ExpensesPage";
 
 import "./App.css";
 
@@ -34,15 +35,15 @@ function App() {
               </Route>
 
               {localStorage.token ? (
-              <Route path="/delete/:id">
-                <DeleteTransactionPage />
-              </Route>
+                <Route path="/delete/:id">
+                  <DeleteTransactionPage />
+                </Route>
               ) : null}
 
               {localStorage.token ? (
-              <Route path="/delete-bucket/:id">
-                <DeleteBucketPage />
-              </Route>
+                <Route path="/delete-bucket/:id">
+                  <DeleteBucketPage />
+                </Route>
               ) : null}
 
               {localStorage.token ? (
@@ -65,6 +66,12 @@ function App() {
               {localStorage.token ? (
                 <Route path="/edit-buckets">
                   <EditAllBucketsPage />
+                </Route>
+              ) : null}
+
+              {localStorage.token ? (
+                <Route path="/expenses">
+                  <ExpensesPage />
                 </Route>
               ) : null}
 
