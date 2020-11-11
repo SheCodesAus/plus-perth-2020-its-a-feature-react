@@ -25,7 +25,7 @@ function Bucket(props) {
     // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
   }, [bucketData.percentage, income]);
 
-  console.log(income);
+  console.log(bucketData);
   return (
     <React.Fragment>
       {/* Individual buckets View */}
