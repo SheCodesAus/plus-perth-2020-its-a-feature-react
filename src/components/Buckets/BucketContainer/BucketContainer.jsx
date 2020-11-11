@@ -3,9 +3,9 @@ import "../Buckets.css";
 import ViewBucket from "../../Buckets/ViewBucket/ViewBucket"
 
 
-function BucketContainer({ bucketData, depth, children }, props) {
+function BucketContainer({ bucketData, depth, income, children }, props) {
 
-  const {income} = props
+  // const {income} = props
   const [hasEnough, setHasEnough] = useState(false)
   const [calculation, setCalculation] = useState(0);
   const getClassName = () => {
@@ -17,11 +17,13 @@ function BucketContainer({ bucketData, depth, children }, props) {
     //   }
   };
   useEffect(() => {
+    console.log("use effect", income)
     if (income) {
     const amount = (bucketData.percentage / 100) * income
     setCalculation(amount)
    const notEnough = (amount < bucketData.min_amt)
       setHasEnough(notEnough)
+      console.log(amount)
     }
       // console.log("amount on Buckets.jsx", amount)
       // console.log("calculation on Buckets.jsx", calculation)
