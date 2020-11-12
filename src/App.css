@@ -45,3 +45,84 @@ h3 {
 Fonts
 Headings
  */
+
+.loader-pic {
+  margin: 100px;
+  padding: 6px 6px;
+  float: center;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-pic h2{
+  margin-left: 80px;
+}
+
+.coin {
+width: 100px;
+height: 100px;
+overflow: hidden;
+border-radius: 50%;
+/* box-shadow: 3px 3px 10px black; */
+border: 0px;
+background-color: white;
+margin-left: auto;
+margin-right: auto;
+display: flex;
+
+/* TRANSITION HERE!! */
+-webkit-transition: transform 1s ease;
+-moz-transition: transform 1s ease;
+-ms-transition: transform 1s ease;
+-o-transition: transform 1s ease;
+transition: transform 1s ease;
+/* END OF TRANSITION */
+}
+
+.coin img{
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto; 
+}
+
+.coin:hover {
+  transform: translateX( -1px ) rotateY( 180deg ); 
+  -ms-transform: translateX( -1px ) rotateY(180deg); 
+  -webkit-transform: translateX( -1px ) rotateY(180deg); 
+}
+
+.main-logo {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0px;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  
+  /* TRANSITION HERE!! */
+  -webkit-transition: transform 1s ease;
+  -moz-transition: transform 1s ease;
+  -ms-transition: transform 1s ease;
+  -o-transition: transform 1s ease;
+  transition: transform 1s ease;
+  /* END OF TRANSITION */
+  }
+  
+  .main-logo img{
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto; 
+  }
+  
+  .main-logo:hover {
+    transform: translateX( -1px ) rotateY( 180deg ); 
+    -ms-transform: translateX( -1px ) rotateY(180deg); 
+    -webkit-transform: translateX( -1px ) rotateY(180deg); 
+  }

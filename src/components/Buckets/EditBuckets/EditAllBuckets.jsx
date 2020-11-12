@@ -5,6 +5,7 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 import Bucket from "./Bucket";
 import { update } from "lodash";
+import bitcoin from "../../../assets/images/bitcoin.png"
 
 // Recursive function to extract individual buckets from nested bucket list
 const getBucketList = (buckets) => {
@@ -229,7 +230,14 @@ function Buckets() {
       </div>
     </React.Fragment>
   ) : (
-    <h2>Couldn't find any buckets!</h2>
+    <React.Fragment>
+    <div class="loader-pic">
+      <div class="coin">
+        <img src={bitcoin} height={100}/>
+      </div>
+      <h2>Loading...</h2>
+    </div>
+    </React.Fragment>
   );
 }
 
