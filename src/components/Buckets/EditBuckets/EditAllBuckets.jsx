@@ -60,6 +60,7 @@ function Buckets() {
     if (buckets) {
       setUpdatedBuckets(getBucketList(buckets));
     }
+    setFetchErrorMsg();
   }, [buckets]);
 
   const handleChange = (e, bucketID) => {
@@ -137,16 +138,35 @@ function Buckets() {
     iterateOverBuckets(buckets);
   };
 
-  const saveChanges = () => {
+  const saveChanges = (e) => {
+    e.preventDefault()
+
     setFetchErrorMsg();
 
+    console.log("running recursive percentage check")
     recursivePercentageCheck();
+
+    // checkBucketPercentages(null);
+    // for (let i = 0; i < buckets.length; i++) {
+    //   if (buckets[i].children.length > 0) {
+    //     checkBucketPercentages(buckets[i])
+    //     for (let j = 0; j < buckets[i].children.length; j++) {
+    //       if (buckets[i].children[j].children.length > 0) {
+    //         checkBucketPercentages(buckets[i].children[j])
+    //       }
+    //     }
+    //   }
+    // }
+
+    console.log("checking for percentage errors")
+
     if (percentageError.current.length === 0) {
       setErrorMsg([]);
 
       // Iterating over object...
       for (var key in updatedBuckets) {
         if (parseInt(key)) {
+          console.log("sending to backend")
           postBucketUpdate(updatedBuckets[key]).then((response) => {
             if (response.owner) {
               history.push("/");
@@ -154,27 +174,30 @@ function Buckets() {
               setFetchErrorMsg(
                 "Unable to save changes. Please try again later."
               );
+              console.log("unable to save. try again later")
             }
           });
         }
       }
     } else {
       setErrorMsg(percentageError.current);
+      console.log("percentage error!!")
     }
   };
 
   return buckets ? (
     <React.Fragment>
       <div className="income-form">
-        <div className="incomeForm">
-          <input
+        <form className="incomeForm">
+        <input
             className="button"
             type="submit"
             id="inbutton"
             value="Save Changes"
-            onClick={saveChanges}
+            onClick={(e) => { saveChanges(e) }}
           />
-        </div>
+        </form>
+
         {fetchErrorMsg ? (
           <div>
             <h2>{fetchErrorMsg}</h2>
