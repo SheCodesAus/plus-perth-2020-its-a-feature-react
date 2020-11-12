@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
-import Add from "../../assets/images/add.png";
+import Add from "../../assets/images/Add.png";
 import Expbutton from "../../assets/images/expbutton.png";
 import ReactTooltip from "react-tooltip";
 
@@ -10,7 +10,7 @@ function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
     income: 0,
   });
-  
+
   const history = useHistory();
 
   //methods
@@ -56,7 +56,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
-        
+
         console.log("response is...", response);
         alert(
           "Transaction has been saved. Go to Transaction History page for previous transactions."

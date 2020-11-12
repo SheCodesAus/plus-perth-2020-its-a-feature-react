@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import ViewBucket from "../../Buckets/ViewBucket/ViewBucket"
 
 
-function BucketContainer({ bucketData, depth, income, children }, props) {
+function BucketContainer({ bucketData, depth, children }) {
 
   // const {income} = props
-  const [hasEnough, setHasEnough] = useState(false)
-  const [calculation, setCalculation] = useState(0);
+  // const [hasEnough, setHasEnough] = useState(false)
+  // const [calculation, setCalculation] = useState(0);
   const getClassName = () => {
     //   if (depth == 0) {
     return 'bucket';
@@ -17,26 +17,9 @@ function BucketContainer({ bucketData, depth, income, children }, props) {
     //     return 'bucket bucket-child'
     //   }
   };
-  useEffect(() => {
-    console.log("use effect", income)
-    if (income) {
-      const amount = (bucketData.percentage / 100) * income
-      // setCalculation(amount)
-      const notEnough = (amount < bucketData.min_amt)
-      setHasEnough(notEnough)
-      console.log(amount)
-    }
-    // console.log("amount on Buckets.jsx", amount)
-    // console.log("calculation on Buckets.jsx", calculation)
-    // hasEnough ? amount > bucketData.min_amt : false
-    // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
-  }, [incomeState]);
-  console.log(bucketData.name, bucketData.percentage, "%", bucketData.min_amt, "incomeState", incomeState)
+
   return (
     <div>
-      <div className={hasEnough ? 'not_enough' : 'enough'}>
-        You haven't covered your minimum amount!
-      </div>
       <div
 
         key={bucketData.id}

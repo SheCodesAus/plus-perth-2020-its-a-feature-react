@@ -11,7 +11,7 @@ function Bucket(props) {
   const { income } = props;
 
   const [incomeState, setIncomeState] = useState();
-  const [hasEnough, setHasEnough] = useState(false)
+  // const [hasEnough, setHasEnough] = useState(false)
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
@@ -19,15 +19,21 @@ function Bucket(props) {
   }, [income])
 
   useEffect(() => {
-    const amount = (bucketData.percentage / 100) * income
-    setCalculation(amount)
+    if (income) {
+      const amount = (bucketData.percentage / 100) * income
+      setCalculation(amount)
+      // setHasEnough(amount > calculation)
+    }
     // console.log(bucketData)
-  }, [bucketData.percentage, income]);
+  }, [income]);
+
+
   return (
     <React.Fragment>
       {/* Individual buckets View */}
       <div className="bucket-group animated fadeInLeft">
-        <ViewBucket bucketData={bucketData} income={income} calculation={calculation} />
+        {console.log("The bucket data is... ", bucketData)}
+        <ViewBucket bucketData={bucketData} income={income} calculation={calculation} hasEnough={calculation > bucketData.min_amt} />
       </div>
 
       {/* <div className=" bucket-group animated fadeInLeft" key={bucketData.id}>

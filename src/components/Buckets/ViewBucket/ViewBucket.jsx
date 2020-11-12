@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 
 import "../Buckets.css";
@@ -35,9 +35,37 @@ import BucketContainer from "../BucketContainer/BucketContainer";
 //   )
 // }
 
-const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
+const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
+
+  // --- Don't need any of this anymore as we are now getting the value from props... --- //
+
+  // const [hasEnough, setHasEnough] = useState(true)
+
+  // useEffect(() => {
+  //   console.log("use effect", income)
+  //   if (income) {
+  //     const notEnough = (calculation < bucketData.min_amt)
+  //     setHasEnough(notEnough)
+  //     console.log("amount on bucket called ", bucketData.name, " is ", calculation, "this is not enough ", notEnough)
+  //   }
+  //   // console.log("amount on Buckets.jsx", amount)
+  //   // console.log("calculation on Buckets.jsx", calculation)
+  //   // hasEnough ? amount > bucketData.min_amt : false
+  //   // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
+  // }, [income]);
+
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
+      {
+        // --- check if they've started entering the income. If so, show the not enough message. Else, don't show it yet. --- //
+        income ?
+          <div className={hasEnough ? 'enough' : 'not_enough'}>
+            You haven't covered your minimum amount!
+      </div>
+          :
+          null
+      }
+
       <div className={bucketData.children.length > 0 ? "bucket-parent" : null}>
         <div className="icon-wrapper">
           <img
@@ -64,8 +92,8 @@ const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
               })}
             </h2>
           ) : (
-            <h2>&nbsp; </h2>
-          )}
+              <h2>&nbsp; </h2>
+            )}
           <p>
             Min: $
             {bucketData.min_amt == null
@@ -85,6 +113,7 @@ const ViewBucket = ({ bucketData, income, calculation, depth = 0 }) => {
               depth={depth + 1}
               income={income}
               calculation={(bucket.percentage / 100) * calculation}
+              hasEnough={(bucket.percentage / 100) * calculation > bucket.min_amt}
             />
           ))}
         </div>
