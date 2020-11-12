@@ -12,8 +12,8 @@ import AddBucketPage from "./pages/AddBucketPage/AddBucketPage";
 import DeleteTransactionPage from "./pages/Delete/DeleteTransactionPage";
 import DeleteBucketPage from "./pages/Delete/DeleteBucketPage";
 import ExpensesPage from "./pages/ExpensesPage";
-
 import "./App.css";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
   return (
@@ -74,7 +74,9 @@ function App() {
                   <ExpensesPage />
                 </Route>
               ) : null}
-
+              <Route path="/home">
+                <LandingPage />
+              </Route>
               <Route path="/">
                 <HomePage />
               </Route>
