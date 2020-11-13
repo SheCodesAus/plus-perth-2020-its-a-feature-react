@@ -65,6 +65,12 @@ function AddBucketForm(props) {
     }
   };
 
+  const handleKeyPress = e =>{
+    if (e.keyCode ===13){
+      handleSubmit();
+    }
+  }
+
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
@@ -88,14 +94,14 @@ function AddBucketForm(props) {
             Is this a child bucket? If so, pick the parent bucket from the list
             <br></br>
           </label>
-          <select type="select" id="parent_bucket" onChange={handleChange}>
+          <select type="select" id="parent_bucket" onChange={handleChange} onKeyPress={handleKeyPress}>
             <option value=""></option>
             {dropDownBucketList}
           </select>
           <label htmlFor="name">
             Bucket Name<br></br>
           </label>
-          <input type="text" id="name" onChange={handleChange} />
+          <input type="text" id="name" onChange={handleChange}onKeyPress={handleKeyPress} />
         </div>
         {/* <div>
           <label htmlFor="min_amount">
@@ -113,7 +119,7 @@ function AddBucketForm(props) {
           <label htmlFor="description">
             Description<br></br>
           </label>
-          <input type="text" id="description" onChange={handleChange} />
+          <input type="text" id="description" onChange={handleChange} onKeyPress={handleKeyPress}/>
         </div>
 
         <div>
@@ -125,6 +131,7 @@ function AddBucketForm(props) {
             id="icon"
             value={Bucket.icon}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
           >
             <IconOption />
           </select>

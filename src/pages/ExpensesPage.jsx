@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Expenses from "../components/Expenses/Expenses";
 import ExpenseForm from "../components/Expenses/ExpenseForm";
 import "../components/Expenses/Expenses.css";
+// import Pen from "../assets/images/feather-pen-clipart.jpg"
 
 function ExpensesPage() {
   const [expenseList, setExpenseList] = useState([]);
@@ -58,22 +59,23 @@ function ExpensesPage() {
   };
 
   return (
-    <div>
+    <div className="expense-container">
       {token != null ? (
         <div>
-          <div className="trans-hist-page">
+          <div className="expense-header">
             <h1>Expenses</h1>
           </div>
+
           {expenseList ? (
-            <div className=" animated fadeInLeft">
-              <ul>
+            <div className="expense-box animated fadeInLeft">
+              <div>
                 {expenseList.map((exp) => (
                   <div className="expenses-list" key={exp.id}>
                     {/* <li>
                       {exp.name}: ${exp.monthly_exp_amt.toLocaleString("en")}{" "}
                       {exp.bucket_name}
                     </li> */}
-                    <li>
+                    <div>
                       <input type="text" id="name" value={exp.name} />
                       <input
                         type="number"
@@ -90,16 +92,20 @@ function ExpensesPage() {
                         <option></option>
                         {dropDownBucketList}
                       </select>
-                      <button onChange={handleChange}>Update</button>
-                    </li>
+                      <button id="exbutton" type="submit" onChange={handleChange}>Update</button>
+                    </div>
                   </div>
                 ))}
-              </ul>
+              </div>
             </div>
           ) : null}
 
-          <div>
+          <div className="newexpense-container animated fadeInLeft">
+          <h4>New Expense Input</h4>
             <ExpenseForm />
+          </div>
+          <div>
+          {/* <img src={Pen} alt="Pen" height={100}></img> */}
           </div>
         </div>
       ) : (

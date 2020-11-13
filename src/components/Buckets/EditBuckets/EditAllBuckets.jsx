@@ -5,6 +5,7 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 import Bucket from "./Bucket";
 import { update } from "lodash";
+import bitcoin from "../../../assets/images/bitcoin.png"
 
 // Recursive function to extract individual buckets from nested bucket list
 const getBucketList = (buckets) => {
@@ -60,6 +61,7 @@ function Buckets() {
     if (buckets) {
       setUpdatedBuckets(getBucketList(buckets));
     }
+    setFetchErrorMsg();
   }, [buckets]);
 
   const handleChange = (e, bucketID) => {
@@ -137,9 +139,12 @@ function Buckets() {
     iterateOverBuckets(buckets);
   };
 
-  const saveChanges = () => {
+  const saveChanges = (e) => {
+    e.preventDefault()
+
     setFetchErrorMsg();
 
+    console.log("running recursive percentage check")
     recursivePercentageCheck();
 
     // checkBucketPercentages(null);
@@ -153,12 +158,16 @@ function Buckets() {
     //     }
     //   }
     // }
+
+    console.log("checking for percentage errors")
+
     if (percentageError.current.length === 0) {
       setErrorMsg([]);
 
       // Iterating over object...
       for (var key in updatedBuckets) {
         if (parseInt(key)) {
+          console.log("sending to backend")
           postBucketUpdate(updatedBuckets[key]).then((response) => {
             if (response.owner) {
               history.push("/");
@@ -166,12 +175,14 @@ function Buckets() {
               setFetchErrorMsg(
                 "Unable to save changes. Please try again later."
               );
+              console.log("unable to save. try again later")
             }
           });
         }
       }
     } else {
       setErrorMsg(percentageError.current);
+      console.log("percentage error!!")
     }
   };
 
@@ -179,14 +190,15 @@ function Buckets() {
     <React.Fragment>
       <div className="income-form">
         <form className="incomeForm">
-          <input
+        <input
             className="button"
             type="submit"
             id="inbutton"
             value="Save Changes"
-            onClick={saveChanges}
+            onClick={(e) => { saveChanges(e) }}
           />
         </form>
+
         {fetchErrorMsg ? (
           <div>
             <h2>{fetchErrorMsg}</h2>
@@ -216,240 +228,16 @@ function Buckets() {
           </div>
         ))}
       </div>
-
-      {/* {buckets.map((bucket) => {
-        return (
-          <div key={bucket.id} className=" bucket-group animated fadeInLeft">
-            <div
-              className="bucket-parent"
-              style={
-                bucket.children.length > 0
-                  ? { borderBottom: "3px solid white" }
-                  : null
-              }
-            >
-              <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
-              <div>
-                <input
-                  className="input-bucketname"
-                  style={{ backgroundColor: "yellow" }}
-                  type="text"
-                  name="name"
-                  placeholder={bucket.name ? bucket.name : "Name"}
-                  onChange={(e) => handleChange(e, bucket.id)}
-                />
-                <input
-                  className="input-val"
-                  style={{ backgroundColor: "rgba(255, 255, 0, 0.5)" }}
-                  type="text"
-                  name="percentage"
-                  placeholder={bucket.percentage}
-                  onChange={(e) => handleChange(e, bucket.id)}
-                />
-                %
-                <p>
-                  Minimum Amount: <br />$
-                  <input
-                    className="input"
-                    type="text"
-                    name="min_amt"
-                    placeholder={bucket.min_amt ? bucket.min_amt : "0"}
-                    onChange={(e) => handleChange(e, bucket.id)}
-                  />
-                </p>
-                <p>Bucket Description:</p>
-                <textarea
-                  className="input"
-                  type="text"
-                  name="description"
-                  value={
-                    bucket.description
-                      ? bucket.description
-                      : "Enter account description here (optional)"
-                  }
-                  onChange={(e) => handleChange(e, bucket.id)}
-                ></textarea>
-              </div>
-
-              <div key={bucket.id} className=" bucket-group animated fadeInLeft">
-                < div
-                  className="bucket-parent"
-                  style={
-                    bucket.children.length > 0
-                      ? { borderBottom: "3px solid white" }
-                      : null
-                  }
-                >
-                  <img className="bucket-pic" alt="Bucket Image" src={Bucket_img} />
-                  <div>
-                    <input
-                      className="input"
-                      type="text"
-                      id="name"
-                      placeholder={bucket.name ? bucket.name : "Title"}
-                      onChange={(e) => handleChange(e, bucket.id)}
-                    />
-                    <input
-                      className="input"
-                      type="text"
-                      id="percentage"
-                      placeholder={bucket.percentage}
-                      onChange={(e) => handleChange(e, bucket.id)}
-                    />
-                                %
-                                <p>
-                      Minimum Amount: <br />$
-                                <input
-                        className="input"
-                        type="text"
-                        id="min_amt"
-                        placeholder={bucket.min_amt ? bucket.min_amt : "0"}
-                        onChange={(e) => handleChange(e, bucket.id)}
-                      />
-                    </p>
-                    <p>
-                      Bucket Description:
-                            </p>
-                    <textarea
-                      className="input"
-                      type="text"
-                      id="description"
-                      value={bucket.description ? bucket.description : "Enter account description here (optional)"}
-                      onChange={(e) => handleChange(e, bucket.id)}
-                    ></textarea>
-                  </div>
-
-                  <div>
-                    <a className="delete" href="/">
-                      {" "}
-                      <img src={Delete} alt="Bin image" height={30}></img>
-                    </a>
-
-                  </div>
-                </div >
-
-
-                {
-                  bucket.children.length > 0 ?
-                    <div className="children">
-                      {bucket.children.map((bucket, i) => (
-                        <div
-                          key={i}
-                          className={
-                            i < bucket.children.length - 1
-                              ? "bucket bucket-child"
-                              : "bucket"
-                          }
-                          style={
-                            bucket.children.length > 0 ? { width: "max-content" } : null
-                          }
-                        >
-                          <span>
-                            <img
-                              className="bucket-pic-child"
-                              alt="Bucket"
-                              src={Bucket_img}
-                            />
-                            <h2
-                              data-tip={bucket.description}
-                              data-for="descriptionTip-child"
-                            >
-                            </h2>
-                            <div>
-                              <input
-                                className="input"
-                                type="text"
-                                id="name"
-                                placeholder={bucket.name ? bucket.name : "Title"}
-                                onChange={(e) => handleChange(e, bucket.id)}
-                              />
-                              <input
-                                className="input"
-                                type="text"
-                                id="percentage"
-                                placeholder={bucket.percentage}
-                                onChange={(e) => handleChange(e, bucket.id)}
-                              />
-                                %
-                                <p>
-                                Minimum Amount: <br />$
-                                <input
-                                  className="input"
-                                  type="text"
-                                  id="min_amt"
-                                  placeholder={bucket.min_amt ? bucket.min_amt : "0"}
-                                  onChange={(e) => handleChange(e, bucket.id)}
-                                />
-                              </p>
-                              <p>
-                                Bucket Description:
-                            </p>
-                              <textarea
-                                className="input"
-                                type="text"
-                                id="description"
-                                value={bucket.description ? bucket.description : "Enter account description here (optional)"}
-                                onChange={(e) => handleChange(e, bucket.id)}
-                              ></textarea>
-                            </div>
-
-                                <div>
-                                  <input
-                                    className="input-bucketname"
-                                    style={{
-                                      backgroundColor:
-                                        "rgba(144, 238, 144, 0.5)",
-                                    }}
-                                    type="text"
-                                    id="name"
-                                    placeholder={
-                                      bucket.name ? bucket.name : "Name"
-                                    }
-                                    onChange={(e) => handleChange(e, bucket.id)}
-                                  />
-                                  <input
-                                    className="input-val"
-                                    style={{
-                                      backgroundColor:
-                                        "rgba(144, 238, 144, 0.5)",
-                                    }}
-                                    type="text"
-                                    id="percentage"
-                                    placeholder={bucket.percentage}
-                                    onChange={(e) => handleChange(e, bucket.id)}
-                                  />
-                                  %<p>Minimum Amount: ${bucket.min_amt}</p>
-                                  <p>Bucket Description:</p>
-                                  <textarea
-                                    className="input"
-                                    type="text"
-                                    id="description"
-                                    value={
-                                      bucket.description
-                                        ? bucket.description
-                                        : "Enter account description here (optional)"
-                                    }
-                                    onChange={(e) => handleChange(e, bucket.id)}
-                                  ></textarea>
-                                </div>
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      ) : null}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-          </div>
-        );
-      }
-      )
-      } */}
     </React.Fragment>
   ) : (
-    <h2>Couldn't find any buckets!</h2>
+    <React.Fragment>
+    <div class="loader-pic">
+      <div class="coin">
+        <img src={bitcoin} height={100}/>
+      </div>
+      <h2>Loading...</h2>
+    </div>
+    </React.Fragment>
   );
 }
 

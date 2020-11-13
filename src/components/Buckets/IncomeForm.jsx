@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
-import Add from "../../assets/images/add.png";
+import Add from "../../assets/images/add.png"
 import Expbutton from "../../assets/images/expbutton.png";
 import ReactTooltip from "react-tooltip";
 
