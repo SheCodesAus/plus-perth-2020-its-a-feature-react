@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Bucket from "../../components/Buckets/Buckets";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import IncomeForm from "../../components/Buckets/IncomeForm";
+import LandingPage from "../LandingPage/LandingPage";
 
 function HomePage() {
   const [bucketList, setBucketList] = useState([]);
@@ -42,7 +43,8 @@ function HomePage() {
           </div>
         </div>
       ) : (
-        <LoginForm />
+        // <LoginForm />
+        <LandingPage />
       )}
     </div>
   );

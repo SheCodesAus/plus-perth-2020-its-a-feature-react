@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-// import Button from "../Button/Button";
+import Inkpen from "../../assets/images/ink-pen.png"
 
 function ExpenseForm(props) {
   const [Expense, setExpense] = useState({});
@@ -66,8 +66,9 @@ function ExpenseForm(props) {
 
   return (
     <form>
-      <div className=" trans-hist-page animated fadeInLeft">
-        <li>
+      <div className="expense-box animated fadeInLeft">
+        <div className="newexpense-container">
+        <div>
           <label htmlFor="name"></label>
           <input
             type="text"
@@ -94,10 +95,11 @@ function ExpenseForm(props) {
             <option></option>
             {dropDownBucketList}
           </select>
-          <button onClick={handleSubmit}>Add</button>
+          <button id="exbutton" type="submit" onClick={handleSubmit}>Add</button>
+          <img id="pen" src={Inkpen} alt="Pen" height={45}></img>
 
-          {/* <Button value="Add" onClick={handleSubmit} /> */}
-        </li>
+        </div>
+        </div>
       </div>
     </form>
   );
