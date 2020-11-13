@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import Inkpen from "../../assets/images/ink-pen.png"
+import Inkpen from "../../assets/images/ink-pen.png";
 
 function ExpenseForm(props) {
   const [Expense, setExpense] = useState({});
@@ -68,37 +68,38 @@ function ExpenseForm(props) {
     <form>
       <div className="expense-box animated fadeInLeft">
         <div className="newexpense-container">
-        <div>
-          <label htmlFor="name"></label>
-          <input
-            type="text"
-            id="name"
-            onChange={handleChange}
-            placeholder="Expense Name"
-          />
+          <div>
+            <label htmlFor="name"></label>
+            <input
+              type="text"
+              id="name"
+              onChange={handleChange}
+              placeholder="Expense Name"
+            />
 
-          <label htmlFor="monthly_exp_amt"></label>
-          <input
-            type="number"
-            id="monthly_exp_amt"
-            onChange={handleChange}
-            placeholder="Monthly Amount"
-          />
+            <label htmlFor="monthly_exp_amt"></label>
+            <input
+              type="number"
+              id="monthly_exp_amt"
+              onChange={handleChange}
+              placeholder="Monthly Amount"
+            />
 
-          <label htmlFor="bucket_id"></label>
-          <select
-            type="select"
-            id="bucket_id"
-            placeholder="Select Bucket"
-            onChange={handleChange}
-          >
-            <option></option>
-            {dropDownBucketList}
-          </select>
-          <button id="exbutton" type="submit" onClick={handleSubmit}>Add</button>
-          <img id="pen" src={Inkpen} alt="Pen" height={45}></img>
-
-        </div>
+            <label htmlFor="bucket_id"></label>
+            <select
+              type="select"
+              id="bucket_id"
+              placeholder="Select Bucket"
+              onChange={handleChange}
+            >
+              <option></option>
+              {dropDownBucketList}
+            </select>
+            <button id="exbutton" type="submit" onClick={handleSubmit}>
+              &nbsp;&nbsp; Add &nbsp;&nbsp;
+            </button>
+            {/* <img id="pen" src={Inkpen} alt="Pen" height={45}></img> */}
+          </div>
         </div>
       </div>
     </form>
