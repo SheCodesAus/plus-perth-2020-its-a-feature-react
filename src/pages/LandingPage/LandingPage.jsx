@@ -6,7 +6,7 @@ function LandingPage(){
         <div className="animated fadeInLeft">
             <h1 id="text-head">Explore the features now</h1>
             <div className="landing">
-                <div className="animated fadeInLeft">
+                <div className="landing-container animated fadeInLeft">
                     <div className="animated fadeInLeft" id="landing-text">
                         <h1>WELCOME</h1>
                     </div>
