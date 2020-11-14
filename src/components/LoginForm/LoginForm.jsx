@@ -46,9 +46,11 @@ function LoginForm(props) {
     e.preventDefault();
     if (credentials.username && credentials.password) {
       postData().then((response) => {
+        console.log(response);
         if (response.ok) {
-        setStorage("token", response.token);
+        setStorage("token", response.data.token);
         setStorage("user", credentials.username);
+        console.log("token", response.data.token)
         // window.location.reload();
         history.push("/");
         } else {

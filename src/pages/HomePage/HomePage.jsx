@@ -8,8 +8,10 @@ function HomePage() {
   const [bucketList, setBucketList] = useState([]);
   const token = window.localStorage.getItem("token");
   const [income, setIncome] = useState();
+  const [loading, setLoading]= useState(true);
 
   useEffect(() => {
+    setLoading(true)
     fetch(`${process.env.REACT_APP_API_URL}buckets`, {
       headers: {
         "Content-Type": "application/json",
@@ -21,8 +23,11 @@ function HomePage() {
       })
       .then((data) => {
         setBucketList(data);
+        setLoading(false);
       });
   }, [token]);
+  
+  
 
   const upDateIncome = (income) => {
     setIncome(income);
@@ -35,11 +40,16 @@ function HomePage() {
           <IncomeForm receipt={bucketList} upDateIncome={upDateIncome} />
 
           <div id="bucket-list">
-            {bucketList.map((bucketData, key) => {
+            { loading ? <h2>Loading</h2> :
+            bucketList.length > 0 ?
+            bucketList.map((bucketData, key) => {
               return (
                 <Bucket key={key} bucketData={bucketData} income={income} />
               );
-            })}
+            })
+            :
+            <h2>"Add bucket"</h2>
+      }
           </div>
         </div>
       ) : (
