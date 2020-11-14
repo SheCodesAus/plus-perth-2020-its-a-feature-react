@@ -31,9 +31,11 @@ function TransactionsHistoryPage() {
     <div>
       <div className="trans-hist-page animated fadeInLeft">
         <h1>Transaction History</h1>
+      {/* [console.log(transationList)] */}
+
       </div>
 
-      {transactionList ? (
+      {transactionList < 0 ? (
         <div className="trans-hist-page animated fadeInLeft">
           {transactionList.map((transactionData) => (
             <Link to={`/transactions/${transactionData.id}`}>
@@ -56,7 +58,10 @@ function TransactionsHistoryPage() {
           ))}
         </div>
       ) : (
-          <h3>No transactions</h3>
+          <h3 className="animated fadeInLeft"
+          style={{textAlign: "center"}}
+          >
+            No transactions yet!</h3>
         )}
     </div>
   );

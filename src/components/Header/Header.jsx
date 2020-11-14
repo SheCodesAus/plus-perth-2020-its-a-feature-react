@@ -25,9 +25,10 @@ function Header() {
         <div>
             {isloggedin ? (
           <p id="user_name">
-            <Link to={`/`}>
-              Hello {user}
-            </Link>
+              Hello {user} <br/>
+              <Link to ="/home" onClick={handleLogout}>
+          Logout {clearStorage}
+        </Link>
           </p>
         ) : (
           ""

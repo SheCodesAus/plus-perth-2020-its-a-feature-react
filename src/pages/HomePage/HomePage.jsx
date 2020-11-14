@@ -42,7 +42,7 @@ function HomePage() {
           <IncomeForm receipt={bucketList} upDateIncome={upDateIncome} />
 
           <div id="bucket-list">
-            { loading ? <h2>Loading</h2> :
+            { loading ? <h2>Loading...</h2> :
             bucketList.length > 0 ?
             bucketList.map((bucketData, key) => {
               return (
