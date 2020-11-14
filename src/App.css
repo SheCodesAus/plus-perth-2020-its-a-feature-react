@@ -67,7 +67,7 @@ Headings
   width: max-content;
   padding: 10px;
   margin: 10px;
-  margin-left: 70px;
+  /* margin-left: 70px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,7 +80,7 @@ Headings
   /* margin-left: 10%; */
   justify-content: center;
   display: flex;
-  width: 80%;
+  width: 70%;
   height: auto;
 }
 
