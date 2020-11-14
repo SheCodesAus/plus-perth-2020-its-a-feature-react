@@ -34,7 +34,11 @@ function LoginForm(props) {
         body: JSON.stringify(credentials),
       }
     );
-    return response.json();
+    const data = await response.json()
+    return {
+      ok: response.ok,
+      data: data
+    }
   };
 
   //get token
@@ -42,10 +46,17 @@ function LoginForm(props) {
     e.preventDefault();
     if (credentials.username && credentials.password) {
       postData().then((response) => {
-        setStorage("token", response.token);
+        console.log(response);
+        if (response.ok) {
+        setStorage("token", response.data.token);
         setStorage("user", credentials.username);
-        window.location.reload();
+        console.log("token", response.data.token)
+        // window.location.reload();
         history.push("/");
+        } else {
+          alert (response.non_field_errors[0])
+          // console.log(response.non_field_errors[0])
+        }
       });
     }
   }

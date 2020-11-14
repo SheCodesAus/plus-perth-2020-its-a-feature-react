@@ -10,6 +10,7 @@ function IncomeForm({ receipt, upDateIncome }) {
   const [transaction, setTransaction] = useState({
     income: 0,
   });
+
   const history = useHistory();
 
   //methods
@@ -17,13 +18,14 @@ function IncomeForm({ receipt, upDateIncome }) {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
+    console.log(e.target)
     upDateIncome(value);
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
       [id]: value,
     }));
 
-    console.log("transaction  is...", transaction);
+    // console.log("transaction  is...", transaction);
   };
 
   const postData = async () => {
@@ -44,7 +46,7 @@ function IncomeForm({ receipt, upDateIncome }) {
         body: JSON.stringify(body),
       }
     );
-    console.log("post response is...", response);
+    // console.log("post response is...", response);
     return response.json();
   };
 
@@ -54,6 +56,7 @@ function IncomeForm({ receipt, upDateIncome }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
+
         console.log("response is...", response);
         alert(
           "Transaction has been saved. Go to Transaction History page for previous transactions."
@@ -92,15 +95,14 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        <form>
-          <input
+        {/* <form> */}
+          <button
             className="button"
             type="submit"
-            id="inbutton"
-            value="Save"
+            // value="Save"
             onClick={handleSubmit}
-          />
-        </form>
+          >Save</button>
+        {/* </form> */}
       </form>
       <div className="income-form right">
         <a
