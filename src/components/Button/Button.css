@@ -12,10 +12,10 @@
   color: #dddafb;
   text-align: center;
   transition: all 0.2s;
-  background-color: #2d3a3a;
+  background-color: #373A47;
 }
 
 .button:hover {
   color: #040f0f;
-  background-color: #2ba84a;
+  background-color: #979BAE;
 }
