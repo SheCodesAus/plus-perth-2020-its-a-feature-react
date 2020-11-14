@@ -92,7 +92,8 @@ function ExpenseForm(props) {
               placeholder="Select Bucket"
               onChange={handleChange}
             >
-              <option></option>
+              <option> Select a bucket</option>
+
               {dropDownBucketList}
             </select>
             <button id="exbutton" type="submit" onClick={handleSubmit}>
