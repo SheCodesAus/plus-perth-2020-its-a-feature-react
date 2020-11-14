@@ -78,7 +78,7 @@ function App() {
               <Route path="/home">
                 <LandingPage />
               </Route>
-              
+          
               <Route path="/">
                 <HomePage />
               </Route>

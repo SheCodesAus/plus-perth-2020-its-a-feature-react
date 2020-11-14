@@ -46,7 +46,7 @@ Fonts
 Headings
  */
 
- /* Layout */
+/* Layout */
 .landing {
   padding: 50px;
   background-color: #646464;
@@ -65,16 +65,15 @@ Headings
 
 #landing-text {
   width: max-content;
-  padding:10px;
+  padding: 10px;
   margin: 10px;
-  margin-left:70px;
+  margin-left: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   flex-direction: column;
   text-align: center;
-
 }
 
 .landing-gif{
@@ -85,9 +84,7 @@ Headings
   height: auto;
 }
 
-
-
-.landing-container{
+.landing-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,24 +134,23 @@ Headings
   align-items: center;
 }
 
-.loader-pic h2{
+.loader-pic h2 {
   margin-left: 80px;
 }
 
 .coin {
-border-radius: 50%;
-border: 0px;
-background-color: white;
-display: flex;
+  border-radius: 50%;
+  border: 0px;
+  background-color: white;
+  display: flex;
 }
 
-.coin img{
+.coin img {
   left: 50%;
   top: 50%;
   height: 100%;
-  width: auto; 
+  width: auto;
 }
-
 
 .main-logo {
   width: 100px;
@@ -166,7 +162,7 @@ display: flex;
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  
+
   /* TRANSITION HERE!! */
   -webkit-transition: transform 1s ease;
   -moz-transition: transform 1s ease;
@@ -174,17 +170,40 @@ display: flex;
   -o-transition: transform 1s ease;
   transition: transform 1s ease;
   /* END OF TRANSITION */
-  }
-  
-  .main-logo img{
-    left: 50%;
-    top: 50%;
-    height: 100%;
-    width: auto; 
-  }
-  
-  .main-logo:hover {
-    transform: translateX( -1px ) rotateY( 180deg ); 
-    -ms-transform: translateX( -1px ) rotateY(180deg); 
-    -webkit-transform: translateX( -1px ) rotateY(180deg); 
-  }
+}
+
+.main-logo img {
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+}
+
+.main-logo:hover {
+  transform: translateX(-1px) rotateY(180deg);
+  -ms-transform: translateX(-1px) rotateY(180deg);
+  -webkit-transform: translateX(-1px) rotateY(180deg);
+}
+
+.big-add-bucket-box {
+  display: flex;
+  padding: 50px;
+  margin: left;
+  margin: right;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img.big-add-buckets {
+  /* display: inline; */
+  float: center;
+  margin: left;
+  margin: right;
+  height: 100px;
+  opacity: 50%;
+}
+
+img.big-add-buckets:hover {
+  transform: scale(1.2);
+  opacity: 100%;
+}
