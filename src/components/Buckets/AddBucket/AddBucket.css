@@ -37,7 +37,7 @@
     background-image: url(https://drive.google.com/file/d/1nq_pWw_un16PelzvbZY_GLLUttTYd2q7/view?usp=sharing);
   }
   
-  #submit_button {
+  .submit_button {
     display: inline-block;
     padding: 0.35em 1.2em;
     margin: 0 0.3em 0.3em 0;
@@ -47,7 +47,12 @@
     color: #dddafb;
     text-align: center;
     transition: all 0.2s;
-    background-color: #2d3a3a;
+    background-color: #373A47;
+  }
+
+  .submit_button:hover {
+    color: #040f0f;
+    background-color: #979BAE;
   }
   
   /* animation */
