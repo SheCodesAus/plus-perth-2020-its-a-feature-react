@@ -33,7 +33,11 @@ function SignUpForm(props) {
       },
       body: JSON.stringify(credentials),
     });
-    return response.json();
+    const data = await response.json()
+    return {
+      ok: response.ok,
+      data: data
+    }
   };
 
   //get token
@@ -42,12 +46,18 @@ function SignUpForm(props) {
     if (credentials.username && credentials.password) {
       console.log("i am here");
       postData().then((response) => {
-        console.log(response);
+        console.log(response)
+        if (response.ok){
+        // console.log(response);
         setStorage("signup", response.username);
         history.push("/login");
-      });
+      }
+      else {
+          alert (response.detail)
+        }
+      })
     } else {
-      props.showError("Fill in all details");
+      alert ("Fill in all details");
     }
   };
 
