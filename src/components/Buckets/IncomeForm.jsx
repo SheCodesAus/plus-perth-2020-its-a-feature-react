@@ -127,7 +127,7 @@ function IncomeForm({ receipt, upDateIncome }) {
         <a
           className="edit buckets"
           href="/expenses"
-          data-tip="Edit expenses"
+          data-tip="Expenses"
           data-for="ExpTip"
         >
           <img src={Expbutton} alt="Exp" height={30}></img>

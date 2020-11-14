@@ -44,20 +44,20 @@ export default (props) => {
         </a>
       )}
       {isloggedin ? (
-        <Link className="bm-item.menu-item" to="/edit-buckets" onClick={handleLogout}>
-          Edit Buckets {clearStorage}
-        </Link>
+        <a className="menu-item" href="/edit-buckets">
+        Edit Buckets
+      </a>
       ) : null}
       {isloggedin ? (
-        <Link className="bm-item.menu-item" to="/addbucket" onClick={handleLogout}>
-          Add Bucket {clearStorage}
-        </Link>
+        <a className="menu-item" href="/addbucket">
+        Add Buckets
+      </a>
       ) : null}
 
-      {isloggedin ? (
-        <Link className="bm-item.menu-item" to="/expenses" onClick={handleLogout}>
-          Expenses {clearStorage}
-        </Link>
+{isloggedin ? (
+        <a className="menu-item" href="/expenses">
+        Expenses
+      </a>
       ) : null}
 
 {isloggedin ? (
