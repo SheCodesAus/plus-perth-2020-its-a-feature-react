@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import Inkpen from "../../assets/images/ink-pen.png";
 
-function ExpenseForm(props) {
+const makeSpaces = (n) => Array.from(Array(n + 1)).join("\xA0\xA0");
+
+function ExpenseForm({ bucketList }) {
   const [Expense, setExpense] = useState({});
-  const [bucketList, setBucketList] = useState([]);
   const token = window.localStorage.getItem("token");
-
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}bucketlist/`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `token ${token}`,
-      },
-    })
-      .then((results) => {
-        return results.json();
-      })
-      .then((data) => {
-        setBucketList(data);
-      });
-  }, []);
 
   const history = useHistory();
 
@@ -50,7 +35,9 @@ function ExpenseForm(props) {
     e.preventDefault();
     if (Expense.name) {
       postDataExpense().then((response) => {
+        alert(`"${response.name}" Expense added to "${response.bucket_name}"`);
         window.location.reload();
+
         console.log("response is", response);
       });
     }
@@ -59,6 +46,7 @@ function ExpenseForm(props) {
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
+        {makeSpaces(s.depth)}
         {s.name}
       </option>
     );
@@ -76,15 +64,13 @@ function ExpenseForm(props) {
               onChange={handleChange}
               placeholder="Expense Name"
             />
-
-            <label htmlFor="monthly_exp_amt"></label>
+            <label htmlFor="monthly_exp_amt"></label>$
             <input
               type="number"
               id="monthly_exp_amt"
               onChange={handleChange}
-              placeholder="Monthly Amount"
+              placeholder="Monthly"
             />
-
             <label htmlFor="bucket_id"></label>
             <select
               type="select"
@@ -99,7 +85,6 @@ function ExpenseForm(props) {
             <button id="exbutton" type="submit" onClick={handleSubmit}>
               &nbsp;&nbsp; Add &nbsp;&nbsp;
             </button>
-            {/* <img id="pen" src={Inkpen} alt="Pen" height={45}></img> */}
           </div>
         </div>
       </div>
