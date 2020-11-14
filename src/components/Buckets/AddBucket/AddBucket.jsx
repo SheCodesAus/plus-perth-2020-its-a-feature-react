@@ -9,6 +9,24 @@ import "../../Button/Button.css";
 import IconWrap from "../../IconWrap/IconWrap";
 import IconOption from "../../IconOption/IconOption";
 
+const makeSpaces = (n) => Array.from(Array(n + 1)).join("\xA0\xA0");
+
+
+const formatBucketList = (data) => {
+  let bucketList = [];
+
+  const addBuckets = (buckets, depth = 0) => {
+    buckets.forEach((b) => {
+      bucketList.push({ ...b, depth });
+      addBuckets(b.children, depth + 1);
+    });
+  };
+
+  addBuckets(data);
+
+  return bucketList;
+};
+
 function AddBucketForm(props) {
   const [Bucket, setBucket] = useState({
     percentage: 0,
@@ -17,7 +35,7 @@ function AddBucketForm(props) {
   const token = window.localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}bucketlist/`, {
+    fetch(`${process.env.REACT_APP_API_URL}buckets/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `token ${token}`,
@@ -27,7 +45,8 @@ function AddBucketForm(props) {
         return results.json();
       })
       .then((data) => {
-        setBucketList(data);
+        const bucketList = formatBucketList(data);
+        setBucketList(bucketList);
       });
   }, []);
 
@@ -71,10 +90,18 @@ function AddBucketForm(props) {
     }
   }
 
+  // let dropDownBucketList = bucketList.map((s) => {
+  //   return (
+  //     <option key={s.name} value={s.id}>
+  //       {s.name}
+  //     </option>
+  //   );
+  // });
+
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
-        {s.name}
+        {makeSpaces(s.depth)} {s.name}
       </option>
     );
   });
