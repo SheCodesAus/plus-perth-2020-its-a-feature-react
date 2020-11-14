@@ -77,12 +77,16 @@ Headings
 }
 
 .landing-gif {
-  margin-left: 6.5%;
-  margin-right: 10%;
+  margin-left: 10%;
   justify-content: center;
   display: flex;
-  width: 85%;
+  width: 80%;
   height: auto;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
 }
 
 #text-head {
