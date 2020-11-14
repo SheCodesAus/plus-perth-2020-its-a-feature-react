@@ -38,13 +38,10 @@ function Buckets() {
   // This is used to show error if POST request fails
   const [fetchErrorMsg, setFetchErrorMsg] = useState();
 
-  const [loading, setLoading]= useState(true);
-
   const token = window.localStorage.getItem("token");
   const history = useHistory();
 
   useEffect(() => {
-    setLoading(true)
     fetch(`${process.env.REACT_APP_API_URL}buckets`, {
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +53,6 @@ function Buckets() {
       })
       .then((data) => {
         setBuckets(data);
-        setLoading(false)
       });
   }, [token]);
 
@@ -190,21 +186,9 @@ function Buckets() {
     }
   };
 
-  return (
-    <div>
-      { loading ? <React.Fragment>
-    <div className="loader-pic animated left">
-      <div className="coin">
-        <img src={bitcoin} height={100}/>
-      </div>
-      <h2>Loading...</h2>
-    </div>
-    </React.Fragment>
-       :
-    buckets > 0 ? (
+  return buckets ? (
     <React.Fragment>
       <div className="edit-form">
-      
         <form className="incomeForm">
         <input
             className="button"
@@ -215,7 +199,7 @@ function Buckets() {
           />
         </form>
         <Link to="/">Cancel</Link>
-      
+
         {fetchErrorMsg ? (
           <div>
             <h2>{fetchErrorMsg}</h2>
@@ -247,10 +231,15 @@ function Buckets() {
       </div>
     </React.Fragment>
   ) : (
-  <h2 className="animated fadeInLeft"> No transactions yet!</h2>
-    
-  )}
-</div>
+    <React.Fragment>
+    <div className="loader-pic animated left">
+      <div className="coin">
+        <img src={bitcoin} height={100}/>
+      </div>
+      <h2>Loading...</h2>
+    </div>
+    </React.Fragment>
   );
 }
+
 export default Buckets;
