@@ -78,7 +78,7 @@ Headings
 }
 
 .landing-gif{
-  margin-left: 10%;
+  /* margin-left: 10%; */
   justify-content: center;
   display: flex;
   width: 80%;
@@ -89,7 +89,38 @@ Headings
 
 .landing-container{
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   flex-direction: column;
+}
+
+.landing-direct{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+}
+
+.landing-in-out {
+  font-size: 30px;
+}
+
+.landing-in-out a {
+  width: 20%;
+  margin: 30px;
+  color: lightgray;
+  text-decoration: none;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 10px;
+  transition: all 0.4s ease-out;
+}
+
+.landing-in-out a:hover {
+  color: white;
+  border: 1px solid white;
 }
 
 #text-head{
