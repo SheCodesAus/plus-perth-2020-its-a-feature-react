@@ -39,16 +39,16 @@ function TransactionsHistoryPage() {
             <Link to={`/transactions/${transactionData.id}`}>
               <div key={transactionData.id} className="hist-tile">
                 <span>
-                  <h3>#{transactionData.id}</h3>
+                  <h3>${transactionData.income.toLocaleString("en")}</h3>
                   <h4>
                     {" "}
                     {transactionData.date_created.slice(8, 10)}
                     {"/"}
                     {transactionData.date_created.slice(5, 7)}
                     {"/"}
-                    {transactionData.date_created.slice(0, 4)}{" "}
+                    {transactionData.date_created.slice(0, 4)}
+                    <br></br>
                     {transactionData.date_created.slice(11, 16)}
-                    <br></br>${transactionData.income.toLocaleString("en")}
                   </h4>
                 </span>
               </div>
@@ -56,8 +56,8 @@ function TransactionsHistoryPage() {
           ))}
         </div>
       ) : (
-        <h3>No transactions</h3>
-      )}
+          <h3>No transactions</h3>
+        )}
     </div>
   );
 }
