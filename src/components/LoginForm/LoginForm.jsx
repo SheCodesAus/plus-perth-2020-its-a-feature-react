@@ -48,20 +48,20 @@ function LoginForm(props) {
       postData().then((response) => {
         console.log(response);
         if (response.ok) {
-        setStorage("token", response.data.token);
-        setStorage("user", credentials.username);
-        console.log("token", response.data.token)
-        // window.location.reload();
-        history.push("/");
+          setStorage("token", response.data.token);
+          setStorage("user", credentials.username);
+          console.log("token", response.data.token)
+          // window.location.reload();
+          history.push("/");
         } else {
-          alert (response.non_field_errors[0])
+          alert(response.data.non_field_errors[0])
           // console.log(response.non_field_errors[0])
         }
       });
     }
   }
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = e => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
   }
@@ -100,7 +100,7 @@ function LoginForm(props) {
           onKeyPress={handleKeyPress}
         />
       </div>
-      <button id="inbutton" onClick={handleSubmit} type ="submit">Login</button>
+      <button id="inbutton" onClick={handleSubmit} type="submit">Login</button>
 
       <div className="in-out">
         <p className="small">Don't have an account? </p>
