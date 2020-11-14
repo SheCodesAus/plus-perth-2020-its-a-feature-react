@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
-import Button from "../Button/Button";
+import Inkpen from "../../assets/images/ink-pen.png";
 
 function ExpenseForm(props) {
   const [Expense, setExpense] = useState({});
@@ -65,33 +65,43 @@ function ExpenseForm(props) {
   });
 
   return (
-    <form className="addBucketForm">
-      <div className="Addbucket Addanimated fadeInLeft">
-        <div>
-          <label htmlFor="name">
-            Expense Name<br></br>
-          </label>
-          <input type="text" id="name" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="monthly_exp_amt">Monthly Expense Amount</label>
-          <input type="number" id="monthly_exp_amt" onChange={handleChange} />
-        </div>
-        <div>
-          <label htmlFor="bucket_id">
-            Select a Bucket for this expense
-            <br></br>
-          </label>
-          <select type="select" id="bucket_id" onChange={handleChange}>
-            <option value=""></option>
-            {dropDownBucketList}
-          </select>
-        </div>
+    <form>
+      <div className="expense-box animated fadeInLeft">
+        <div className="newexpense-container">
+          <div>
+            <label htmlFor="name"></label>
+            <input
+              type="text"
+              id="name"
+              onChange={handleChange}
+              placeholder="Expense Name"
+            />
 
-        <div>
-          <Button value="Submit" onClick={handleSubmit} />
+            <label htmlFor="monthly_exp_amt"></label>
+            <input
+              type="number"
+              id="monthly_exp_amt"
+              onChange={handleChange}
+              placeholder="Monthly Amount"
+            />
+
+            <label htmlFor="bucket_id"></label>
+            <select
+              type="select"
+              id="bucket_id"
+              placeholder="Select Bucket"
+              onChange={handleChange}
+            >
+              <option> Select a bucket</option>
+
+              {dropDownBucketList}
+            </select>
+            <button id="exbutton" type="submit" onClick={handleSubmit}>
+              &nbsp;&nbsp; Add &nbsp;&nbsp;
+            </button>
+            {/* <img id="pen" src={Inkpen} alt="Pen" height={45}></img> */}
+          </div>
         </div>
-        <Link to="/">Cancel</Link>
       </div>
     </form>
   );

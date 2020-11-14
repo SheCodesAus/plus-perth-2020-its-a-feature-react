@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../Buckets.css";
 import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
@@ -106,10 +107,9 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
         </div>
         <br />
         <div>
-          <a className="delete" href="/">
-            {" "}
+          <Link className="delete" to={`/delete-bucket/${bucket.id}`}>
             <img src={Delete} alt="Bin image" height={30}></img>
-          </a>
+          </Link>
         </div>
         <br />
       </div>

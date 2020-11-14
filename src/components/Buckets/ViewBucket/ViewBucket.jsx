@@ -6,54 +6,7 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import IconWrap from "../../IconWrap/IconWrap";
 import BucketContainer from "../BucketContainer/BucketContainer";
 
-//delete this maybe?
-// const BucketContainer = ({ bucketData, depth, children }) => {
-
-//   const getClassName = () => {
-//     if (depth == 0) {
-//       return 'bucket-parent'
-//     }
-//     else {
-//       return 'bucket'
-//     }
-//   }
-
-//   return (
-//     <div
-//       key={bucketData.id}
-//       className={getClassName()}
-//       style={
-//         bucketData.children.length > 0
-//           ? { width: "max-content" }
-//           : null
-//       }
-//     >
-//       <span>
-//         {children}
-//       </span>
-//     </div >
-//   )
-// }
-
 const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
-
-  // --- Don't need any of this anymore as we are now getting the value from props... --- //
-
-  // const [hasEnough, setHasEnough] = useState(true)
-
-  // useEffect(() => {
-  //   console.log("use effect", income)
-  //   if (income) {
-  //     const notEnough = (calculation < bucketData.min_amt)
-  //     setHasEnough(notEnough)
-  //     console.log("amount on bucket called ", bucketData.name, " is ", calculation, "this is not enough ", notEnough)
-  //   }
-  //   // console.log("amount on Buckets.jsx", amount)
-  //   // console.log("calculation on Buckets.jsx", calculation)
-  //   // hasEnough ? amount > bucketData.min_amt : false
-  //   // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
-  // }, [income]);
-
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
       {
