@@ -44,6 +44,23 @@ export default (props) => {
         </a>
       )}
       {isloggedin ? (
+        <Link className="bm-item.menu-item" to="/edit-buckets" onClick={handleLogout}>
+          Edit Buckets {clearStorage}
+        </Link>
+      ) : null}
+      {isloggedin ? (
+        <Link className="bm-item.menu-item" to="/addbucket" onClick={handleLogout}>
+          Add Bucket {clearStorage}
+        </Link>
+      ) : null}
+
+      {isloggedin ? (
+        <Link className="bm-item.menu-item" to="/expenses" onClick={handleLogout}>
+          Expenses {clearStorage}
+        </Link>
+      ) : null}
+
+{isloggedin ? (
         <Link className="bm-item.menu-item" to="/" onClick={handleLogout}>
           Logout {clearStorage}
         </Link>
