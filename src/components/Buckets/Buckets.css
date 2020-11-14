@@ -5,9 +5,11 @@
   color: red;
   font-size: small;
   text-align: center;
+  max-width: 100px;
+  margin: auto;
 }
 .enough {
-  opacity: 0;
+  display: none;
   /* text-align: center; */
 }
 /*------------------------------------------------FORM------------------------------------------------*/

@@ -65,8 +65,8 @@ function AddBucketForm(props) {
     }
   };
 
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = e => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
   }
@@ -90,19 +90,27 @@ function AddBucketForm(props) {
           </div>
         </div>
         <div>
-          <label htmlFor="parent_bucket">
-            Is this a child bucket? If so, pick the parent bucket from the list
-            <br></br>
-          </label>
-          <select type="select" id="parent_bucket" onChange={handleChange} onKeyPress={handleKeyPress}>
-            <option value=""></option>
-            {dropDownBucketList}
-          </select>
+          {
+            bucketList.length > 0 ?
+              <React.Fragment>
+                <label htmlFor="parent_bucket">
+                  Is this a child bucket? If so, pick the parent bucket from the list
+    <br></br>
+                </label>
+                <select type="select" id="parent_bucket" onChange={handleChange} onKeyPress={handleKeyPress}>
+                  <option value=""></option>
+                  {dropDownBucketList}
+                </select>
+              </React.Fragment>
+              :
+              null
+          }
           <label htmlFor="name">
             Bucket Name<br></br>
           </label>
-          <input type="text" id="name" onChange={handleChange}onKeyPress={handleKeyPress} />
+          <input type="text" id="name" onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
+
         {/* <div>
           <label htmlFor="min_amount">
             Minimum Amount<br></br>
@@ -119,7 +127,7 @@ function AddBucketForm(props) {
           <label htmlFor="description">
             Description<br></br>
           </label>
-          <input type="text" id="description" onChange={handleChange} onKeyPress={handleKeyPress}/>
+          <input type="text" id="description" onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
 
         <div>

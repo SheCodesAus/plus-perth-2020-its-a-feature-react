@@ -6,6 +6,39 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import IconWrap from "../../IconWrap/IconWrap";
 import BucketContainer from "../BucketContainer/BucketContainer";
 
+<<<<<<< Updated upstream
+=======
+
+//delete this maybe?
+// const BucketContainer = ({ bucketData, depth, children }) => {
+
+//   const getClassName = () => {
+//     if (depth == 0) {
+//       return 'bucket-parent'
+//     }
+//     else {
+//       return 'bucket'
+//     }
+//   }
+
+//   return (
+//     <div
+//       key={bucketData.id}
+//       className={getClassName()}
+//       style={
+//         bucketData.children.length > 0
+//           ? { width: "max-content" }
+//           : null
+//       }
+//     >
+//       <span>
+//         {children}
+//       </span>
+//     </div >
+//   )
+// }
+
+>>>>>>> Stashed changes
 const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
@@ -14,7 +47,7 @@ const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) =
         income ?
           <div className={hasEnough ? 'enough' : 'not_enough'}>
             You haven't covered your minimum amount!
-      </div>
+          </div>
           :
           null
       }
