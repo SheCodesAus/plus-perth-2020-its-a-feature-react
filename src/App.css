@@ -51,7 +51,7 @@ Headings
   padding: 50px;
   background-color: #646464;
   border: 1px solid white;
-  border-radius: 30px;
+  border-radius: 31px;
   /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4); */
   margin: 40px;
   margin-left: 100px;
@@ -83,6 +83,9 @@ Headings
   width: 80%;
   height: auto;
 }
+
+
+
 
 .landing-container {
   display: flex;
@@ -206,4 +209,21 @@ img.big-add-buckets {
 img.big-add-buckets:hover {
   transform: scale(1.2);
   opacity: 100%;
+}
+
+@media (max-width: 500px) { 
+  .landing-gif {
+    display: none;
+  }
+  .landing-text{
+    font-size: small;
+  }
+
+  .landing-container{
+    margin:0;
+  }
+
+  .landing-direct{
+    flex-direction: column;
+  }
 }
