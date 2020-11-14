@@ -20,7 +20,7 @@ function LandingPage(){
                         </div>
                     </div>
                     <div className="landing-gif">
-                        <img src={RecordTransaction}/>
+                        <img className="landing-gif" src={RecordTransaction}/>
                     </div>
                 </div>
             </div>
