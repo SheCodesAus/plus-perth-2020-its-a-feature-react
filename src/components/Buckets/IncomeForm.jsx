@@ -95,15 +95,14 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        <form>
-          <input
+        {/* <form> */}
+          <button
             className="button"
             type="submit"
-            id="inbutton"
-            value="Save"
+            // value="Save"
             onClick={handleSubmit}
-          />
-        </form>
+          >Save</button>
+        {/* </form> */}
       </form>
       <div className="income-form right">
         <a
