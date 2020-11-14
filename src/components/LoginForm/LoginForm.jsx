@@ -49,7 +49,7 @@ function LoginForm(props) {
         if (response.ok) {
         setStorage("token", response.token);
         setStorage("user", credentials.username);
-        window.location.reload();
+        // window.location.reload();
         history.push("/");
         } else {
           alert (response.non_field_errors[0])

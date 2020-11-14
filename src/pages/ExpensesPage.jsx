@@ -7,10 +7,7 @@ import "../components/Expenses/Expenses.css";
 
 function ExpensesPage(props) {
   const [expenseList, setExpenseList] = useState([]);
-  const [newExpense, setNewExpense] = useState();
-  const [expense, setExpense] = useState({
-    // id: props.id,
-  });
+  const [expense, setExpense] = useState();
   const token = window.localStorage.getItem("token");
   const [bucketList, setBucketList] = useState([]);
 
@@ -58,12 +55,11 @@ function ExpensesPage(props) {
       ...prevExpense,
       [id]: value,
     }));
-    console.log(expense);
   };
 
-  const postExpense = async () => {
+  const postExpense = async (expID) => {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}expenses/${expense.id}`,
+      `${process.env.REACT_APP_API_URL}expenses/${expID}/`,
       {
         method: "put",
         headers: {
@@ -77,21 +73,14 @@ function ExpensesPage(props) {
     return response.json();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, expID, expNAME) => {
     e.preventDefault();
-    if (expense.name) {
-      postExpense().then((response) => {
-        // history.push("/edit-buckets");
-        console.log("put is", response);
-      });
-    }
+    postExpense(expID).then((response) => {
+      window.location.reload();
+      alert(`Expense: "${response.name}" updated`);
+      console.log("put is", response);
+    });
   };
-
-  // const handleKeyPress = (e) => {
-  //   if (e.keyCode === 13) {
-  //     handleSubmit();
-  //   }
-  // };
 
   return (
     <div>
@@ -116,14 +105,14 @@ function ExpensesPage(props) {
                         <input
                           type="text"
                           id="name"
-                          placeholder={exp.name}
+                          defaultValue={exp.name}
                           onChange={handleChange}
                         />
                         <label htmlFor="monthly_exp_amt"></label>
                         <input
                           type="number"
                           id="monthly_exp_amt"
-                          placeholder={exp.monthly_exp_amt}
+                          defaultValue={exp.monthly_exp_amt}
                           onChange={handleChange}
                         />
                         <label htmlFor="bucket_id"></label>
@@ -139,12 +128,24 @@ function ExpensesPage(props) {
                         <button
                           id="exbutton"
                           type="submit"
-                          onClick={(id) => {
-                            handleSubmit(id);
+                          onClick={(e) => {
+                            handleSubmit(e, exp.id);
                           }}
                         >
                           Update
                         </button>
+                        {/* <button
+                          onClick={(e) => {
+                            if (
+                              window.confirm(
+                                "Are you sure you wish to delete this item?"
+                              )
+                            )
+                              this.deleteItem(e);
+                          }}
+                        >
+                          Delete
+                        </button> */}
                       </div>
                     </div>
                   ))}
