@@ -74,9 +74,11 @@ function App() {
                   <ExpensesPage />
                 </Route>
               ) : null}
+
               <Route path="/home">
                 <LandingPage />
               </Route>
+              
               <Route path="/">
                 <HomePage />
               </Route>
