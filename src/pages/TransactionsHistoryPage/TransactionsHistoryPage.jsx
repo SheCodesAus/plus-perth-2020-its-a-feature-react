@@ -29,7 +29,7 @@ function TransactionsHistoryPage() {
 
   return (
     <div>
-      <div className="trans-hist-page">
+      <div className="trans-hist-page animated fadeInLeft">
         <h1>Transaction History</h1>
       </div>
 
