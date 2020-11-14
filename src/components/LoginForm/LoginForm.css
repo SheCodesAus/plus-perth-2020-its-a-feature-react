@@ -75,7 +75,7 @@ p.small {
   border-radius: 2px;
   color: white;
   padding: 10px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 400;
   letter-spacing: 1px;
   background-color: #373a47;
