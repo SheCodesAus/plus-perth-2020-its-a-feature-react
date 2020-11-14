@@ -24,9 +24,9 @@ function Header() {
     return (
         <div>
             {isloggedin ? (
-          <p>
+          <p id="name">
             <Link to={`/`}>
-              <a>Hello, {user}</a>
+              <a>Hello {user}</a>
             </Link>
           </p>
         ) : (

@@ -231,8 +231,8 @@ function Buckets() {
     </React.Fragment>
   ) : (
     <React.Fragment>
-    <div class="loader-pic">
-      <div class="coin">
+    <div className="loader-pic animated left">
+      <div className="coin">
         <img src={bitcoin} height={100}/>
       </div>
       <h2>Loading...</h2>
