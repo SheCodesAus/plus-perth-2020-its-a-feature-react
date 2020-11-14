@@ -49,13 +49,12 @@ function ExpensesPage(props) {
       });
   }, [token]);
 
-  const handleChange = (e, expNAME) => {
+  const handleChange = (e) => {
     const { id, value } = e.target;
     setExpense((prevExpense) => ({
       ...prevExpense,
       [id]: value,
     }));
-    console.log(expense);
   };
 
   const postExpense = async (expID) => {
@@ -83,12 +82,6 @@ function ExpensesPage(props) {
     });
   };
 
-  // const handleKeyPress = (e) => {
-  //   if (e.keyCode === 13) {
-  //     handleSubmit();
-  //   }
-  // };
-
   return (
     <div>
       <div className="expense-container">
@@ -113,18 +106,14 @@ function ExpensesPage(props) {
                           type="text"
                           id="name"
                           defaultValue={exp.name}
-                          onChange={(e) => {
-                            handleChange(e, exp.name);
-                          }}
+                          onChange={handleChange}
                         />
                         <label htmlFor="monthly_exp_amt"></label>
                         <input
                           type="number"
                           id="monthly_exp_amt"
                           defaultValue={exp.monthly_exp_amt}
-                          onChange={(e) => {
-                            handleChange(e, exp.monthly_exp_amt);
-                          }}
+                          onChange={handleChange}
                         />
                         <label htmlFor="bucket_id"></label>
                         <select
