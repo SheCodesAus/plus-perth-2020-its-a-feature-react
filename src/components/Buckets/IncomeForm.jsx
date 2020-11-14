@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../LoginForm/LoginForm.css";
 import Edit from "../../assets/images/edit.png";
-import Add from "../../assets/images/Add.png";
+import Add from "../../assets/images/add.png";
 import Expbutton from "../../assets/images/expbutton.png";
 import ReactTooltip from "react-tooltip";
 
@@ -95,15 +95,14 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        <form>
-          <input
+        {/* <form> */}
+          <button
             className="button"
             type="submit"
-            id="inbutton"
-            value="Save"
+            // value="Save"
             onClick={handleSubmit}
-          />
-        </form>
+          >Save</button>
+        {/* </form> */}
       </form>
       <div className="income-form right">
         <a
@@ -128,7 +127,7 @@ function IncomeForm({ receipt, upDateIncome }) {
         <a
           className="edit buckets"
           href="/expenses"
-          data-tip="Edit expenses"
+          data-tip="Expenses"
           data-for="ExpTip"
         >
           <img src={Expbutton} alt="Exp" height={30}></img>

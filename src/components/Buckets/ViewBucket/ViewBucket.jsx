@@ -6,9 +6,6 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import IconWrap from "../../IconWrap/IconWrap";
 import BucketContainer from "../BucketContainer/BucketContainer";
 
-<<<<<<< Updated upstream
-=======
-
 //delete this maybe?
 // const BucketContainer = ({ bucketData, depth, children }) => {
 
@@ -38,8 +35,9 @@ import BucketContainer from "../BucketContainer/BucketContainer";
 //   )
 // }
 
->>>>>>> Stashed changes
+
 const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
+
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
       {

@@ -1,8 +1,14 @@
 img.main-logo {
     display: block;
-    margin-left: 120px;
-    /* margin-right: auto; */
-    max-height: 90px;
+    /* margin-right: 120px; */
+    margin-right: auto;
+    height: 200px;
+    width: 200px;
     margin-top: 50px;
     margin-bottom: 75px;
+}
+
+#user_name {
+    margin-right: 30px;
+    text-align: right;
 }
