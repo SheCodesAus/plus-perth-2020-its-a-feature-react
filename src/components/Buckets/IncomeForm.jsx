@@ -96,14 +96,12 @@ function IncomeForm({ receipt, upDateIncome }) {
           />
         </div>
         {/* <form> */}
-          <button
-            className="button"
-            type="submit"
-            // value="Save"
-            onClick={handleSubmit}
-          >Save</button>
+         
         {/* </form> */}
       </form>
+      <div className="button-box">
+      <button id="inbutton" onClick={handleSubmit} type="submit">Submit</button>
+      </div>
       <div className="income-form right">
         <a
           className="edit buckets"

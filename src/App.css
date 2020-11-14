@@ -76,7 +76,7 @@ Headings
   text-align: center;
 }
 
-.landing-gif{
+.landing-gif {
   align-items: left;
   flex: -webkit-inline-flex;
   height: auto;
@@ -89,7 +89,6 @@ img.landing-gif {
   text-decoration: none;
 }
 
-
 .landing-container {
   display: flex;
   justify-content: center;
@@ -98,7 +97,7 @@ img.landing-gif {
   flex-direction: column;
 }
 
-.landing-direct{
+.landing-direct {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +125,7 @@ img.landing-gif {
   border: 1px solid white;
 }
 
-#text-head{
+#text-head {
   font-size: 50px;
   text-align: center;
 }
@@ -152,7 +151,6 @@ img.landing-gif {
 }
 
 .coin img {
-  
   left: 50%;
   top: 50%;
   height: 100%;
@@ -178,7 +176,10 @@ img.landing-gif {
   transition: transform 1s ease;
   /* END OF TRANSITION */
 }
-
+img.main-logo {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
 .main-logo img {
   left: 50%;
   top: 50%;
@@ -215,36 +216,32 @@ img.big-add-buckets:hover {
   opacity: 100%;
 }
 
+@media (max-width: 700px) {
+  .landing {
+    margin: 3vw;
+    margin-left: 15vw;
+    margin-right: 15vw;
 
-
-
-@media (max-width: 700px) { 
-
-  .landing{
-    margin:3vw;
-    margin-left:15vw;
-    margin-right:15vw;
-
-    padding:10px;
+    padding: 10px;
     max-width: 100vw;
   }
-  #text-head{
+  #text-head {
     font-size: 6vw;
   }
   .landing-gif {
     display: none;
   }
 
-  .landing-container{
-    margin:0;
+  .landing-container {
+    margin: 0;
     font-size: 6vw;
   }
 
-  .landing-direct{
+  .landing-direct {
     flex-direction: row;
   }
 
-  .landing-in-out{
+  .landing-in-out {
     font-size: 4vw;
   }
 }

@@ -185,7 +185,7 @@ function AddBucketForm(props) {
         </div> */}
 
         <div>
-          <Button className="submit_button" value="Submit" onClick={handleSubmit} />
+        <button id="inbutton" onClick={handleSubmit} type="submit">Submit</button>
         </div>
         <Link to="/">Cancel</Link>
       </div>

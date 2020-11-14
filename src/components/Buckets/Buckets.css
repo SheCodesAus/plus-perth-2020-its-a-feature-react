@@ -5,11 +5,9 @@
   color: red;
   font-size: small;
   text-align: center;
-  max-width: 100px;
-  margin: auto;
 }
 .enough {
-  display: none;
+  opacity: 0;
   /* text-align: center; */
 }
 /*------------------------------------------------FORM------------------------------------------------*/
@@ -25,9 +23,24 @@
   background-color: white;
 }
 
+.edit-form {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  flex-direction: column;
+  background-color: white;
+}
+.button-box {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 .income-form.right {
   /* border: 1px solid red; */
-  width: 15%;
+  /* width: 15%; */
   justify-content: flex-end;
 }
 
