@@ -7,7 +7,6 @@ import "../components/Expenses/Expenses.css";
 
 function ExpensesPage(props) {
   const [expenseList, setExpenseList] = useState([]);
-  const [newExpense, setNewExpense] = useState();
   const [expense, setExpense] = useState();
   const token = window.localStorage.getItem("token");
   const [bucketList, setBucketList] = useState([]);
@@ -50,7 +49,7 @@ function ExpensesPage(props) {
       });
   }, [token]);
 
-  const handleChange = (e) => {
+  const handleChange = (e, expNAME) => {
     const { id, value } = e.target;
     setExpense((prevExpense) => ({
       ...prevExpense,
@@ -75,10 +74,11 @@ function ExpensesPage(props) {
     return response.json();
   };
 
-  const handleSubmit = (e, expID) => {
+  const handleSubmit = (e, expID, expNAME) => {
     e.preventDefault();
     postExpense(expID).then((response) => {
-      // history.push("/edit-buckets");
+      window.location.reload();
+      alert(`Expense: "${response.name}" updated`);
       console.log("put is", response);
     });
   };
@@ -112,15 +112,19 @@ function ExpensesPage(props) {
                         <input
                           type="text"
                           id="name"
-                          placeholder={exp.name}
-                          onChange={handleChange}
+                          defaultValue={exp.name}
+                          onChange={(e) => {
+                            handleChange(e, exp.name);
+                          }}
                         />
                         <label htmlFor="monthly_exp_amt"></label>
                         <input
                           type="number"
                           id="monthly_exp_amt"
-                          placeholder={exp.monthly_exp_amt}
-                          onChange={handleChange}
+                          defaultValue={exp.monthly_exp_amt}
+                          onChange={(e) => {
+                            handleChange(e, exp.monthly_exp_amt);
+                          }}
                         />
                         <label htmlFor="bucket_id"></label>
                         <select
@@ -141,6 +145,18 @@ function ExpensesPage(props) {
                         >
                           Update
                         </button>
+                        {/* <button
+                          onClick={(e) => {
+                            if (
+                              window.confirm(
+                                "Are you sure you wish to delete this item?"
+                              )
+                            )
+                              this.deleteItem(e);
+                          }}
+                        >
+                          Delete
+                        </button> */}
                       </div>
                     </div>
                   ))}
