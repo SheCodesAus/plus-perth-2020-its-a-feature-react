@@ -1,8 +1,8 @@
 .trans-hist-page {
   /* border: 1px solid red; */
   display: flex;
-  justify-content: stretch;
-  text-align: center;
+  justify-content: center;
+  /* text-align: center; */
   flex-wrap: wrap;
   margin: 30px;
 }
@@ -18,7 +18,6 @@
   width: 250px;
   border-radius: 8px;
   position: relative;
-  color: black;
 }
 
 .hist-tile::after {
@@ -35,6 +34,10 @@
   right: 0;
   bottom: 0;
   position: absolute;
+}
+
+.transaction-list-item {
+  text-align: center;
 }
 
 .detail {

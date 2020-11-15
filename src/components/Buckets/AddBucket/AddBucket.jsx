@@ -9,6 +9,24 @@ import "../../Button/Button.css";
 import IconWrap from "../../IconWrap/IconWrap";
 import IconOption from "../../IconOption/IconOption";
 
+const makeSpaces = (n) => Array.from(Array(n + 1)).join("\xA0\xA0");
+
+
+const formatBucketList = (data) => {
+  let bucketList = [];
+
+  const addBuckets = (buckets, depth = 0) => {
+    buckets.forEach((b) => {
+      bucketList.push({ ...b, depth });
+      addBuckets(b.children, depth + 1);
+    });
+  };
+
+  addBuckets(data);
+
+  return bucketList;
+};
+
 function AddBucketForm(props) {
   const [Bucket, setBucket] = useState({
     percentage: 0,
@@ -17,7 +35,7 @@ function AddBucketForm(props) {
   const token = window.localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}bucketlist/`, {
+    fetch(`${process.env.REACT_APP_API_URL}buckets/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `token ${token}`,
@@ -27,7 +45,8 @@ function AddBucketForm(props) {
         return results.json();
       })
       .then((data) => {
-        setBucketList(data);
+        const bucketList = formatBucketList(data);
+        setBucketList(bucketList);
       });
   }, []);
 
@@ -65,16 +84,24 @@ function AddBucketForm(props) {
     }
   };
 
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = e => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
   }
 
+  // let dropDownBucketList = bucketList.map((s) => {
+  //   return (
+  //     <option key={s.name} value={s.id}>
+  //       {s.name}
+  //     </option>
+  //   );
+  // });
+
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
-        {s.name}
+        {makeSpaces(s.depth)} {s.name}
       </option>
     );
   });
@@ -90,19 +117,27 @@ function AddBucketForm(props) {
           </div>
         </div>
         <div>
-          <label htmlFor="parent_bucket">
-            Is this a child bucket? If so, pick the parent bucket from the list
-            <br></br>
-          </label>
-          <select type="select" id="parent_bucket" onChange={handleChange} onKeyPress={handleKeyPress}>
-            <option value=""></option>
-            {dropDownBucketList}
-          </select>
+          {
+            bucketList.length > 0 ?
+              <React.Fragment>
+                <label htmlFor="parent_bucket">
+                  Is this a child bucket? If so, pick the parent bucket from the list
+    <br></br>
+                </label>
+                <select type="select" id="parent_bucket" onChange={handleChange} onKeyPress={handleKeyPress}>
+                  <option value=""></option>
+                  {dropDownBucketList}
+                </select>
+              </React.Fragment>
+              :
+              null
+          }
           <label htmlFor="name">
             Bucket Name<br></br>
           </label>
-          <input type="text" id="name" onChange={handleChange}onKeyPress={handleKeyPress} />
+          <input type="text" id="name" onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
+
         {/* <div>
           <label htmlFor="min_amount">
             Minimum Amount<br></br>
@@ -119,7 +154,7 @@ function AddBucketForm(props) {
           <label htmlFor="description">
             Description<br></br>
           </label>
-          <input type="text" id="description" onChange={handleChange} onKeyPress={handleKeyPress}/>
+          <input type="text" id="description" onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
 
         <div>
@@ -150,7 +185,7 @@ function AddBucketForm(props) {
         </div> */}
 
         <div>
-          <Button value="Submit" onClick={handleSubmit} />
+        <button id="inbutton" onClick={handleSubmit} type="submit">Submit</button>
         </div>
         <Link to="/">Cancel</Link>
       </div>

@@ -35,24 +35,8 @@ import BucketContainer from "../BucketContainer/BucketContainer";
 //   )
 // }
 
+
 const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
-
-  // --- Don't need any of this anymore as we are now getting the value from props... --- //
-
-  // const [hasEnough, setHasEnough] = useState(true)
-
-  // useEffect(() => {
-  //   console.log("use effect", income)
-  //   if (income) {
-  //     const notEnough = (calculation < bucketData.min_amt)
-  //     setHasEnough(notEnough)
-  //     console.log("amount on bucket called ", bucketData.name, " is ", calculation, "this is not enough ", notEnough)
-  //   }
-  //   // console.log("amount on Buckets.jsx", amount)
-  //   // console.log("calculation on Buckets.jsx", calculation)
-  //   // hasEnough ? amount > bucketData.min_amt : false
-  //   // console.log(hasEnough, "amount is less than min amount in", bucketData.name)
-  // }, [income]);
 
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
@@ -61,7 +45,7 @@ const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) =
         income ?
           <div className={hasEnough ? 'enough' : 'not_enough'}>
             You haven't covered your minimum amount!
-      </div>
+          </div>
           :
           null
       }

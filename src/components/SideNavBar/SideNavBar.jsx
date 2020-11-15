@@ -44,6 +44,23 @@ export default (props) => {
         </a>
       )}
       {isloggedin ? (
+        <a className="menu-item" href="/edit-buckets">
+        Edit Buckets
+      </a>
+      ) : null}
+      {isloggedin ? (
+        <a className="menu-item" href="/addbucket">
+        Add Buckets
+      </a>
+      ) : null}
+
+{isloggedin ? (
+        <a className="menu-item" href="/expenses">
+        Expenses
+      </a>
+      ) : null}
+
+{isloggedin ? (
         <Link className="bm-item.menu-item" to="/" onClick={handleLogout}>
           Logout {clearStorage}
         </Link>

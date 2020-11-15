@@ -65,7 +65,7 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
             className="input-val"
             type="text"
             id="percentage"
-            value={bucket.percentage}
+            value={bucket.percentage ? bucket.percentage : null}
             onChange={(e) => handleChange(e, bucket.id)}
           />
           %
@@ -74,9 +74,9 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
         <div>
           Min: $
           {bucket.min_amt.toLocaleString("en", {
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 2,
-          })}
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })}
         </div>
         <br></br>
         <div>

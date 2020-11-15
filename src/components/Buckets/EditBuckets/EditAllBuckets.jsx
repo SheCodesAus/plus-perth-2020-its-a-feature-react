@@ -188,7 +188,7 @@ function Buckets() {
 
   return buckets ? (
     <React.Fragment>
-      <div className="income-form">
+      <div className="edit-form">
         <form className="incomeForm">
         <input
             className="button"
@@ -198,6 +198,7 @@ function Buckets() {
             onClick={(e) => { saveChanges(e) }}
           />
         </form>
+        <Link to="/">Cancel</Link>
 
         {fetchErrorMsg ? (
           <div>

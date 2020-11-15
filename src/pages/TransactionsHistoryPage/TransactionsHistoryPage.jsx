@@ -29,26 +29,28 @@ function TransactionsHistoryPage() {
 
   return (
     <div>
-      <div className="trans-hist-page">
+      <div className="trans-hist-page animated fadeInLeft">
         <h1>Transaction History</h1>
+        {/* [console.log(transationList)] */}
+
       </div>
 
-      {transactionList ? (
+      {transactionList.length > 0 ? (
         <div className="trans-hist-page animated fadeInLeft">
           {transactionList.map((transactionData) => (
             <Link to={`/transactions/${transactionData.id}`}>
               <div key={transactionData.id} className="hist-tile">
-                <span>
-                  <h3>#{transactionData.id}</h3>
+                <span className="transaction-list-item">
+                  <h3>${transactionData.income.toLocaleString("en")}</h3>
                   <h4>
                     {" "}
                     {transactionData.date_created.slice(8, 10)}
                     {"/"}
                     {transactionData.date_created.slice(5, 7)}
                     {"/"}
-                    {transactionData.date_created.slice(0, 4)}{" "}
+                    {transactionData.date_created.slice(0, 4)}
+                    <br></br>
                     {transactionData.date_created.slice(11, 16)}
-                    <br></br>${transactionData.income.toLocaleString("en")}
                   </h4>
                 </span>
               </div>
@@ -56,8 +58,11 @@ function TransactionsHistoryPage() {
           ))}
         </div>
       ) : (
-        <h3>No transactions</h3>
-      )}
+          <h3 className="animated fadeInLeft"
+            style={{ textAlign: "center" }}
+          >
+            No transactions yet!</h3>
+        )}
     </div>
   );
 }

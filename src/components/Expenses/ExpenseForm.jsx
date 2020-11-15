@@ -83,7 +83,7 @@ function ExpenseForm({ bucketList }) {
               {dropDownBucketList}
             </select>
             <button id="exbutton" type="submit" onClick={handleSubmit}>
-              &nbsp;&nbsp; Add &nbsp;&nbsp;
+              &nbsp; Add &nbsp;
             </button>
           </div>
         </div>

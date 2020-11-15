@@ -23,7 +23,7 @@ function SignUpForm(props) {
       [id]: value,
     }));
   };
-  
+
 
   const postData = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}users/`, {
@@ -47,22 +47,22 @@ function SignUpForm(props) {
       console.log("i am here");
       postData().then((response) => {
         console.log(response)
-        if (response.ok){
-        // console.log(response);
-        setStorage("signup", response.username);
-        history.push("/login");
-      }
-      else {
-          alert (response.detail)
+        if (response.ok) {
+          // console.log(response);
+          setStorage("signup", response.data.username);
+          history.push("/login");
+        }
+        else {
+          alert(response.data.detail)
         }
       })
     } else {
-      alert ("Fill in all details");
+      alert("Fill in all details");
     }
   };
 
-  const handleKeyPress = e =>{
-    if (e.keyCode ===13){
+  const handleKeyPress = e => {
+    if (e.keyCode === 13) {
       handleSubmit();
     }
   }
