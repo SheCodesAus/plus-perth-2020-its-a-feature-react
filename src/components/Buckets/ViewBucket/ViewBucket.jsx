@@ -95,13 +95,21 @@ const ViewBucket = ({
         <div className="children">
           {bucketData.children.map((bucket, i) => (
             <div
-              style={
-                bucket.children.length !== 0 && depth !== 0
-                  ? {
-                      borderRight: "5px solid white",
-                    }
-                  : null
-              }
+              style={{
+                borderLeft:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2 &&
+                  i !== 0
+                    ? "5px solid white"
+                    : "none",
+                borderRight:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2
+                    ? "5px solid white"
+                    : "none",
+              }}
             >
               <ViewBucket
                 key={i}

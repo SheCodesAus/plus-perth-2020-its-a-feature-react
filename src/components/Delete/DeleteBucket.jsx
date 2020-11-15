@@ -36,7 +36,7 @@ function DeleteBucket() {
       <button type="submit" onClick={handleSubmit}>
         Delete
       </button>
-      <Link to = "/edit-buckets"> Cancel</Link>
+      <Link to="/edit-buckets"> Cancel</Link>
     </div>
   );
 }

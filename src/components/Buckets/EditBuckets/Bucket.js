@@ -6,6 +6,7 @@ import Delete from "../../../assets/images/delete.png";
 import IconWrap from "../../IconWrap/IconWrap";
 import IconOption from "../../IconOption/IconOption";
 import BucketContainer from "../BucketContainer/BucketContainer";
+import DeleteBucket from "../../Delete/DeleteBucket";
 
 // Delete this?
 // const BucketContainer = ({ bucket, depth, children }) => {
@@ -54,7 +55,6 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
           <IconWrap bucketData={bucket} />
         </div>
         <div>
-          {bucket.children.length}
           <input
             className="input"
             type="text"
