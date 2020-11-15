@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import DeleteExpense from "./DeleteExpense";
+import DeleteExpense from "../Delete/DeleteExpense";
 
-const makeSpaces = (n) => Array.from(Array(n + 1)).join("\xA0\xA0");
+const makeSpaces = (n) => Array.from(Array(n * 3)).join("\xA0\xA0");
 
 function Expenses({ expense, bucketList }) {
   const [exp, setExpense] = useState(expense);
@@ -10,7 +10,7 @@ function Expenses({ expense, bucketList }) {
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
-        {makeSpaces(s.depth)} {s.name}
+        {s.depth === 0 ? "\u203A" : makeSpaces(s.depth)} {s.name}
       </option>
     );
   });

@@ -1,14 +1,18 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
 img.main-logo {
-    display: block;
-    /* margin-right: 120px; */
-    margin-right: auto;
-    height: 200px;
-    width: 200px;
-    margin-top: 50px;
-    margin-bottom: 75px;
+  /* margin-right: 120px; */
+  /* margin-right: auto; */
+  height: 200px;
+  width: 200px;
+  margin-top: 50px;
+  margin-bottom: 75px;
 }
 
 #user_name {
-    margin-right: 30px;
-    text-align: right;
+  margin-right: 30px;
+  text-align: right;
 }

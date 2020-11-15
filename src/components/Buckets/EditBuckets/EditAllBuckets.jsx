@@ -5,7 +5,7 @@ import Bucket_img from "../../../assets/images/bucket.png";
 import Delete from "../../../assets/images/delete.png";
 import Bucket from "./Bucket";
 import { update } from "lodash";
-import bitcoin from "../../../assets/images/bitcoin.png"
+import bitcoin from "../../../assets/images/bitcoin.png";
 
 // Recursive function to extract individual buckets from nested bucket list
 const getBucketList = (buckets) => {
@@ -140,11 +140,11 @@ function Buckets() {
   };
 
   const saveChanges = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     setFetchErrorMsg();
 
-    console.log("running recursive percentage check")
+    console.log("running recursive percentage check");
     recursivePercentageCheck();
 
     // checkBucketPercentages(null);
@@ -159,7 +159,7 @@ function Buckets() {
     //   }
     // }
 
-    console.log("checking for percentage errors")
+    console.log("checking for percentage errors");
 
     if (percentageError.current.length === 0) {
       setErrorMsg([]);
@@ -167,7 +167,7 @@ function Buckets() {
       // Iterating over object...
       for (var key in updatedBuckets) {
         if (parseInt(key)) {
-          console.log("sending to backend")
+          console.log("sending to backend");
           postBucketUpdate(updatedBuckets[key]).then((response) => {
             if (response.owner) {
               history.push("/");
@@ -175,14 +175,14 @@ function Buckets() {
               setFetchErrorMsg(
                 "Unable to save changes. Please try again later."
               );
-              console.log("unable to save. try again later")
+              console.log("unable to save. try again later");
             }
           });
         }
       }
     } else {
       setErrorMsg(percentageError.current);
-      console.log("percentage error!!")
+      console.log("percentage error!!");
     }
   };
 
@@ -190,12 +190,14 @@ function Buckets() {
     <React.Fragment>
       <div className="edit-form">
         <form className="incomeForm">
-        <input
+          <input
             className="button"
             type="submit"
             id="inbutton"
             value="Save Changes"
-            onClick={(e) => { saveChanges(e) }}
+            onClick={(e) => {
+              saveChanges(e);
+            }}
           />
         </form>
         <Link to="/">Cancel</Link>
@@ -232,12 +234,12 @@ function Buckets() {
     </React.Fragment>
   ) : (
     <React.Fragment>
-    <div className="loader-pic animated left">
-      <div className="coin">
-        <img src={bitcoin} height={100}/>
+      <div className="loader-pic animated left">
+        <div className="coin">
+          <img src={bitcoin} height={100} />
+        </div>
+        <h2>Loading...</h2>
       </div>
-      <h2>Loading...</h2>
-    </div>
     </React.Fragment>
   );
 }

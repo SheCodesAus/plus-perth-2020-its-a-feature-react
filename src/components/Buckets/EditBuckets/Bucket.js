@@ -6,6 +6,7 @@ import Delete from "../../../assets/images/delete.png";
 import IconWrap from "../../IconWrap/IconWrap";
 import IconOption from "../../IconOption/IconOption";
 import BucketContainer from "../BucketContainer/BucketContainer";
+import DeleteBucket from "../../Delete/DeleteBucket";
 
 // Delete this?
 // const BucketContainer = ({ bucket, depth, children }) => {
@@ -74,9 +75,9 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
         <div>
           Min: $
           {bucket.min_amt.toLocaleString("en", {
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 2,
-        })}
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+          })}
         </div>
         <br></br>
         <div>
@@ -118,12 +119,30 @@ const Bucket = ({ bucket, handleChange, depth = 0 }) => {
       {bucket.children.length > 0 ? (
         <div className="children">
           {bucket.children.map((bucket, i) => (
-            <Bucket
-              key={i}
-              depth={depth + 1}
-              bucket={bucket}
-              handleChange={handleChange}
-            />
+            <div
+              style={{
+                borderLeft:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2 &&
+                  i !== 0
+                    ? "5px solid white"
+                    : "none",
+                borderRight:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2
+                    ? "5px solid white"
+                    : "none",
+              }}
+            >
+              <Bucket
+                key={i}
+                depth={depth + 1}
+                bucket={bucket}
+                handleChange={handleChange}
+              />
+            </div>
           ))}
         </div>
       ) : null}

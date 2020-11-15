@@ -6,7 +6,7 @@ function DeleteExpense({ expense }) {
   const [exp, setExpense] = useState(expense);
 
   const ex = (name) => {
-    return 'Delete: "' + name + '"';
+    return 'Delete "' + name + '"';
   };
 
   const deleteData = async () => {
@@ -33,6 +33,7 @@ function DeleteExpense({ expense }) {
   return (
     <React.Fragment>
       <img
+        style={{ cursor: "pointer" }}
         src={Delete}
         alt="Delete"
         height={20}

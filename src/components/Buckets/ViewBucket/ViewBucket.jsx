@@ -35,19 +35,22 @@ import BucketContainer from "../BucketContainer/BucketContainer";
 //   )
 // }
 
-
-const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) => {
-
+const ViewBucket = ({
+  bucketData,
+  income,
+  calculation,
+  hasEnough,
+  depth = 0,
+}) => {
   return (
     <BucketContainer bucketData={bucketData} depth={depth} income={income}>
       {
         // --- check if they've started entering the income. If so, show the not enough message. Else, don't show it yet. --- //
-        income ?
-          <div className={hasEnough ? 'enough' : 'not_enough'}>
+        income ? (
+          <div className={hasEnough ? "enough" : "not_enough"}>
             You haven't covered your minimum amount!
           </div>
-          :
-          null
+        ) : null
       }
 
       <div className={bucketData.children.length > 0 ? "bucket-parent" : null}>
@@ -76,8 +79,8 @@ const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) =
               })}
             </h2>
           ) : (
-              <h2>&nbsp; </h2>
-            )}
+            <h2>&nbsp; </h2>
+          )}
           <p>
             Min: $
             {bucketData.min_amt == null
@@ -91,14 +94,34 @@ const ViewBucket = ({ bucketData, income, calculation, hasEnough, depth = 0 }) =
       {bucketData.children.length > 0 ? (
         <div className="children">
           {bucketData.children.map((bucket, i) => (
-            <ViewBucket
-              key={i}
-              bucketData={bucket}
-              depth={depth + 1}
-              income={income}
-              calculation={(bucket.percentage / 100) * calculation}
-              hasEnough={(bucket.percentage / 100) * calculation > bucket.min_amt}
-            />
+            <div
+              style={{
+                borderLeft:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2 &&
+                  i !== 0
+                    ? "5px solid white"
+                    : "none",
+                borderRight:
+                  bucket.children.length !== 0 &&
+                  depth !== 0 &&
+                  i < bucket.children.length + 2
+                    ? "5px solid white"
+                    : "none",
+              }}
+            >
+              <ViewBucket
+                key={i}
+                bucketData={bucket}
+                depth={depth + 1}
+                income={income}
+                calculation={(bucket.percentage / 100) * calculation}
+                hasEnough={
+                  (bucket.percentage / 100) * calculation > bucket.min_amt
+                }
+              />
+            </div>
           ))}
         </div>
       ) : null}

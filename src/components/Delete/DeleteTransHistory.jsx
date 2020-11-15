@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
+import Delete from "../../assets/images/delete.png";
+import ReactTooltip from "react-tooltip";
 
 function DeleteTransactionHistory() {
   const history = useHistory();
@@ -25,19 +27,27 @@ function DeleteTransactionHistory() {
     deleteData().then((response) => {
       //   clearStorage();
       //   console.log(response);
+      alert("Transaction Deleted");
       history.push(`/transactions`);
     });
   };
   //template
   return (
-    <div className="Delete-Transaction-History">
-      <h3>Are you sure you want to delete this receipt?</h3>
-      <p>There's no getting it back!</p>
-      <button type="submit" onClick={handleSubmit}>
-        Delete
-      </button>
-      <Link to = "/transactions"> Cancel</Link>
-    </div>
+    <React.Fragment>
+      <img
+        style={{ cursor: "pointer" }}
+        src={Delete}
+        alt="Delete"
+        height={30}
+        data-tip="Delete Transaction"
+        data-for="DelTip"
+        onClick={(e) => {
+          if (window.confirm("Are you sure you wish to delete this item?"))
+            handleSubmit(e);
+        }}
+      ></img>
+      <ReactTooltip id="DelTip" />
+    </React.Fragment>
   );
 }
 
