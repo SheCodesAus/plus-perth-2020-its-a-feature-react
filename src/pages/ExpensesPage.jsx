@@ -56,10 +56,10 @@ function ExpensesPage(props) {
 
   return (
     <div>
-      <div className="expense-container">
+      <div className="expense-container animated fadeInLeft">
         {token != null ? (
           <div>
-            <div className="expense-header">
+            <div className="expense-header animated fadeInLeft">
               <h1>Expenses</h1>
             </div>
 
