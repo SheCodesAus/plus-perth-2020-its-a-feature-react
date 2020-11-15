@@ -46,8 +46,7 @@ function ExpenseForm({ bucketList }) {
   let dropDownBucketList = bucketList.map((s) => {
     return (
       <option key={s.name} value={s.id}>
-        {makeSpaces(s.depth)}
-        {s.name}
+        {s.depth === 0 ? "\u203A" : makeSpaces(s.depth)} {s.name}
       </option>
     );
   });
@@ -59,20 +58,23 @@ function ExpenseForm({ bucketList }) {
           <div>
             <label htmlFor="name"></label>
             <input
+              style={{ fontSize: "smaller" }}
               type="text"
               id="name"
               onChange={handleChange}
-              placeholder="Expense Name"
+              placeholder="New Expense Name"
             />
             <label htmlFor="monthly_exp_amt"></label>$
             <input
+              style={{ fontSize: "smaller" }}
               type="number"
               id="monthly_exp_amt"
               onChange={handleChange}
-              placeholder="Monthly"
+              placeholder="Monthly Exp"
             />
             <label htmlFor="bucket_id"></label>
             <select
+              style={{ fontSize: "smaller" }}
               type="select"
               id="bucket_id"
               placeholder="Select Bucket"
