@@ -36,6 +36,10 @@
   position: absolute;
 }
 
+.transaction-list-item {
+  text-align: center;
+}
+
 .detail {
   /* border: 1px solid lightgray; */
   border: none;
