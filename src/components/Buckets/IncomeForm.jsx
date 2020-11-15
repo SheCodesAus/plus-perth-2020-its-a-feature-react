@@ -18,7 +18,7 @@ function IncomeForm({ receipt, upDateIncome }) {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    console.log(e.target)
+    console.log(e.target);
     upDateIncome(value);
     setTransaction((prevTransaction) => ({
       ...prevTransaction,
@@ -56,7 +56,6 @@ function IncomeForm({ receipt, upDateIncome }) {
       console.log("transaction is...", transaction);
 
       postData().then((response) => {
-
         console.log("response is...", response);
         alert(
           "Transaction has been saved. Go to Transaction History page for previous transactions."
@@ -95,14 +94,13 @@ function IncomeForm({ receipt, upDateIncome }) {
             onKeyPress={handleKeyPress}
           />
         </div>
-        {/* <form> */}
-         
-        {/* </form> */}
+        <div className="button-box" style={{ marginLeft: "unset" }}>
+          <button id="inbutton" onClick={handleSubmit} type="submit">
+            Submit
+          </button>
+        </div>
       </form>
-      <div className="button-box">
-      <button id="inbutton" onClick={handleSubmit} type="submit">Submit</button>
-      </div>
-      <div className="income-form right">
+      <div className="income-form right animated fadeInLeft">
         <a
           className="edit buckets"
           href="/edit-buckets"

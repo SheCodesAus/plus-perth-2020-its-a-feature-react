@@ -16,6 +16,7 @@
 /*------------------------------------------------FORM------------------------------------------------*/
 .income-form {
   /* border: 1px solid red; */
+  margin: 0 3% 0 3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,13 +43,14 @@
   margin-left: 10px;
 }
 .income-form.right {
-  /* border: 1px solid red; */
+  /* border: 1px solid blue; */
+  /* margin-left: 100px; */
   /* width: 15%; */
   justify-content: flex-end;
 }
 
 .income-form form {
-  /* border: 1px solid red; */
+  /* border: 1px solid orange; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +60,7 @@
 
 .incomeForm input {
   text-align: center;
+  width: 150px;
 }
 
 .incomeForm input.input[type="number"] {
