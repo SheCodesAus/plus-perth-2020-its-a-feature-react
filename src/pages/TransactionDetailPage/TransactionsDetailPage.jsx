@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Delete from "../../assets/images/delete.png";
-
 import Bucket from "../../components/Buckets/Buckets";
+import DeleteTransactionHistory from "../Delete/DeleteTransactionPage";
 
 function TransactionDetailPage() {
   const { id } = useParams();
@@ -59,15 +59,7 @@ function TransactionDetailPage() {
             <br></br>
             {transaction.date_created.slice(11, 16)}
           </h4>
-          <Link to={`/delete/${id}`}>
-            {""}
-            <img
-              className="delete"
-              src={Delete}
-              alt="Bin image"
-              height={30}
-            ></img>
-          </Link>
+          <DeleteTransactionHistory id={transaction.id} />
         </span>
       </div>
 
