@@ -13,7 +13,11 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5% 15% 5% 15%;
+  /* margin: 5% 15% 5% 15%; */
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 .newexpense-container {
@@ -163,4 +167,20 @@ select {
 .fadeInLeft {
   -webkit-animation-name: fadeInLeft;
   animation-name: fadeInLeft;
+}
+
+@media (max-width: 927px) {
+  .expense-container{
+    margin: 0px;
+  }
+  
+  #name, #bucket_id{
+    font-size:13px;
+    width: 18vw;
+  }
+  
+  #monthly_exp_amt{
+    font-size:13px;
+    width: 8vw;
+  }
 }

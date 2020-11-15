@@ -244,45 +244,7 @@ img.big-add-buckets:hover {
   .landing-in-out {
     font-size: 4vw;
   }
+
 }
 
-/* @media (max-width: 1506px) { 
 
-  .landing{
-    margin:3vw;
-    margin-left:15vw;
-    margin-right:15vw;
-
-    padding:10px;
-    max-width: 100vw;
-  }
-  #text-head{
-    font-size: 6vw;
-  }
-  .landing-gif {
-    justify-content: center;
-    float: center;
-    text-align: center;
-    border-radius: 2px;
-  }
-
-  img.landing-gif {
-    width: 70vw;
-    height: auto;
-    object-fit: cover;
-    text-decoration: none;
-  }
-
-  .landing-container{
-    margin:0;
-    font-size: 6vw;
-  }
-
-  .landing-direct{
-    flex-direction: row;
-  }
-
-  .landing-in-out{
-    font-size: 4vw;
-  }
-} */
