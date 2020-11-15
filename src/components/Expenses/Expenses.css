@@ -13,7 +13,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 15% 0 15%;
+  margin: 5% 15% 5% 15%;
 }
 
 .newexpense-container {
@@ -105,31 +105,7 @@ select {
   opacity: 0.7;
   transition: 0.5s;
 }
-/* #exbutton {
-  margin: 10px;
-  padding: 3.5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 2px;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 0.9em;
-  letter-spacing: 1px;
-  background-color: #373a47;
-  cursor: pointer;
-  outline: none;
-}
 
-#exbutton:hover {
-  opacity: 0.7;
-  transition: 0.5s;
-}
-
-#exbutton:hover {
-  opacity: 0.7;
-  transition: 0.5s;
-} */
 
 #pen {
   padding-left: 3px;
